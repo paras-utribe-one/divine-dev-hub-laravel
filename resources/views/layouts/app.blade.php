@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="scroll-smooth">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>@yield('title', 'Divine Dev Hub — Software Development & Digital Engineering')</title>
+        <meta name="description" content="@yield('description', 'Divine Dev Hub designs and builds cloud-native applications, AI-driven solutions and modern e-commerce platforms — end-to-end, from strategy to launch.')">
+        <link rel="canonical" href="{{ url()->current() }}">
+
+        <meta property="og:type" content="website">
+        <meta property="og:site_name" content="Divine Dev Hub">
+        <meta property="og:title" content="@yield('title', 'Divine Dev Hub — Software Development & Digital Engineering')">
+        <meta property="og:description" content="@yield('description', 'Divine Dev Hub designs and builds cloud-native applications, AI-driven solutions and modern e-commerce platforms — end-to-end, from strategy to launch.')">
+        <meta property="og:url" content="{{ url()->current() }}">
+        <meta property="og:image" content="{{ asset('images/logo-divinedevhub.png') }}">
+
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:title" content="@yield('title', 'Divine Dev Hub — Software Development & Digital Engineering')">
+        <meta name="twitter:description" content="@yield('description', 'Divine Dev Hub designs and builds cloud-native applications, AI-driven solutions and modern e-commerce platforms — end-to-end, from strategy to launch.')">
+        <meta name="twitter:image" content="{{ asset('images/logo-divinedevhub.png') }}">
+
+        <link rel="icon" href="{{ asset('favicon.ico') }}" sizes="any">
+
+        @fonts
+
+        @if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))
+            @vite(['resources/css/app.css', 'resources/js/app.js'])
+        @else
+            <style>
+                html { background-color: #ffffff; }
+            </style>
+        @endif
+    </head>
+    <body class="bg-background font-sans text-text-primary antialiased">
+        <x-header />
+
+        <main id="main-content">
+            @yield('content')
+        </main>
+
+        <x-footer />
+    </body>
+</html>
