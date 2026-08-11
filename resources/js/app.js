@@ -7,7 +7,7 @@ Alpine.start();
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 function initScrollReveal() {
-    const targets = document.querySelectorAll('[data-reveal], [data-reveal-scale]');
+    const targets = document.querySelectorAll('[data-reveal], [data-reveal-scale], [data-reveal-line]');
 
     if (!targets.length) return;
 

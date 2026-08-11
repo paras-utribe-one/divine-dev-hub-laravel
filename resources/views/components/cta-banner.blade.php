@@ -5,7 +5,7 @@
     'ctaHref' => '#contact',
 ])
 
-<div class="relative overflow-hidden rounded-3xl bg-secondary px-6 py-16 text-center sm:px-16 sm:py-20">
+<div class="relative overflow-hidden rounded-3xl bg-secondary px-6 py-16 text-center shadow-2xl shadow-secondary/40 ring-1 ring-inset ring-white/10 sm:px-16 sm:py-20">
     <div class="pointer-events-none absolute inset-0" aria-hidden="true">
         <div class="absolute inset-0 bg-dot-grid text-white/[0.07]"></div>
         <div class="absolute -top-32 left-1/4 h-72 w-72 rounded-full bg-primary/40 blur-3xl"></div>

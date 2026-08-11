@@ -5,8 +5,8 @@
     'last' => false,
 ])
 
-<div class="relative flex items-start gap-5 lg:flex-col lg:items-center lg:gap-4 lg:text-center">
-    <span class="relative z-10 flex h-12 w-12 shrink-0 items-center justify-center rounded-full border-2 border-primary bg-white text-sm font-semibold text-primary">
+<div class="group relative flex items-start gap-5 lg:flex-col lg:items-center lg:gap-4 lg:text-center">
+    <span class="relative z-10 flex h-12 w-12 shrink-0 items-center justify-center rounded-full border-2 border-primary bg-white text-sm font-semibold text-primary transition-all duration-300 group-hover:-translate-y-0.5 group-hover:bg-primary group-hover:text-white group-hover:shadow-lg group-hover:shadow-primary/25">
         {{ $number }}
     </span>
 

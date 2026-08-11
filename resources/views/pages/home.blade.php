@@ -5,13 +5,13 @@
 
 @php
     $services = [
-        ['title' => 'Web Development', 'icon' => 'code', 'description' => 'Full-stack web development — offering customized solutions from design to deployment and security.'],
-        ['title' => 'Software Services', 'icon' => 'layers', 'description' => 'Comprehensive software services: development, integration and customization for diverse business needs.'],
-        ['title' => 'CRM Solutions', 'icon' => 'users', 'description' => 'Custom CRM solutions that streamline operations, strengthen customer relationships and maximize efficiency.'],
-        ['title' => 'App Development', 'icon' => 'smartphone', 'description' => 'Expert mobile app development — from concept to launch, ensuring seamless user experiences.'],
-        ['title' => 'E-Commerce', 'icon' => 'cart', 'description' => 'Tailored e-commerce solutions: design, development and optimization for online business growth.'],
-        ['title' => 'Odoo Services', 'icon' => 'database', 'description' => "Odoo is a powerful, open-source ERP suite we implement and customize to streamline business operations."],
-        ['title' => 'Magento Services', 'icon' => 'cloud', 'description' => 'Magento is a robust, flexible open-source e-commerce platform we use to build and manage online stores.'],
+        ['title' => 'Web Development', 'icon' => 'code', 'description' => 'Full-stack web development — offering customized solutions from design to deployment and security.', 'tags' => ['React', 'Laravel', 'Tailwind CSS']],
+        ['title' => 'Software Services', 'icon' => 'layers', 'description' => 'Comprehensive software services: development, integration and customization for diverse business needs.', 'tags' => ['Laravel', 'Node.js', 'PHP']],
+        ['title' => 'CRM Solutions', 'icon' => 'users', 'description' => 'Custom CRM solutions that streamline operations, strengthen customer relationships and maximize efficiency.', 'tags' => ['Laravel', 'Node.js', 'AWS']],
+        ['title' => 'App Development', 'icon' => 'smartphone', 'description' => 'Expert mobile app development — from concept to launch, ensuring seamless user experiences.', 'tags' => ['Flutter', 'React Native']],
+        ['title' => 'E-Commerce', 'icon' => 'cart', 'description' => 'Tailored e-commerce solutions: design, development and optimization for online business growth.', 'tags' => ['Magento', 'Laravel', 'AWS']],
+        ['title' => 'Odoo Services', 'icon' => 'database', 'description' => "Odoo is a powerful, open-source ERP suite we implement and customize to streamline business operations.", 'tags' => ['Odoo', 'PHP']],
+        ['title' => 'Magento Services', 'icon' => 'cloud', 'description' => 'Magento is a robust, flexible open-source e-commerce platform we use to build and manage online stores.', 'tags' => ['Magento', 'PHP', 'AWS']],
     ];
 
     $techCategories = [
@@ -97,47 +97,84 @@
                 </p>
             </div>
 
-            <div data-reveal-scale style="--reveal-delay:220ms" class="relative hidden aspect-square max-w-md justify-self-center lg:block" aria-hidden="true">
+            <div
+                data-reveal-scale
+                style="--reveal-delay:220ms"
+                aria-hidden="true"
+                class="relative hidden aspect-square w-full max-w-md mx-auto lg:block"
+                x-data="{
+                    tiltStyle: '',
+                    onMove(e) {
+                        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+                        const rect = $el.getBoundingClientRect();
+                        const px = (e.clientX - rect.left) / rect.width - 0.5;
+                        const py = (e.clientY - rect.top) / rect.height - 0.5;
+                        this.tiltStyle = `transform: perspective(1000px) rotateX(${(-py * 6).toFixed(2)}deg) rotateY(${(px * 6).toFixed(2)}deg)`;
+                    },
+                    onLeave() { this.tiltStyle = 'transform: perspective(1000px) rotateX(0deg) rotateY(0deg)'; },
+                }"
+                @mousemove="onMove($event)"
+                @mouseleave="onLeave()"
+            >
                 <div class="absolute inset-10 rounded-full border border-primary/10"></div>
                 <div class="absolute inset-20 rounded-full border border-primary/10"></div>
 
-                <div class="absolute left-1/2 top-1/2 w-72 -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-2xl border border-border bg-white shadow-2xl shadow-secondary/10">
-                    <div class="flex items-center gap-1.5 border-b border-border bg-surface px-4 py-3">
-                        <span class="h-2.5 w-2.5 rounded-full bg-accent/70"></span>
-                        <span class="h-2.5 w-2.5 rounded-full bg-primary/40"></span>
-                        <span class="h-2.5 w-2.5 rounded-full bg-border"></span>
-                        <span class="ml-2 h-2 w-24 rounded-full bg-border/80"></span>
-                    </div>
-                    <div class="space-y-5 p-5">
-                        <div class="flex items-end gap-2 h-20">
-                            <span class="w-3 rounded-t bg-primary/20" style="height: 45%"></span>
-                            <span class="w-3 rounded-t bg-primary/20" style="height: 70%"></span>
-                            <span class="w-3 rounded-t bg-primary" style="height: 100%"></span>
-                            <span class="w-3 rounded-t bg-primary/20" style="height: 55%"></span>
-                            <span class="w-3 rounded-t bg-primary/30" style="height: 80%"></span>
-                            <span class="w-3 rounded-t bg-primary/20" style="height: 35%"></span>
-                        </div>
-                        <div class="space-y-2">
-                            <div class="h-2 w-full rounded-full bg-surface"></div>
-                            <div class="h-2 w-4/5 rounded-full bg-surface"></div>
-                            <div class="h-2 w-2/3 rounded-full bg-primary/15"></div>
-                        </div>
-                    </div>
-                </div>
+                {{-- connector: dashed link between the status chip and the main panel, suggesting a system/data connection --}}
+                <svg class="absolute inset-0 h-full w-full overflow-visible" aria-hidden="true">
+                    <path d="M 300 90 Q 260 130 240 165" fill="none" stroke="currentColor" stroke-width="1.5" stroke-dasharray="3 5" class="text-primary/25" />
+                    <circle cx="300" cy="90" r="2.5" fill="currentColor" class="animate-pulse text-accent" />
+                </svg>
 
-                <div class="animate-float-slow absolute -right-2 top-4 w-48 rounded-2xl border border-border bg-secondary p-4 shadow-xl">
-                    <div class="flex items-center gap-2">
-                        <span class="relative flex h-2.5 w-2.5">
-                            <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-75"></span>
-                            <span class="relative inline-flex h-2.5 w-2.5 rounded-full bg-accent"></span>
+                <div class="relative h-full w-full transition-transform duration-150 ease-out will-change-transform" :style="tiltStyle">
+                    <div class="absolute left-1/2 top-1/2 w-72 -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-2xl border border-border bg-white shadow-2xl shadow-secondary/10">
+                        <div class="flex items-center gap-1.5 border-b border-border bg-surface px-4 py-3">
+                            <span class="h-2.5 w-2.5 rounded-full bg-accent/70"></span>
+                            <span class="h-2.5 w-2.5 rounded-full bg-primary/40"></span>
+                            <span class="h-2.5 w-2.5 rounded-full bg-border"></span>
+                            <span class="ml-2 h-2 w-24 rounded-full bg-border/80"></span>
+                        </div>
+                        <div class="space-y-5 p-5">
+                            <div class="flex items-end gap-2 h-20">
+                                <span class="w-3 rounded-t bg-primary/20" style="height: 45%"></span>
+                                <span class="w-3 rounded-t bg-primary/20" style="height: 70%"></span>
+                                <span class="w-3 rounded-t bg-primary" style="height: 100%"></span>
+                                <span class="w-3 rounded-t bg-primary/20" style="height: 55%"></span>
+                                <span class="w-3 rounded-t bg-primary/30" style="height: 80%"></span>
+                                <span class="w-3 rounded-t bg-primary/20" style="height: 35%"></span>
+                            </div>
+                            <div class="space-y-2">
+                                <div class="h-2 w-full rounded-full bg-surface"></div>
+                                <div class="h-2 w-4/5 rounded-full bg-surface"></div>
+                                <div class="h-2 w-2/3 rounded-full bg-primary/15"></div>
+                            </div>
+                            <div class="flex items-center gap-1.5 border-t border-border pt-4">
+                                <span class="h-1.5 w-1.5 rounded-full bg-success"></span>
+                                <span class="text-[11px] font-medium text-text-secondary">All systems operational</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="animate-float-slow absolute right-14 top-10 w-48 rounded-2xl border border-border bg-secondary p-4 shadow-xl">
+                        <div class="flex items-center gap-2">
+                            <span class="relative flex h-2.5 w-2.5">
+                                <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-75"></span>
+                                <span class="relative inline-flex h-2.5 w-2.5 rounded-full bg-accent"></span>
+                            </span>
+                            <p class="text-xs font-semibold uppercase tracking-wide text-white/70">Deployed &amp; Live</p>
+                        </div>
+                    </div>
+
+                    <div class="animate-float-slow absolute left-6 bottom-14 flex items-center gap-2 rounded-full border border-dashed border-primary/30 bg-white px-4 py-2 shadow-lg" style="animation-delay: 1.2s;">
+                        <x-svg-icon name="cloud" class="h-4 w-4 text-primary" />
+                        <span class="text-xs font-semibold text-text-primary">Cloud-Native Architecture</span>
+                    </div>
+
+                    <div class="animate-float-slow absolute right-8 bottom-6 flex items-center gap-2 rounded-xl border border-border bg-white px-3.5 py-2.5 shadow-lg" style="animation-delay: 2s;">
+                        <span class="flex h-6 w-6 items-center justify-center rounded-full bg-primary-50 text-primary">
+                            <x-svg-icon name="git-branch" class="h-3.5 w-3.5" />
                         </span>
-                        <p class="text-xs font-semibold uppercase tracking-wide text-white/70">Deployed &amp; Live</p>
+                        <span class="text-xs font-semibold text-text-primary">Continuous Delivery</span>
                     </div>
-                </div>
-
-                <div class="animate-float-slow absolute -left-6 bottom-2 flex items-center gap-2 rounded-full border border-dashed border-primary/30 bg-white px-4 py-2 shadow-lg" style="animation-delay: 1.2s;">
-                    <x-svg-icon name="cloud" class="h-4 w-4 text-primary" />
-                    <span class="text-xs font-semibold text-text-primary">Cloud-Native Architecture</span>
                 </div>
             </div>
         </div>
@@ -159,7 +196,7 @@
     {{-- Company Introduction --}}
     <section id="about" class="scroll-mt-24 py-24 sm:py-32" aria-labelledby="about-heading">
         <div class="page-container grid gap-14 lg:grid-cols-12 lg:gap-8">
-            <div data-reveal class="lg:col-span-5">
+            <div data-reveal class="lg:col-span-5 lg:flex lg:h-full lg:flex-col lg:justify-center">
                 <p class="text-sm font-semibold uppercase tracking-wide text-primary">About Divine Dev Hub</p>
                 <p id="about-heading" class="mt-5 text-2xl font-semibold leading-snug tracking-tight text-text-primary sm:text-3xl">
                     &ldquo;Evolved from a visionary startup into a trusted leader in IT solutions.&rdquo;
@@ -248,6 +285,8 @@
 
                 <div data-reveal style="--reveal-delay:160ms" class="relative overflow-hidden rounded-3xl border border-border bg-white p-8 sm:p-10">
                     <div class="pointer-events-none absolute -right-10 -top-10 h-48 w-48 rounded-full bg-primary/5 blur-2xl" aria-hidden="true"></div>
+                    <div class="pointer-events-none absolute inset-0 bg-dot-grid text-primary/3" aria-hidden="true"></div>
+                    <span class="absolute inset-y-8 left-0 hidden w-1 rounded-full bg-primary lg:block" aria-hidden="true"></span>
                     @foreach ($services as $i => $service)
                         <div x-show="active === {{ $i }}" @if ($i > 0) style="display:none;" @endif
                             x-transition:enter="transition ease-out duration-300"
@@ -260,9 +299,18 @@
                             </span>
                             <h3 class="mt-6 text-2xl font-semibold text-text-primary">{{ $service['title'] }}</h3>
                             <p class="mt-3 max-w-lg text-base leading-relaxed text-text-secondary">{{ $service['description'] }}</p>
-                            <a href="#contact" class="mt-7 inline-flex items-center gap-1.5 text-sm font-semibold text-primary">
+
+                            @if (! empty($service['tags']))
+                                <div class="mt-6 flex flex-wrap gap-2">
+                                    @foreach ($service['tags'] as $tag)
+                                        <span class="rounded-full border border-border bg-surface px-3 py-1 text-xs font-medium text-text-secondary">{{ $tag }}</span>
+                                    @endforeach
+                                </div>
+                            @endif
+
+                            <a href="#contact" class="group/link mt-7 inline-flex items-center gap-1.5 text-sm font-semibold text-primary">
                                 Discuss this service
-                                <x-svg-icon name="arrow-right" class="h-4 w-4" />
+                                <x-svg-icon name="arrow-right" class="h-4 w-4 transition-transform duration-200 group-hover/link:translate-x-0.5" />
                             </a>
                         </div>
                     @endforeach
@@ -285,16 +333,17 @@
 
             <div data-reveal style="--reveal-delay:100ms" class="mt-14 overflow-hidden rounded-3xl border border-border">
                 @foreach ($techCategories as $category)
-                    <div class="grid gap-4 border-b border-border bg-white p-6 last:border-b-0 sm:grid-cols-[13rem_1fr] sm:items-center sm:p-8">
+                    <div class="group relative grid gap-4 border-b border-border bg-white p-6 transition-colors duration-200 last:border-b-0 hover:bg-surface sm:grid-cols-[13rem_1fr] sm:items-center sm:p-8">
+                        <span class="absolute inset-y-0 left-0 w-0.5 scale-y-0 bg-primary transition-transform duration-200 group-hover:scale-y-100" aria-hidden="true"></span>
                         <div class="flex items-center gap-3">
-                            <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-primary-50 text-primary">
+                            <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary-50 text-primary transition-colors duration-200 group-hover:bg-primary group-hover:text-white">
                                 <x-svg-icon :name="$category['icon']" class="h-5 w-5" />
                             </span>
                             <span class="font-semibold text-text-primary">{{ $category['label'] }}</span>
                         </div>
                         <div class="flex flex-wrap gap-2">
                             @foreach ($category['items'] as $item)
-                                <span class="rounded-full border border-border px-3.5 py-1.5 text-sm text-text-secondary">{{ $item }}</span>
+                                <span class="rounded-full border border-border bg-white px-3.5 py-1.5 text-sm text-text-secondary transition-colors duration-200 group-hover:border-primary/20">{{ $item }}</span>
                             @endforeach
                         </div>
                     </div>
@@ -320,14 +369,14 @@
                     <div
                         data-reveal
                         style="--reveal-delay: {{ $i * 70 }}ms"
-                        class="group relative overflow-hidden rounded-2xl bg-secondary p-6 {{ $industry['featured'] ?? false ? 'sm:col-span-2 lg:col-span-2 lg:row-span-2' : '' }}"
+                        class="group relative overflow-hidden rounded-2xl bg-secondary p-6 shadow-lg shadow-secondary/0 ring-1 ring-inset ring-white/0 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-secondary/30 hover:ring-white/10 {{ $industry['featured'] ?? false ? 'sm:col-span-2 lg:col-span-2 lg:row-span-2' : '' }}"
                     >
                         <x-svg-icon
                             :name="$industry['icon']"
-                            class="pointer-events-none absolute text-white/5 transition-transform duration-500 group-hover:scale-105 {{ $industry['featured'] ?? false ? '-right-10 -bottom-10 h-64 w-64' : '-right-4 -top-4 h-28 w-28' }}"
+                            class="pointer-events-none absolute text-white/5 transition-transform duration-500 group-hover:scale-110 {{ $industry['featured'] ?? false ? '-right-10 -bottom-10 h-64 w-64' : '-right-4 -top-4 h-28 w-28' }}"
                         />
                         <div class="relative flex h-full flex-col justify-between {{ $industry['featured'] ?? false ? 'min-h-56' : 'min-h-36' }}">
-                            <span class="flex h-11 w-11 items-center justify-center rounded-xl border border-white/15 bg-white/5 text-accent">
+                            <span class="flex h-11 w-11 items-center justify-center rounded-xl border border-white/15 bg-white/5 text-accent transition-colors duration-300 group-hover:border-accent/40 group-hover:bg-accent/10">
                                 <x-svg-icon :name="$industry['icon']" class="h-5 w-5" />
                             </span>
 
@@ -397,6 +446,7 @@
 
             <div class="relative mt-16">
                 <div class="absolute inset-x-0 top-6 hidden h-px bg-border lg:block" aria-hidden="true"></div>
+                <div data-reveal-line style="--reveal-delay:150ms" class="absolute inset-x-0 top-6 hidden h-px bg-linear-to-r from-primary via-primary-light to-accent lg:block" aria-hidden="true"></div>
                 <div class="grid gap-10 lg:grid-cols-7 lg:gap-4">
                     @foreach ($processSteps as $i => $step)
                         <div data-reveal style="--reveal-delay: {{ $i * 70 }}ms">

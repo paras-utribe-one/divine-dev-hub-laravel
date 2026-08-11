@@ -41,5 +41,7 @@
         </main>
 
         <x-footer />
+
+        <x-back-to-top />
     </body>
 </html>

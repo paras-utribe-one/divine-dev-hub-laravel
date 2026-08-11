@@ -6,7 +6,7 @@
 ])
 
 <article
-    {{ $attributes->merge(['class' => 'group relative block h-full overflow-hidden rounded-2xl bg-secondary ' . ($featured ? 'aspect-[4/3] sm:aspect-[16/9] lg:aspect-auto' : 'aspect-[4/3]')]) }}
+    {{ $attributes->merge(['class' => 'group relative block h-full overflow-hidden rounded-2xl bg-secondary shadow-lg shadow-secondary/0 ring-1 ring-inset ring-white/0 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-primary/20 hover:ring-primary/25 ' . ($featured ? 'aspect-[4/3] sm:aspect-[16/9] lg:aspect-auto' : 'aspect-[4/3]')]) }}
 >
     <img
         src="{{ $image }}"

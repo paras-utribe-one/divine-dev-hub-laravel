@@ -18,6 +18,7 @@
 @endphp
 
 <footer class="relative overflow-hidden bg-secondary text-white">
+    <div class="pointer-events-none absolute inset-x-0 top-0 h-px bg-linear-to-r from-transparent via-primary-light/60 to-transparent" aria-hidden="true"></div>
     <div class="pointer-events-none absolute inset-0 bg-dot-grid text-white/5" aria-hidden="true"></div>
 
     <div class="page-container relative grid grid-cols-1 gap-12 py-20 sm:grid-cols-2 lg:grid-cols-12 lg:gap-8">
@@ -96,8 +97,13 @@
 
     <div class="relative border-t border-white/10">
         <div class="page-container flex flex-col items-center justify-between gap-4 py-6 text-xs text-white/40 sm:flex-row">
-            <p>&copy; {{ now()->year }} Divine Dev Hub. All rights reserved.</p>
-            <a href="https://divinedevhub.in/terms-condition/" target="_blank" rel="noopener noreferrer" class="transition hover:text-white">Terms &amp; Conditions</a>
+            <p>&copy; {{ date('Y') }} Divine Dev Hub. All rights reserved.</p>
+            <div class="flex items-center gap-6">
+                <a href="https://divinedevhub.in/terms-condition/" target="_blank" rel="noopener noreferrer" class="transition hover:text-white">Terms &amp; Conditions</a>
+                @if (\Illuminate\Support\Facades\Route::has('sitemap'))
+                    <a href="{{ route('sitemap') }}" class="transition hover:text-white">Sitemap</a>
+                @endif
+            </div>
         </div>
     </div>
 </footer>
