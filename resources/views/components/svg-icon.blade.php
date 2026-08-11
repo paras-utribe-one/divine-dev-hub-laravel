@@ -5,6 +5,7 @@
 
 @php
     $icons = [
+        'home' => '<path d="M3.5 10.5L12 3.5l8.5 7" /><path d="M5.5 9v10.5h13V9" /><path d="M9.5 19.5V14h5v5.5" />',
         'code' => '<path d="M9 18L3 12L9 6" /><path d="M15 6L21 12L15 18" />',
         'smartphone' => '<rect x="6" y="2.5" width="12" height="19" rx="2.5" /><path d="M11 18h2" />',
         'layers' => '<path d="M12 2.5 3 7.5 12 12.5 21 7.5 12 2.5Z" /><path d="M3 12.5l9 5 9-5" /><path d="M3 17.5l9 5 9-5" />',

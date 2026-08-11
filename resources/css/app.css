@@ -88,35 +88,42 @@
     }
 }
 
-[data-reveal] {
+/*
+ * Progressive enhancement: [data-reveal] elements are visible by default so
+ * the page is fully usable without JavaScript. Only once app.js confirms it
+ * booted (stamping `.js` on <html>) do they get hidden pre-reveal, so the
+ * IntersectionObserver in app.js has something to animate in.
+ */
+html.js [data-reveal] {
     opacity: 0;
-    transform: translateY(28px);
-    transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    transform: translateY(18px);
+    transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
     transition-delay: var(--reveal-delay, 0ms);
 }
 
-[data-reveal].is-revealed {
+html.js [data-reveal].is-revealed {
     opacity: 1;
     transform: translateY(0);
 }
 
-[data-reveal-scale] {
+html.js [data-reveal-scale] {
     opacity: 0;
-    transform: scale(0.96);
-    transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    transform: scale(0.97);
+    transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
     transition-delay: var(--reveal-delay, 0ms);
 }
 
-[data-reveal-scale].is-revealed {
+html.js [data-reveal-scale].is-revealed {
     opacity: 1;
     transform: scale(1);
 }
 
 @media (prefers-reduced-motion: reduce) {
-    [data-reveal],
-    [data-reveal-scale] {
+    html.js [data-reveal],
+    html.js [data-reveal-scale] {
         opacity: 1;
         transform: none;
+        transition: none;
     }
 }
 

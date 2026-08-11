@@ -23,7 +23,7 @@
     ];
 
     $industries = [
-        ['label' => 'Travel & Hospitality', 'icon' => 'plane', 'description' => 'Booking, itinerary and guest-experience platforms.', 'featured' => true],
+        ['label' => 'Travel & Hospitality', 'icon' => 'plane', 'description' => 'Booking, itinerary and guest-experience platforms.', 'featured' => true, 'related' => 'Show Me Around'],
         ['label' => 'Agriculture & E-Commerce', 'icon' => 'sprout', 'description' => 'Marketplaces connecting growers and buyers.'],
         ['label' => 'Healthcare & Telemedicine', 'icon' => 'heart-pulse', 'description' => 'Remote-care and clinical workflow platforms.'],
         ['label' => 'FinTech & Trading', 'icon' => 'line-chart', 'description' => 'AI-assisted trading and market tooling.'],
@@ -144,7 +144,9 @@
     </section>
 
     {{-- Trust / Achievements --}}
-    <section class="bg-secondary py-14" aria-labelledby="stats-heading">
+    <section class="relative overflow-hidden bg-secondary py-14" aria-labelledby="stats-heading">
+        <div class="pointer-events-none absolute inset-x-0 top-0 h-px bg-linear-to-r from-transparent via-primary-light/60 to-transparent" aria-hidden="true"></div>
+        <div class="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-linear-to-r from-transparent via-accent/40 to-transparent" aria-hidden="true"></div>
         <h2 id="stats-heading" class="sr-only">Divine Dev Hub in numbers</h2>
         <div data-reveal class="page-container grid grid-cols-2 gap-y-8 sm:grid-cols-4 sm:divide-x sm:divide-white/10">
             <x-stat-item value="12+" label="Years in Business" icon="compass" />
@@ -313,18 +315,29 @@
                 data-reveal
             />
 
-            <div class="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:grid-rows-2">
+            <div class="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:grid-rows-3">
                 @foreach ($industries as $i => $industry)
                     <div
                         data-reveal
                         style="--reveal-delay: {{ $i * 70 }}ms"
-                        class="group relative overflow-hidden rounded-2xl bg-secondary p-6 {{ $industry['featured'] ?? false ? 'lg:col-span-2 lg:row-span-2 sm:col-span-2' : '' }}"
+                        class="group relative overflow-hidden rounded-2xl bg-secondary p-6 {{ $industry['featured'] ?? false ? 'sm:col-span-2 lg:col-span-2 lg:row-span-2' : '' }}"
                     >
-                        <x-svg-icon :name="$industry['icon']" class="pointer-events-none absolute -right-4 -top-4 h-28 w-28 text-white/5 transition-transform duration-500 group-hover:scale-110" />
+                        <x-svg-icon
+                            :name="$industry['icon']"
+                            class="pointer-events-none absolute text-white/5 transition-transform duration-500 group-hover:scale-105 {{ $industry['featured'] ?? false ? '-right-10 -bottom-10 h-64 w-64' : '-right-4 -top-4 h-28 w-28' }}"
+                        />
                         <div class="relative flex h-full flex-col justify-between {{ $industry['featured'] ?? false ? 'min-h-56' : 'min-h-36' }}">
                             <span class="flex h-11 w-11 items-center justify-center rounded-xl border border-white/15 bg-white/5 text-accent">
                                 <x-svg-icon :name="$industry['icon']" class="h-5 w-5" />
                             </span>
+
+                            @if (($industry['featured'] ?? false) && isset($industry['related']))
+                                <a href="#portfolio" class="group/related inline-flex w-fit items-center gap-2 rounded-full border border-dashed border-white/20 bg-white/5 px-4 py-2 text-xs font-medium text-white/70 transition hover:border-accent/50 hover:text-white">
+                                    <x-svg-icon name="arrow-up-right" class="h-3.5 w-3.5 text-accent transition-transform duration-200 group-hover/related:translate-x-0.5 group-hover/related:-translate-y-0.5" />
+                                    Featured project: {{ $industry['related'] }}
+                                </a>
+                            @endif
+
                             <div>
                                 <p class="font-semibold text-white {{ $industry['featured'] ?? false ? 'text-xl' : 'text-base' }}">{{ $industry['label'] }}</p>
                                 <p class="mt-1.5 text-sm leading-relaxed text-white/55">{{ $industry['description'] }}</p>
@@ -339,7 +352,7 @@
     {{-- Why Choose Us --}}
     <section class="py-24 sm:py-32" aria-labelledby="why-heading">
         <div class="page-container grid gap-14 lg:grid-cols-12 lg:gap-8">
-            <div data-reveal class="lg:col-span-5">
+            <div data-reveal class="lg:col-span-5 lg:flex lg:h-full lg:flex-col lg:justify-center">
                 <p class="text-sm font-semibold uppercase tracking-wide text-primary">Why Choose Divine Dev Hub</p>
                 <h2 id="why-heading" class="mt-4 text-3xl font-semibold tracking-tight text-text-primary sm:text-4xl">
                     Engineering quality, without the overhead
@@ -412,9 +425,9 @@
                 data-reveal
             />
 
-            <div class="mt-14 grid gap-5 lg:grid-cols-3">
+            <div class="mt-14 grid gap-5 lg:grid-cols-3 lg:grid-rows-2">
                 @foreach ($projects as $i => $project)
-                    <div data-reveal style="--reveal-delay: {{ $i * 60 }}ms" class="{{ $project['featured'] ?? false ? 'lg:col-span-2' : '' }}">
+                    <div data-reveal style="--reveal-delay: {{ $i * 60 }}ms" class="{{ $project['featured'] ?? false ? 'lg:col-span-2 lg:row-span-2' : '' }}">
                         <x-project-card
                             :title="$project['title']"
                             :category="$project['category']"

@@ -93,9 +93,10 @@
                     x-transition:leave="transition ease-in duration-150"
                     x-transition:leave-start="opacity-100 translate-y-0 scale-100"
                     x-transition:leave-end="opacity-0 translate-y-2 scale-[0.98]"
-                    class="absolute left-1/2 top-full mt-4 w-[38rem] max-w-[90vw] -translate-x-1/2 overflow-hidden rounded-2xl border border-border bg-white shadow-2xl shadow-secondary/10"
+                    class="absolute left-1/2 top-full mt-4 w-[38rem] max-w-[90vw] -translate-x-1/2 overflow-hidden rounded-2xl border border-border bg-white shadow-[0_24px_60px_-20px_rgba(16,17,43,0.25)]"
                     style="display: none;"
                 >
+                    <div class="h-0.5 w-full bg-linear-to-r from-primary via-primary-light to-accent"></div>
                     <div class="grid grid-cols-[13rem_1fr]">
                         <div class="flex flex-col justify-between bg-surface p-6">
                             <div>
@@ -115,7 +116,7 @@
                                     href="#services"
                                     role="menuitem"
                                     @click="closeServices()"
-                                    class="group flex items-start gap-3 rounded-xl p-3 transition hover:bg-surface focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+                                    class="group flex items-start gap-3 rounded-xl p-3 transition-all duration-200 hover:translate-x-0.5 hover:bg-surface focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
                                 >
                                     <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-primary-50 text-primary transition group-hover:bg-primary group-hover:text-white">
                                         <x-svg-icon :name="$service['icon']" class="h-4 w-4" />
@@ -181,7 +182,9 @@
         style="display: none;"
     >
         <nav class="page-container flex flex-col gap-1 py-4" aria-label="Mobile">
-            <a href="/" @click="mobileOpen = false" class="flex items-center gap-3 rounded-lg px-3 py-3 text-base font-medium text-text-primary hover:bg-surface focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary">Home</a>
+            <a href="/" @click="mobileOpen = false" class="flex items-center gap-3 rounded-lg px-3 py-3 text-base font-medium text-text-primary hover:bg-surface focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary">
+                <x-svg-icon name="home" class="h-5 w-5 text-primary" /> Home
+            </a>
             <a href="#services" @click="mobileOpen = false" class="flex items-center gap-3 rounded-lg px-3 py-3 text-base font-medium text-text-primary hover:bg-surface focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary">
                 <x-svg-icon name="layers" class="h-5 w-5 text-primary" /> Services
             </a>
