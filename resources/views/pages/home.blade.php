@@ -101,7 +101,7 @@
                 data-reveal-scale
                 style="--reveal-delay:220ms"
                 aria-hidden="true"
-                class="relative hidden aspect-square w-full max-w-md mx-auto lg:block"
+                class="relative hidden aspect-square w-full max-w-lg mx-auto lg:block"
                 x-data="{
                     tiltStyle: '',
                     onMove(e) {
@@ -121,7 +121,7 @@
 
                 {{-- connector: dashed link between the status chip and the main panel, suggesting a system/data connection --}}
                 <svg class="absolute inset-0 h-full w-full overflow-visible" aria-hidden="true">
-                    <path d="M 300 90 Q 260 130 240 165" fill="none" stroke="currentColor" stroke-width="1.5" stroke-dasharray="3 5" class="text-primary/25" />
+                    <path d="M 300 90 Q 260 130 240 165" fill="none" stroke="currentColor" stroke-width="1.5" stroke-dasharray="3 5" class="animate-dash-flow text-primary/30" />
                     <circle cx="300" cy="90" r="2.5" fill="currentColor" class="animate-pulse text-accent" />
                 </svg>
 
@@ -136,10 +136,10 @@
                         <div class="space-y-5 p-5">
                             <div class="flex items-end gap-2 h-20">
                                 <span class="w-3 rounded-t bg-primary/20" style="height: 45%"></span>
-                                <span class="w-3 rounded-t bg-primary/20" style="height: 70%"></span>
+                                <span class="animate-bar-pulse w-3 rounded-t bg-primary/20" style="height: 70%; animation-delay: 0.3s;"></span>
                                 <span class="w-3 rounded-t bg-primary" style="height: 100%"></span>
                                 <span class="w-3 rounded-t bg-primary/20" style="height: 55%"></span>
-                                <span class="w-3 rounded-t bg-primary/30" style="height: 80%"></span>
+                                <span class="animate-bar-pulse w-3 rounded-t bg-primary/30" style="height: 80%; animation-delay: 0.9s;"></span>
                                 <span class="w-3 rounded-t bg-primary/20" style="height: 35%"></span>
                             </div>
                             <div class="space-y-2">
@@ -294,7 +294,9 @@
                             x-transition:enter-end="opacity-100 translate-y-0"
                             class="relative"
                         >
-                            <span class="flex h-14 w-14 items-center justify-center rounded-2xl bg-primary-50 text-primary">
+                            <span class="pointer-events-none absolute -right-2 -top-6 select-none text-8xl font-bold leading-none text-primary/5 sm:text-9xl" aria-hidden="true">0{{ $i + 1 }}</span>
+
+                            <span class="relative flex h-14 w-14 items-center justify-center rounded-2xl bg-primary-50 text-primary transition-transform duration-300">
                                 <x-svg-icon :name="$service['icon']" class="h-7 w-7" />
                             </span>
                             <h3 class="mt-6 text-2xl font-semibold text-text-primary">{{ $service['title'] }}</h3>
@@ -454,6 +456,7 @@
                                 :number="$step['number']"
                                 :title="$step['title']"
                                 :description="$step['description']"
+                                :icon="$step['icon']"
                                 :last="$loop->last"
                             />
                         </div>

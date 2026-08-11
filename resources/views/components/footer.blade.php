@@ -56,9 +56,9 @@
         <nav class="lg:col-span-2" aria-label="Company">
             <h2 class="text-xs font-semibold uppercase tracking-wider text-white/40">Company</h2>
             <ul class="mt-5 space-y-3.5 text-sm">
-                <li><a href="#about" class="text-white/65 transition hover:text-white">About</a></li>
-                <li><a href="https://divinedevhub.in/careers/" target="_blank" rel="noopener noreferrer" class="text-white/65 transition hover:text-white">Careers</a></li>
-                <li><a href="#contact" class="text-white/65 transition hover:text-white">Contact</a></li>
+                <li><a href="#about" class="inline-block text-white/65 transition-all duration-200 hover:translate-x-0.5 hover:text-white">About</a></li>
+                <li><a href="https://divinedevhub.in/careers/" target="_blank" rel="noopener noreferrer" class="inline-block text-white/65 transition-all duration-200 hover:translate-x-0.5 hover:text-white">Careers</a></li>
+                <li><a href="#contact" class="inline-block text-white/65 transition-all duration-200 hover:translate-x-0.5 hover:text-white">Contact</a></li>
             </ul>
         </nav>
 
@@ -66,7 +66,7 @@
             <h2 class="text-xs font-semibold uppercase tracking-wider text-white/40">Services</h2>
             <ul class="mt-5 space-y-3.5 text-sm">
                 @foreach ($serviceLinks as $service)
-                    <li><a href="#services" class="text-white/65 transition hover:text-white">{{ $service }}</a></li>
+                    <li><a href="#services" class="inline-block text-white/65 transition-all duration-200 hover:translate-x-0.5 hover:text-white">{{ $service }}</a></li>
                 @endforeach
             </ul>
         </nav>
@@ -74,9 +74,9 @@
         <div class="lg:col-span-3">
             <h2 class="text-xs font-semibold uppercase tracking-wider text-white/40">Resources</h2>
             <ul class="mt-5 space-y-3.5 text-sm">
-                <li><a href="#technologies" class="text-white/65 transition hover:text-white">Technologies</a></li>
-                <li><a href="#blog" class="text-white/65 transition hover:text-white">Blog</a></li>
-                <li><a href="#faq" class="text-white/65 transition hover:text-white">FAQs</a></li>
+                <li><a href="#technologies" class="inline-block text-white/65 transition-all duration-200 hover:translate-x-0.5 hover:text-white">Technologies</a></li>
+                <li><a href="#blog" class="inline-block text-white/65 transition-all duration-200 hover:translate-x-0.5 hover:text-white">Blog</a></li>
+                <li><a href="#faq" class="inline-block text-white/65 transition-all duration-200 hover:translate-x-0.5 hover:text-white">FAQs</a></li>
             </ul>
         </div>
 
@@ -99,9 +99,9 @@
         <div class="page-container flex flex-col items-center justify-between gap-4 py-6 text-xs text-white/40 sm:flex-row">
             <p>&copy; {{ date('Y') }} Divine Dev Hub. All rights reserved.</p>
             <div class="flex items-center gap-6">
-                <a href="https://divinedevhub.in/terms-condition/" target="_blank" rel="noopener noreferrer" class="transition hover:text-white">Terms &amp; Conditions</a>
+                <a href="https://divinedevhub.in/terms-condition/" target="_blank" rel="noopener noreferrer" class="transition-colors duration-200 hover:text-white">Terms &amp; Conditions</a>
                 @if (\Illuminate\Support\Facades\Route::has('sitemap'))
-                    <a href="{{ route('sitemap') }}" class="transition hover:text-white">Sitemap</a>
+                    <a href="{{ route('sitemap') }}" class="transition-colors duration-200 hover:text-white">Sitemap</a>
                 @endif
             </div>
         </div>
