@@ -15,11 +15,11 @@
     ];
 
     $techCategories = [
-        ['label' => 'Frontend', 'icon' => 'monitor', 'items' => ['React', 'Alpine.js', 'Tailwind CSS']],
-        ['label' => 'Backend', 'icon' => 'server', 'items' => ['Laravel', 'Node.js', 'PHP']],
-        ['label' => 'Mobile', 'icon' => 'smartphone', 'items' => ['Flutter', 'React Native']],
-        ['label' => 'Cloud & DevOps', 'icon' => 'cloud', 'items' => ['AWS', 'Docker', 'CI/CD']],
-        ['label' => 'Platforms', 'icon' => 'cpu', 'items' => ['Odoo', 'Magento']],
+        ['label' => 'Frontend', 'icon' => 'monitor', 'description' => 'Interactive, accessible interfaces built for performance.', 'items' => ['React', 'Alpine.js', 'Tailwind CSS']],
+        ['label' => 'Backend', 'icon' => 'server', 'description' => 'Reliable APIs and business logic that scale with you.', 'items' => ['Laravel', 'Node.js', 'PHP']],
+        ['label' => 'Mobile', 'icon' => 'smartphone', 'description' => 'Native-feeling apps for iOS and Android.', 'items' => ['Flutter', 'React Native']],
+        ['label' => 'Cloud & DevOps', 'icon' => 'cloud', 'description' => 'Automated, observable infrastructure and deployment pipelines.', 'items' => ['AWS', 'Docker', 'CI/CD']],
+        ['label' => 'Platforms', 'icon' => 'cpu', 'description' => 'Deep implementation experience on established platforms.', 'items' => ['Odoo', 'Magento']],
     ];
 
     $industries = [
@@ -198,26 +198,19 @@
         <div class="page-container grid gap-14 lg:grid-cols-12 lg:gap-8">
             <div data-reveal class="lg:col-span-5 lg:flex lg:h-full lg:flex-col lg:justify-center">
                 <p class="text-sm font-semibold uppercase tracking-wide text-primary">About Divine Dev Hub</p>
-                <p id="about-heading" class="mt-5 text-2xl font-semibold leading-snug tracking-tight text-text-primary sm:text-3xl">
+
+                <div class="mt-6 flex items-baseline gap-4">
+                    <span class="text-7xl font-bold leading-none tracking-tight text-primary sm:text-8xl">2014</span>
+                    <span class="max-w-32 text-xs font-medium uppercase leading-snug tracking-wide text-text-secondary">Founded in Ahmedabad, India</span>
+                </div>
+
+                <p id="about-heading" class="mt-8 border-l-2 border-primary/20 pl-5 text-xl font-semibold leading-snug tracking-tight text-text-primary sm:text-2xl">
                     &ldquo;Evolved from a visionary startup into a trusted leader in IT solutions.&rdquo;
                 </p>
 
-                <div class="mt-10 flex items-center gap-6">
-                    <div class="relative flex flex-col items-center">
-                        <span class="flex h-3 w-3 rounded-full border-2 border-primary bg-white"></span>
-                        <span class="mt-1 h-14 w-px bg-border"></span>
-                        <span class="mt-1 flex h-3 w-3 rounded-full bg-primary"></span>
-                    </div>
-                    <div class="space-y-8 text-sm">
-                        <div>
-                            <p class="font-semibold text-text-primary">2014</p>
-                            <p class="text-text-secondary">Founded in Ahmedabad, India</p>
-                        </div>
-                        <div>
-                            <p class="font-semibold text-text-primary">Today</p>
-                            <p class="text-text-secondary">12+ years, clients worldwide</p>
-                        </div>
-                    </div>
+                <div class="mt-8 inline-flex w-fit items-center gap-2 rounded-full border border-border bg-surface px-4 py-2">
+                    <span class="h-1.5 w-1.5 rounded-full bg-success"></span>
+                    <span class="text-sm font-medium text-text-primary">12+ years in business — clients worldwide</span>
                 </div>
             </div>
 
@@ -333,23 +326,64 @@
                 data-reveal
             />
 
-            <div data-reveal style="--reveal-delay:100ms" class="mt-14 overflow-hidden rounded-3xl border border-border">
-                @foreach ($techCategories as $category)
-                    <div class="group relative grid gap-4 border-b border-border bg-white p-6 transition-colors duration-200 last:border-b-0 hover:bg-surface sm:grid-cols-[13rem_1fr] sm:items-center sm:p-8">
-                        <span class="absolute inset-y-0 left-0 w-0.5 scale-y-0 bg-primary transition-transform duration-200 group-hover:scale-y-100" aria-hidden="true"></span>
-                        <div class="flex items-center gap-3">
-                            <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary-50 text-primary transition-colors duration-200 group-hover:bg-primary group-hover:text-white">
+            <div x-data="{ active: 0 }" class="mt-14 grid gap-4 lg:grid-cols-[20rem_1fr] lg:gap-10">
+                <div data-reveal style="--reveal-delay:80ms" class="flex flex-col overflow-hidden rounded-2xl border border-border bg-white lg:border-0 lg:bg-transparent">
+                    @foreach ($techCategories as $i => $category)
+                        <button
+                            type="button"
+                            @click="active = {{ $i }}"
+                            @mouseenter="active = {{ $i }}"
+                            class="flex items-center gap-3 border-b border-border px-5 py-4 text-left transition last:border-b-0 lg:rounded-xl lg:border lg:px-5 lg:py-4"
+                            :class="active === {{ $i }} ? 'lg:border-primary/20 lg:bg-white lg:shadow-lg lg:shadow-secondary/5' : 'lg:border-transparent'"
+                        >
+                            <span
+                                class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl transition-colors duration-200"
+                                :class="active === {{ $i }} ? 'bg-primary text-white' : 'bg-primary-50 text-primary'"
+                            >
                                 <x-svg-icon :name="$category['icon']" class="h-5 w-5" />
                             </span>
-                            <span class="font-semibold text-text-primary">{{ $category['label'] }}</span>
+                            <span class="flex-1 text-sm font-semibold" :class="active === {{ $i }} ? 'text-primary' : 'text-text-primary'">{{ $category['label'] }}</span>
+                            <x-svg-icon
+                                name="arrow-right"
+                                class="h-4 w-4 shrink-0 text-primary transition-all duration-200"
+                                x-bind:class="active === {{ $i }} ? 'translate-x-0 opacity-100' : '-translate-x-1 opacity-0'"
+                            />
+                        </button>
+                    @endforeach
+                </div>
+
+                <div data-reveal style="--reveal-delay:160ms" class="relative overflow-hidden rounded-3xl border border-border bg-white p-8 sm:p-10">
+                    <div class="pointer-events-none absolute -left-10 -bottom-10 h-48 w-48 rounded-full bg-accent/5 blur-2xl" aria-hidden="true"></div>
+                    <div class="pointer-events-none absolute inset-0 bg-dot-grid text-primary/3" aria-hidden="true"></div>
+                    <span class="absolute inset-y-8 left-0 hidden w-1 rounded-full bg-primary lg:block" aria-hidden="true"></span>
+                    @foreach ($techCategories as $i => $category)
+                        <div x-show="active === {{ $i }}" @if ($i > 0) style="display:none;" @endif
+                            x-transition:enter="transition ease-out duration-300"
+                            x-transition:enter-start="opacity-0 translate-y-2"
+                            x-transition:enter-end="opacity-100 translate-y-0"
+                            class="relative"
+                        >
+                            <div class="flex items-center gap-4">
+                                <span class="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-primary-50 text-primary">
+                                    <x-svg-icon :name="$category['icon']" class="h-7 w-7" />
+                                </span>
+                                <div>
+                                    <h3 class="text-2xl font-semibold text-text-primary">{{ $category['label'] }}</h3>
+                                    <p class="mt-1 text-sm text-text-secondary">{{ $category['description'] }}</p>
+                                </div>
+                            </div>
+
+                            <div class="mt-8 flex flex-wrap gap-3 border-t border-border pt-8">
+                                @foreach ($category['items'] as $item)
+                                    <span class="inline-flex items-center gap-2 rounded-xl border border-border bg-surface px-4 py-2.5 text-sm font-medium text-text-primary">
+                                        <span class="h-1.5 w-1.5 rounded-full bg-primary"></span>
+                                        {{ $item }}
+                                    </span>
+                                @endforeach
+                            </div>
                         </div>
-                        <div class="flex flex-wrap gap-2">
-                            @foreach ($category['items'] as $item)
-                                <span class="rounded-full border border-border bg-white px-3.5 py-1.5 text-sm text-text-secondary transition-colors duration-200 group-hover:border-primary/20">{{ $item }}</span>
-                            @endforeach
-                        </div>
-                    </div>
-                @endforeach
+                    @endforeach
+                </div>
             </div>
         </div>
     </section>
@@ -421,6 +455,7 @@
                 <div class="divide-y divide-border border-t border-border">
                     @foreach ($benefits as $i => $benefit)
                         <div data-reveal style="--reveal-delay: {{ $i * 80 }}ms" class="group flex items-start gap-5 py-7 transition-transform duration-300 hover:translate-x-1.5">
+                            <span class="hidden shrink-0 pt-2 text-xs font-semibold tabular-nums text-muted sm:block">0{{ $i + 1 }}</span>
                             <span class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary-50 text-primary transition-colors group-hover:bg-primary group-hover:text-white">
                                 <x-svg-icon :name="$benefit['icon']" class="h-5 w-5" />
                             </span>
@@ -504,7 +539,7 @@
                 data-reveal
             />
 
-            <div class="mt-14 space-y-6">
+            <div class="mt-14 grid gap-6 lg:grid-cols-2">
                 <div data-reveal>
                     <x-blog-card
                         href="https://divinedevhub.in/2025/06/16/ai-in-business-development-role/"
@@ -516,7 +551,7 @@
                         featured
                     />
                 </div>
-                <div data-reveal style="--reveal-delay:100ms" class="mx-auto max-w-2xl">
+                <div data-reveal style="--reveal-delay:100ms">
                     <x-blog-card
                         href="https://divinedevhub.in/2025/06/12/ai-in-it-business-development/"
                         image="https://picsum.photos/seed/divine-dev-hub-it-outsourcing/1200/750"
@@ -532,16 +567,20 @@
 
     {{-- FAQ --}}
     <section id="faq" class="scroll-mt-24 py-24 sm:py-32" aria-labelledby="faq-heading">
-        <div class="page-container max-w-3xl">
-            <x-section-heading
-                id="faq-heading"
-                eyebrow="FAQ"
-                title="Common questions"
-                align="center"
-                data-reveal
-            />
+        <div class="page-container grid gap-12 lg:grid-cols-12 lg:gap-8">
+            <div data-reveal class="lg:col-span-4 lg:flex lg:h-full lg:flex-col lg:justify-center">
+                <p class="text-sm font-semibold uppercase tracking-wide text-primary">FAQ</p>
+                <h2 id="faq-heading" class="mt-4 text-3xl font-semibold tracking-tight text-text-primary sm:text-4xl">Common questions</h2>
+                <p class="mt-5 max-w-sm text-base leading-relaxed text-text-secondary">
+                    Answers to what we're asked most often. Can't find what you're looking for?
+                </p>
+                <a href="#contact" class="mt-8 inline-flex items-center gap-1.5 text-sm font-semibold text-primary">
+                    Get in touch
+                    <x-svg-icon name="arrow-right" class="h-4 w-4" />
+                </a>
+            </div>
 
-            <div class="mt-10 space-y-4">
+            <div class="space-y-4 lg:col-span-8">
                 <div data-reveal>
                     <x-faq-item question="What services does Divine Dev Hub offer?">
                         We provide web development, custom software, CRM solutions, mobile app development, e-commerce builds, and Odoo and Magento implementations.

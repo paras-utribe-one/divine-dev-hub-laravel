@@ -22,7 +22,7 @@
             Let's build something
         </span>
 
-        <h2 class="mt-6 text-3xl font-semibold tracking-tight text-white sm:text-4xl">{{ $title }}</h2>
+        <h2 class="mt-6 text-3xl font-semibold tracking-tight text-white sm:text-4xl lg:text-5xl">{{ $title }}</h2>
 
         @if ($description)
             <p class="mt-4 text-base leading-relaxed text-white/65">{{ $description }}</p>

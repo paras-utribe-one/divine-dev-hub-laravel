@@ -12,13 +12,14 @@
     href="{{ $href }}"
     target="_blank"
     rel="noopener noreferrer"
-    {{ $attributes->merge(['class' => 'group flex overflow-hidden rounded-2xl border border-border bg-white transition duration-300 hover:-translate-y-1 hover:border-primary/25 hover:shadow-xl ' . ($featured ? 'flex-col lg:flex-row' : 'flex-col')]) }}
+    {{ $attributes->merge(['class' => 'group flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-white transition duration-300 hover:-translate-y-1 hover:border-primary/25 hover:shadow-xl']) }}
 >
-    <div class="relative overflow-hidden {{ $featured ? 'aspect-[16/10] lg:aspect-auto lg:w-1/2' : 'aspect-[16/10]' }}">
+    <div class="relative aspect-16/10 overflow-hidden">
         <img
             src="{{ $image }}"
             alt="{{ $title }}"
             loading="lazy"
+            decoding="async"
             width="800"
             height="500"
             class="absolute inset-0 h-full w-full object-cover transition duration-700 ease-out group-hover:scale-[1.06]"
@@ -35,9 +36,9 @@
         </div>
     </div>
 
-    <div class="flex flex-1 flex-col justify-center p-6 {{ $featured ? 'lg:p-8' : '' }}">
+    <div class="flex flex-1 flex-col justify-center p-6 sm:p-7">
         <p class="text-xs font-semibold uppercase tracking-wide text-text-secondary">{{ $date }}</p>
-        <h3 class="mt-2 font-semibold text-text-primary group-hover:text-primary {{ $featured ? 'text-xl sm:text-2xl' : 'text-lg' }}">{{ $title }}</h3>
+        <h3 class="mt-2 text-lg font-semibold text-text-primary group-hover:text-primary sm:text-xl">{{ $title }}</h3>
 
         @if ($excerpt)
             <p class="mt-3 text-sm leading-relaxed text-text-secondary">{{ $excerpt }}</p>
