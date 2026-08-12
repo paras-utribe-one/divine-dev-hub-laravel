@@ -1,0 +1,1475 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Divine Dev Hub — Software that moves your business forward</title>
+<meta name="description" content="Divine Dev Hub designs, builds and scales custom software, AI products and enterprise platforms — 540+ delivered from Ahmedabad to 20+ countries.">
+
+<link rel="preload" href="assets/fonts/plus-jakarta-sans-var-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/inter-var-latin.woff2" as="font" type="font/woff2" crossorigin>
+
+<link rel="stylesheet" href="assets/css/00-reset.css">
+<link rel="stylesheet" href="assets/css/01-tokens.css">
+<link rel="stylesheet" href="assets/css/02-base.css">
+<link rel="stylesheet" href="assets/css/03-components.css">
+<link rel="stylesheet" href="assets/css/header.css">
+<link rel="stylesheet" href="assets/css/footer.css">
+<link rel="stylesheet" href="assets/css/homepage.css">
+</head>
+<body>
+
+<!-- Inline icon sprite — must live in-document (not an external file) so
+     <use href="#icon-x"> resolves under file:// as well as http(s). -->
+<svg style="display:none" aria-hidden="true">
+<defs>
+<symbol id="icon-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><line x1="3.5" y1="6.5" x2="20.5" y2="6.5"/><line x1="3.5" y1="12" x2="20.5" y2="12"/><line x1="3.5" y1="17.5" x2="20.5" y2="17.5"/></symbol>
+<symbol id="icon-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="5" x2="19" y2="19"/><line x1="19" y1="5" x2="5" y2="19"/></symbol>
+<symbol id="icon-chevron-down" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polyline points="5.5,9 12,15.5 18.5,9"/></symbol>
+<symbol id="icon-chevron-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polyline points="9,5.5 15.5,12 9,18.5"/></symbol>
+<symbol id="icon-chevron-left" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polyline points="15,5.5 8.5,12 15,18.5"/></symbol>
+<symbol id="icon-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="6.5"/><line x1="20" y1="20" x2="15.6" y2="15.6"/></symbol>
+<symbol id="icon-arrow-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="12" x2="19" y2="12"/><polyline points="13,6 19,12 13,18"/></symbol>
+<symbol id="icon-arrow-up-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><line x1="6" y1="18" x2="18" y2="6"/><polyline points="8,6 18,6 18,16"/></symbol>
+<symbol id="icon-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="4" x2="12" y2="20"/><line x1="4" y1="12" x2="20" y2="12"/></symbol>
+<symbol id="icon-minus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="12" x2="20" y2="12"/></symbol>
+<symbol id="icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4.5,12.5 9.5,17.5 19.5,6.5"/></symbol>
+<symbol id="icon-check-circle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><polyline points="8,12.5 11,15.5 16,9"/></symbol>
+<symbol id="icon-star" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12 2.5l2.9 6.06 6.6.75-4.9 4.53 1.28 6.56L12 16.9l-5.88 3.5 1.28-6.56-4.9-4.53 6.6-.75L12 2.5z"/></symbol>
+<symbol id="icon-circle-dot" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="12" cy="12" r="4" fill="currentColor" stroke="none"/></symbol>
+<symbol id="icon-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M6.6 3.5h2.6l1.4 4.2-2 1.6a12.2 12.2 0 0 0 6.1 6.1l1.6-2 4.2 1.4v2.6c0 1.1-.9 2-2.1 1.9C10.9 18.8 5.2 13.1 4.7 5.6c-.1-1.2.8-2.1 1.9-2.1z"/></symbol>
+<symbol id="icon-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5.5" width="18" height="13" rx="2"/><path d="M3.5 6.5l8.5 6.5 8.5-6.5"/></symbol>
+<symbol id="icon-map-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21.5s7-6.6 7-12.2A7 7 0 1 0 5 9.3c0 5.6 7 12.2 7 12.2z"/><circle cx="12" cy="9.3" r="2.4"/></symbol>
+<symbol id="icon-message-circle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.5 8.5 0 1 1-3.8-7.1L21 3.5l-1 3.8c.6 1.2 1 2.6 1 4.2z"/><line x1="8" y1="10.5" x2="15" y2="10.5"/><line x1="8" y1="13.5" x2="12.5" y2="13.5"/></symbol>
+<symbol id="icon-calendar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="15.5" rx="2"/><line x1="3.5" y1="9.5" x2="20.5" y2="9.5"/><line x1="8" y1="3" x2="8" y2="7"/><line x1="16" y1="3" x2="16" y2="7"/></symbol>
+<symbol id="icon-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><polyline points="12,7 12,12 15.5,14.5"/></symbol>
+<symbol id="icon-briefcase" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="12" rx="2"/><path d="M8.5 8V6a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v2"/><line x1="3" y1="13.5" x2="21" y2="13.5"/></symbol>
+<symbol id="icon-users" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8.5" r="3.2"/><path d="M3 20c0-3.3 2.7-5.8 6-5.8s6 2.5 6 5.8"/><path d="M16 4.9a3.2 3.2 0 0 1 0 6.2"/><path d="M15.5 14.4c2.6.5 4.5 2.7 4.5 5.6"/></symbol>
+<symbol id="icon-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5.5c0 4.8-3 8.4-7 9.5-4-1.1-7-4.7-7-9.5V6l7-3z"/></symbol>
+<symbol id="icon-shield-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5.5c0 4.8-3 8.4-7 9.5-4-1.1-7-4.7-7-9.5V6l7-3z"/><polyline points="9,12 11.2,14.2 15.3,10"/></symbol>
+<symbol id="icon-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><ellipse cx="12" cy="12" rx="4" ry="9"/><line x1="3" y1="12" x2="21" y2="12"/></symbol>
+<symbol id="icon-award" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8.5" r="5.5"/><path d="M8.5 13.2L7 21l5-2.5 5 2.5-1.5-7.8"/></symbol>
+<symbol id="icon-layers" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polygon points="12,3 21,8 12,13 3,8"/><polyline points="3,13 12,18 21,13"/><polyline points="3,17.5 12,22.5 21,17.5"/></symbol>
+<symbol id="icon-code" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polyline points="8.5,7.5 3.5,12 8.5,16.5"/><polyline points="15.5,7.5 20.5,12 15.5,16.5"/><line x1="13.5" y1="4.5" x2="10.5" y2="19.5"/></symbol>
+<symbol id="icon-smartphone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="6.5" y="2.5" width="11" height="19" rx="2.2"/><line x1="10.5" y1="18.3" x2="13.5" y2="18.3"/></symbol>
+<symbol id="icon-cloud" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 18.5a4.3 4.3 0 0 1-1-8.5 5.5 5.5 0 0 1 10.8-1.7A4.5 4.5 0 0 1 17.5 18.5h-11z"/></symbol>
+<symbol id="icon-database" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5.5" rx="7.5" ry="3"/><path d="M4.5 5.5v13c0 1.66 3.36 3 7.5 3s7.5-1.34 7.5-3v-13"/><path d="M4.5 12c0 1.66 3.36 3 7.5 3s7.5-1.34 7.5-3"/></symbol>
+<symbol id="icon-cpu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="7" width="10" height="10" rx="1.5"/><rect x="10" y="10" width="4" height="4"/><line x1="12" y1="2.5" x2="12" y2="6"/><line x1="12" y1="18" x2="12" y2="21.5"/><line x1="2.5" y1="12" x2="6" y2="12"/><line x1="18" y1="12" x2="21.5" y2="12"/></symbol>
+<symbol id="icon-trending-up" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polyline points="3.5,17 9.5,11 13.5,15 20.5,7"/><polyline points="14.5,7 20.5,7 20.5,13"/></symbol>
+<symbol id="icon-file-text" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h8l5 5v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/><polyline points="14,3 14,8 19,8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="16.5" x2="16" y2="16.5"/></symbol>
+<symbol id="icon-external-link" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5.5H5A1.5 1.5 0 0 0 3.5 7v12A1.5 1.5 0 0 0 5 20.5h12A1.5 1.5 0 0 0 18.5 19v-4"/><polyline points="14,3.5 20.5,3.5 20.5,10"/><line x1="11" y1="13" x2="20.5" y2="3.5"/></symbol>
+<symbol id="icon-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="9.5" rx="2"/><path d="M7.5 11V7.5a4.5 4.5 0 0 1 9 0V11"/></symbol>
+<symbol id="icon-zap" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M13 2L4 14h6l-1 8 9-12h-6l1-8z"/></symbol>
+<symbol id="icon-rocket" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.5c3 1.6 5 5 5 9.2 0 2-.5 3.6-1.2 5L12 21l-3.8-4.3C7.5 15.3 7 13.7 7 11.7c0-4.2 2-7.6 5-9.2z"/><circle cx="12" cy="10.5" r="2"/><path d="M8 16l-3 1.5.8-3.4M16 16l3 1.5-.8-3.4"/></symbol>
+<symbol id="icon-linkedin" viewBox="0 0 24 24" fill="currentColor" stroke="none"><rect x="3" y="3" width="18" height="18" rx="3.5" fill="none" stroke="currentColor" stroke-width="1.6"/><rect x="7" y="10" width="2.2" height="7.5"/><circle cx="8.1" cy="7.1" r="1.3"/><path d="M11.7 17.5V10h2.1v1.05c.5-.75 1.3-1.25 2.4-1.25 1.8 0 3 1.2 3 3.5v4.2h-2.2v-3.9c0-1.05-.5-1.7-1.4-1.7-.85 0-1.5.6-1.7 1.4-.07.2-.1.45-.1.75v3.45z"/></symbol>
+<symbol id="icon-facebook" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M14 8.5h-1.5c-1 0-1.5.5-1.5 1.5v2h3l-.4 3h-2.6v6.9" fill="none" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="icon-x-twitter" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M4 4l7 8.6L4.3 20h1.9l5.9-6.4 4.6 6.4H21l-7.3-9.1L20 4h-1.9l-5.4 5.9L8.6 4H4zm2.8 1.4h2l8.4 13.2h-2L6.8 5.4z"/></symbol>
+<symbol id="icon-instagram" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3.2" y="3.2" width="17.6" height="17.6" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17" cy="7" r="1" fill="currentColor" stroke="none"/></symbol>
+<symbol id="icon-youtube" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="6" width="19" height="12" rx="3.5"/><polygon points="10.5,9.3 15.5,12 10.5,14.7" fill="currentColor" stroke="none"/></symbol>
+<symbol id="icon-dribbble" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M4 9.3c4.8 1.6 10.7 1.4 15.3-.5M3.3 14.8c5.5-1.3 11.2-.6 15.4 2.2M9.4 3.1c2.8 4 4.4 9.6 3.8 17.5"/></symbol>
+</defs>
+</svg>
+
+<a href="#main" class="skip-link">Skip to main content</a>
+
+<!-- ============================================================
+     HEADER
+     ============================================================ -->
+<header class="site-header" data-hero="dark">
+
+  <div class="utility-bar">
+    <div class="container utility-bar__inner">
+      <div class="utility-bar__left">
+        <a href="mailto:info@divinedevhub.in"><svg class="icon"><use href="#icon-mail"/></svg>info@divinedevhub.in</a>
+        <a href="tel:+919876543210"><svg class="icon"><use href="#icon-phone"/></svg>+91 98765 43210</a>
+        <span class="utility-bar__divider"></span>
+        <span><svg class="icon"><use href="#icon-map-pin"/></svg>Ahmedabad, India</span>
+      </div>
+      <div class="utility-bar__right">
+        <a href="careers.html" class="utility-bar__hiring">● We're hiring — 6 open roles →</a>
+        <span class="utility-bar__divider"></span>
+        <div class="utility-bar__social">
+          <a class="social-btn" href="#" aria-label="Divine Dev Hub on LinkedIn"><svg class="icon"><use href="#icon-linkedin"/></svg></a>
+          <a class="social-btn" href="#" aria-label="Divine Dev Hub on Facebook"><svg class="icon"><use href="#icon-facebook"/></svg></a>
+          <a class="social-btn" href="#" aria-label="Divine Dev Hub on X"><svg class="icon"><use href="#icon-x-twitter"/></svg></a>
+          <a class="social-btn" href="#" aria-label="Divine Dev Hub on Instagram"><svg class="icon"><use href="#icon-instagram"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="main-bar">
+    <div class="container main-bar__inner">
+
+      <a href="index.html" class="logo" aria-label="Divine Dev Hub — home">
+        <img class="logo__img logo__img--navy" src="assets/img/logo-divinedevhub.png" alt="Divine Dev Hub" width="168" height="66">
+        <img class="logo__img logo__img--white" src="assets/img/logo-divinedevhub-white.png" alt="Divine Dev Hub" width="168" height="66">
+      </a>
+
+      <nav class="primary-nav" aria-label="Primary">
+
+        <div class="nav-item" data-menu="services">
+          <button class="nav-trigger" id="trigger-services" aria-controls="panel-services">Services<svg class="icon"><use href="#icon-chevron-down"/></svg></button>
+          <div class="mega-panel" id="panel-services" role="region" aria-labelledby="trigger-services">
+            <div class="mega-panel__grid" style="--cols:4">
+              <div class="mega-panel__col">
+                <p class="mega-panel__col-title">Build</p>
+                <ul>
+                  <li><a class="mega-link" href="services/custom-software-development.html"><svg class="icon"><use href="#icon-code"/></svg><span class="mega-link__text"><span class="mega-link__label">Custom Software Development</span></span></a></li>
+                  <li><a class="mega-link" href="services/web-development.html"><svg class="icon"><use href="#icon-layers"/></svg><span class="mega-link__text"><span class="mega-link__label">Web Application Development</span></span></a></li>
+                  <li><a class="mega-link" href="services/mobile-app-development.html"><svg class="icon"><use href="#icon-smartphone"/></svg><span class="mega-link__text"><span class="mega-link__label">Mobile App Development</span></span></a></li>
+                  <li><a class="mega-link" href="services/ai-development.html"><svg class="icon"><use href="#icon-cpu"/></svg><span class="mega-link__text"><span class="mega-link__label">AI &amp; Machine Learning</span></span></a></li>
+                  <li><a class="mega-link" href="services/saas-development.html"><svg class="icon"><use href="#icon-cloud"/></svg><span class="mega-link__text"><span class="mega-link__label">SaaS Product Development</span></span></a></li>
+                </ul>
+              </div>
+              <div class="mega-panel__col">
+                <p class="mega-panel__col-title">Platforms</p>
+                <ul>
+                  <li><a class="mega-link" href="services/ecommerce-development.html"><svg class="icon"><use href="#icon-trending-up"/></svg><span class="mega-link__text"><span class="mega-link__label">E-Commerce Development</span></span></a></li>
+                  <li><a class="mega-link" href="services/magento-development.html"><svg class="icon"><use href="#icon-layers"/></svg><span class="mega-link__text"><span class="mega-link__label">Magento Development</span></span></a></li>
+                  <li><a class="mega-link" href="services/odoo-development.html"><svg class="icon"><use href="#icon-database"/></svg><span class="mega-link__text"><span class="mega-link__label">Odoo / ERP Development</span></span></a></li>
+                  <li><a class="mega-link" href="services/crm-development.html"><svg class="icon"><use href="#icon-users"/></svg><span class="mega-link__text"><span class="mega-link__label">CRM Development</span></span></a></li>
+                  <li><a class="mega-link" href="services/"><svg class="icon"><use href="#icon-code"/></svg><span class="mega-link__text"><span class="mega-link__label">WordPress / Shopify</span></span></a></li>
+                </ul>
+              </div>
+              <div class="mega-panel__col">
+                <p class="mega-panel__col-title">Design &amp; Operate</p>
+                <ul>
+                  <li><a class="mega-link" href="services/ui-ux-design.html"><svg class="icon"><use href="#icon-layers"/></svg><span class="mega-link__text"><span class="mega-link__label">UI/UX Design</span></span></a></li>
+                  <li><a class="mega-link" href="services/qa-testing.html"><svg class="icon"><use href="#icon-check-circle"/></svg><span class="mega-link__text"><span class="mega-link__label">QA &amp; Software Testing</span></span></a></li>
+                  <li><a class="mega-link" href="services/cloud-devops.html"><svg class="icon"><use href="#icon-cloud"/></svg><span class="mega-link__text"><span class="mega-link__label">Cloud &amp; DevOps</span></span></a></li>
+                  <li><a class="mega-link" href="services/maintenance-support.html"><svg class="icon"><use href="#icon-shield"/></svg><span class="mega-link__text"><span class="mega-link__label">Maintenance &amp; Support</span></span></a></li>
+                  <li><a class="mega-link" href="services/it-consulting.html"><svg class="icon"><use href="#icon-award"/></svg><span class="mega-link__text"><span class="mega-link__label">IT Consulting</span></span></a></li>
+                </ul>
+              </div>
+              <div class="mega-panel__col">
+                <p class="mega-panel__col-title">Technologies</p>
+                <ul>
+                  <li><a class="mega-link" href="technologies/reactjs.html"><span class="mega-link__text"><span class="mega-link__label">React</span></span></a></li>
+                  <li><a class="mega-link" href="technologies/nodejs.html"><span class="mega-link__text"><span class="mega-link__label">Node.js</span></span></a></li>
+                  <li><a class="mega-link" href="technologies/laravel.html"><span class="mega-link__text"><span class="mega-link__label">Laravel</span></span></a></li>
+                  <li><a class="mega-link" href="technologies/python.html"><span class="mega-link__text"><span class="mega-link__label">Python</span></span></a></li>
+                  <li><a class="mega-link" href="technologies/" class="footer-col__viewall"><span class="mega-link__text"><span class="mega-link__label">View all technologies →</span></span></a></li>
+                </ul>
+              </div>
+              <div class="mega-panel__promo">
+                <div class="mega-panel__promo-card">
+                  <div style="aspect-ratio:16/10;background:linear-gradient(135deg,var(--brand-100),var(--accent-300) 130%);display:flex;align-items:center;justify-content:center;color:var(--brand-700);font-size:12px;">Case study visual</div>
+                  <div class="mega-panel__promo-card-body">
+                    <p class="mega-panel__promo-tag">Healthcare</p>
+                    <p class="mega-panel__promo-title">Cutting claim processing time by 68%</p>
+                  </div>
+                </div>
+                <div class="mega-panel__promo-cta">
+                  <p>Not sure what you need?</p>
+                  <a class="text-link" href="contact-us.html">Book a free consultation<svg class="icon"><use href="#icon-arrow-right"/></svg></a>
+                </div>
+              </div>
+            </div>
+            <div class="mega-panel__bottom-bar">
+              <p>Not sure which service fits? Book a free 30-minute technical consultation.</p>
+              <a class="btn btn--sm btn--primary" href="contact-us.html">Book now<svg class="icon icon-16 icon-arrow"><use href="#icon-arrow-right"/></svg></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="nav-item" data-menu="hire">
+          <button class="nav-trigger" id="trigger-hire" aria-controls="panel-hire">Hire Developers<svg class="icon"><use href="#icon-chevron-down"/></svg></button>
+          <div class="mega-panel" id="panel-hire" role="region" aria-labelledby="trigger-hire">
+            <div class="mega-panel__grid" style="--cols:3">
+              <div class="mega-panel__col">
+                <p class="mega-panel__col-title">Frontend &amp; Mobile</p>
+                <ul>
+                  <li><a class="mega-link" href="hire-developers/reactjs.html"><span class="mega-link__text"><span class="mega-link__label">React.js Developers</span></span></a></li>
+                  <li><a class="mega-link" href="hire-developers/"><span class="mega-link__text"><span class="mega-link__label">Angular / Vue Developers</span></span></a></li>
+                  <li><a class="mega-link" href="hire-developers/flutter.html"><span class="mega-link__text"><span class="mega-link__label">Flutter Developers</span></span></a></li>
+                  <li><a class="mega-link" href="hire-developers/react-native.html"><span class="mega-link__text"><span class="mega-link__label">React Native Developers</span></span></a></li>
+                  <li><a class="mega-link" href="hire-developers/"><span class="mega-link__text"><span class="mega-link__label">iOS / Android Developers</span></span></a></li>
+                </ul>
+              </div>
+              <div class="mega-panel__col">
+                <p class="mega-panel__col-title">Backend &amp; Data</p>
+                <ul>
+                  <li><a class="mega-link" href="hire-developers/nodejs.html"><span class="mega-link__text"><span class="mega-link__label">Node.js Developers</span></span></a></li>
+                  <li><a class="mega-link" href="hire-developers/laravel.html"><span class="mega-link__text"><span class="mega-link__label">Laravel / PHP Developers</span></span></a></li>
+                  <li><a class="mega-link" href="hire-developers/python.html"><span class="mega-link__text"><span class="mega-link__label">Python / Django Developers</span></span></a></li>
+                  <li><a class="mega-link" href="hire-developers/"><span class="mega-link__text"><span class="mega-link__label">.NET Developers</span></span></a></li>
+                  <li><a class="mega-link" href="hire-developers/full-stack.html"><span class="mega-link__text"><span class="mega-link__label">Full-Stack Developers</span></span></a></li>
+                </ul>
+              </div>
+              <div class="mega-panel__col">
+                <p class="mega-panel__col-title">Platforms &amp; Specialists</p>
+                <ul>
+                  <li><a class="mega-link" href="hire-developers/odoo.html"><span class="mega-link__text"><span class="mega-link__label">Odoo Developers</span></span></a></li>
+                  <li><a class="mega-link" href="hire-developers/magento.html"><span class="mega-link__text"><span class="mega-link__label">Magento Developers</span></span></a></li>
+                  <li><a class="mega-link" href="hire-developers/ai-ml.html"><span class="mega-link__text"><span class="mega-link__label">AI/ML Engineers</span></span></a></li>
+                  <li><a class="mega-link" href="hire-developers/"><span class="mega-link__text"><span class="mega-link__label">DevOps Engineers</span></span></a></li>
+                  <li><a class="mega-link" href="hire-developers/ui-ux-designers.html"><span class="mega-link__text"><span class="mega-link__label">UI/UX Designers</span></span></a></li>
+                </ul>
+              </div>
+              <div class="mega-panel__promo">
+                <div class="mega-panel__promo-cta">
+                  <p style="font-weight:700;color:var(--ink-800);">Engagement models</p>
+                  <p>Dedicated Team · T&amp;M · Fixed Cost · Staff Aug</p>
+                </div>
+                <div class="mega-panel__promo-cta">
+                  <p style="font-weight:700;color:var(--ink-800);">⚡ Developers available in 48 hours</p>
+                  <a class="text-link" href="hire-developers/">Explore hiring →</a>
+                </div>
+              </div>
+            </div>
+            <div class="mega-panel__bottom-bar">
+              <p>Tell us the role. We'll send 3 matched profiles in 48 hours.</p>
+              <a class="btn btn--sm btn--primary" href="hire-developers/">Request profiles<svg class="icon icon-16 icon-arrow"><use href="#icon-arrow-right"/></svg></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="nav-item" data-menu="industries">
+          <button class="nav-trigger" id="trigger-industries" aria-controls="panel-industries">Industries<svg class="icon"><use href="#icon-chevron-down"/></svg></button>
+          <div class="mega-panel" id="panel-industries" role="region" aria-labelledby="trigger-industries" style="width:min(760px, calc(100vw - 48px));">
+            <div class="mega-panel__grid" style="--cols:2;grid-template-columns:1fr 1fr 260px;">
+              <div class="mega-panel__col">
+                <ul>
+                  <li><a class="mega-link" href="industries/healthcare.html"><svg class="icon"><use href="#icon-shield-check"/></svg><span class="mega-link__text"><span class="mega-link__label">Healthcare &amp; MedTech</span></span></a></li>
+                  <li><a class="mega-link" href="industries/fintech.html"><svg class="icon"><use href="#icon-trending-up"/></svg><span class="mega-link__text"><span class="mega-link__label">Fintech &amp; Banking</span></span></a></li>
+                  <li><a class="mega-link" href="industries/retail-ecommerce.html"><svg class="icon"><use href="#icon-layers"/></svg><span class="mega-link__text"><span class="mega-link__label">Retail &amp; E-Commerce</span></span></a></li>
+                  <li><a class="mega-link" href="industries/education.html"><svg class="icon"><use href="#icon-award"/></svg><span class="mega-link__text"><span class="mega-link__label">Education &amp; eLearning</span></span></a></li>
+                  <li><a class="mega-link" href="industries/logistics.html"><svg class="icon"><use href="#icon-globe"/></svg><span class="mega-link__text"><span class="mega-link__label">Logistics &amp; Transportation</span></span></a></li>
+                </ul>
+              </div>
+              <div class="mega-panel__col">
+                <ul>
+                  <li><a class="mega-link" href="industries/real-estate.html"><svg class="icon"><use href="#icon-map-pin"/></svg><span class="mega-link__text"><span class="mega-link__label">Real Estate &amp; PropTech</span></span></a></li>
+                  <li><a class="mega-link" href="industries/travel.html"><svg class="icon"><use href="#icon-rocket"/></svg><span class="mega-link__text"><span class="mega-link__label">Travel &amp; Hospitality</span></span></a></li>
+                  <li><a class="mega-link" href="industries/manufacturing.html"><svg class="icon"><use href="#icon-cpu"/></svg><span class="mega-link__text"><span class="mega-link__label">Manufacturing</span></span></a></li>
+                  <li><a class="mega-link" href="industries/media-entertainment.html"><svg class="icon"><use href="#icon-zap"/></svg><span class="mega-link__text"><span class="mega-link__label">Media &amp; Entertainment</span></span></a></li>
+                  <li><a class="mega-link" href="industries/hr-tech.html"><svg class="icon"><use href="#icon-users"/></svg><span class="mega-link__text"><span class="mega-link__label">Professional Services / HR Tech</span></span></a></li>
+                </ul>
+              </div>
+              <div class="mega-panel__promo">
+                <div class="mega-panel__promo-card">
+                  <div style="aspect-ratio:16/10;background:linear-gradient(135deg,var(--brand-100),var(--accent-300) 130%);display:flex;align-items:center;justify-content:center;color:var(--brand-700);font-size:12px;">Featured case study</div>
+                  <div class="mega-panel__promo-card-body">
+                    <p class="mega-panel__promo-tag">Fintech</p>
+                    <p class="mega-panel__promo-title">Sub-100ms real-time market data</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="nav-item" data-menu="work">
+          <button class="nav-trigger" id="trigger-work" aria-controls="panel-work">Our Work<svg class="icon"><use href="#icon-chevron-down"/></svg></button>
+          <div class="mega-panel" id="panel-work" role="region" aria-labelledby="trigger-work" style="width:min(620px, calc(100vw - 48px));">
+            <div class="mega-panel__grid" style="--cols:1;grid-template-columns:1fr 300px;">
+              <div class="mega-panel__col">
+                <ul>
+                  <li><a class="mega-link" href="case-studies.html"><svg class="icon"><use href="#icon-file-text"/></svg><span class="mega-link__text"><span class="mega-link__label">Case Studies</span><span class="mega-link__desc">In-depth results with real metrics</span></span></a></li>
+                  <li><a class="mega-link" href="portfolio.html"><svg class="icon"><use href="#icon-layers"/></svg><span class="mega-link__text"><span class="mega-link__label">Portfolio</span><span class="mega-link__desc">540+ projects delivered since 2014</span></span></a></li>
+                  <li><a class="mega-link" href="testimonials.html"><svg class="icon"><use href="#icon-star"/></svg><span class="mega-link__text"><span class="mega-link__label">Client Testimonials</span><span class="mega-link__desc">What it's like to work with us</span></span></a></li>
+                  <li><a class="mega-link" href="awards.html"><svg class="icon"><use href="#icon-award"/></svg><span class="mega-link__text"><span class="mega-link__label">Awards &amp; Recognition</span></span></a></li>
+                </ul>
+              </div>
+              <div class="mega-panel__promo">
+                <div class="mega-panel__promo-card">
+                  <div style="aspect-ratio:16/10;background:linear-gradient(135deg,var(--brand-100),var(--accent-300) 130%);display:flex;align-items:center;justify-content:center;color:var(--brand-700);font-size:12px;">Featured project</div>
+                  <div class="mega-panel__promo-card-body">
+                    <p class="mega-panel__promo-tag">HR Tech</p>
+                    <p class="mega-panel__promo-title">QuickClock — 12,000 employees onboarded</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="nav-item" data-menu="company">
+          <button class="nav-trigger" id="trigger-company" aria-controls="panel-company">Company<svg class="icon"><use href="#icon-chevron-down"/></svg></button>
+          <div class="mega-panel" id="panel-company" role="region" aria-labelledby="trigger-company" style="width:min(680px, calc(100vw - 48px));">
+            <div class="mega-panel__grid" style="--cols:2;grid-template-columns:1fr 1fr 260px;">
+              <div class="mega-panel__col">
+                <p class="mega-panel__col-title">About</p>
+                <ul>
+                  <li><a class="mega-link" href="about-us.html"><span class="mega-link__text"><span class="mega-link__label">About Us</span></span></a></li>
+                  <li><a class="mega-link" href="about-us.html#team"><span class="mega-link__text"><span class="mega-link__label">Leadership &amp; Team</span></span></a></li>
+                  <li><a class="mega-link" href="process.html"><span class="mega-link__text"><span class="mega-link__label">How We Work</span></span></a></li>
+                  <li><a class="mega-link" href="engagement-models.html"><span class="mega-link__text"><span class="mega-link__label">Engagement Models</span></span></a></li>
+                  <li><a class="mega-link" href="certifications.html"><span class="mega-link__text"><span class="mega-link__label">Certifications &amp; Compliance</span></span></a></li>
+                </ul>
+              </div>
+              <div class="mega-panel__col">
+                <p class="mega-panel__col-title">Join &amp; Connect</p>
+                <ul>
+                  <li><a class="mega-link" href="careers.html">Careers <span class="footer-col__pill">6</span></a></li>
+                  <li><a class="mega-link" href="careers.html#life"><span class="mega-link__text"><span class="mega-link__label">Life at Divine Dev Hub</span></span></a></li>
+                  <li><a class="mega-link" href="awards.html"><span class="mega-link__text"><span class="mega-link__label">Awards</span></span></a></li>
+                  <li><a class="mega-link" href="contact-us.html"><span class="mega-link__text"><span class="mega-link__label">Contact Us</span></span></a></li>
+                </ul>
+              </div>
+              <div class="mega-panel__promo">
+                <div class="mega-panel__promo-cta">
+                  <p style="font-weight:700;color:var(--ink-800);">We're hiring</p>
+                  <p>6 open roles across engineering &amp; design</p>
+                  <a class="text-link" href="careers.html">View open roles →</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="nav-item" data-menu="resources">
+          <button class="nav-trigger" id="trigger-resources" aria-controls="panel-resources">Resources<svg class="icon"><use href="#icon-chevron-down"/></svg></button>
+          <div class="mega-panel" id="panel-resources" role="region" aria-labelledby="trigger-resources" style="width:min(420px, calc(100vw - 48px));">
+            <div class="mega-panel__grid" style="--cols:1;grid-template-columns:1fr;">
+              <div class="mega-panel__col">
+                <ul>
+                  <li><a class="mega-link" href="blog.html"><svg class="icon"><use href="#icon-file-text"/></svg><span class="mega-link__text"><span class="mega-link__label">Blog</span></span></a></li>
+                  <li><a class="mega-link" href="resources/guides.html"><svg class="icon"><use href="#icon-award"/></svg><span class="mega-link__text"><span class="mega-link__label">Guides &amp; Whitepapers</span></span></a></li>
+                  <li><a class="mega-link" href="faqs.html"><svg class="icon"><use href="#icon-message-circle"/></svg><span class="mega-link__text"><span class="mega-link__label">FAQs</span></span></a></li>
+                  <li><a class="mega-link" href="resources/glossary.html"><svg class="icon"><use href="#icon-file-text"/></svg><span class="mega-link__text"><span class="mega-link__label">Glossary</span></span></a></li>
+                  <li><a class="mega-link" href="project-cost-calculator.html" style="background:var(--brand-50);border-radius:var(--radius-sm);"><svg class="icon"><use href="#icon-zap"/></svg><span class="mega-link__text"><span class="mega-link__label">Project Cost Calculator</span></span></a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </nav>
+
+      <div class="header-actions">
+        <button class="header-icon-btn" data-search-trigger aria-label="Search">
+          <svg class="icon"><use href="#icon-search"/></svg>
+        </button>
+        <a class="header-phone" href="tel:+919876543210">
+          <svg class="icon icon-16"><use href="#icon-phone"/></svg>
+          +91 98765 43210
+        </a>
+        <a class="btn btn--primary header-cta" href="contact-us.html">
+          Book a Free Consultation
+          <svg class="icon icon-16 icon-arrow"><use href="#icon-arrow-right"/></svg>
+        </a>
+        <button class="hamburger-btn" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-drawer">
+          <svg class="icon icon-menu"><use href="#icon-menu"/></svg>
+          <svg class="icon icon-x"><use href="#icon-x"/></svg>
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="nav-backdrop"></div>
+</header>
+<div id="header-sentinel" style="height:1px;"></div>
+
+<!-- Search overlay -->
+<div class="search-overlay" role="dialog" aria-modal="true" aria-label="Site search" aria-hidden="true">
+  <div class="search-overlay__panel">
+    <div class="search-overlay__field">
+      <svg class="icon"><use href="#icon-search"/></svg>
+      <input type="search" placeholder="Search services, case studies, technologies…" aria-label="Search">
+      <button class="search-overlay__close" aria-label="Close search"><svg class="icon"><use href="#icon-x"/></svg></button>
+    </div>
+    <p class="search-overlay__hint">Press <kbd>Esc</kbd> to close · <kbd>⌘K</kbd> to open from anywhere</p>
+    <div class="search-overlay__popular">
+      <p class="search-overlay__popular-title">Popular searches</p>
+      <div class="search-overlay__chips">
+        <a href="hire-developers/reactjs.html">Hire React developers</a>
+        <a href="industries/healthcare.html">Healthcare software</a>
+        <a href="services/odoo-development.html">Odoo implementation</a>
+        <a href="engagement-models.html">Pricing</a>
+        <a href="case-studies.html">Case studies</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Mobile drawer -->
+<div class="mobile-drawer-backdrop"></div>
+<nav class="mobile-drawer" id="mobile-drawer" aria-label="Mobile">
+  <div class="mobile-drawer__head">
+    <a href="index.html" class="logo">
+      <img class="logo__img" src="assets/img/logo-divinedevhub.png" alt="Divine Dev Hub" width="168" height="66">
+    </a>
+    <button class="header-icon-btn mobile-drawer__close" aria-label="Close menu">
+      <svg class="icon"><use href="#icon-x"/></svg>
+    </button>
+  </div>
+  <div class="mobile-drawer__search">
+    <button class="mobile-drawer__search-field" data-search-trigger style="width:100%;">
+      <svg class="icon"><use href="#icon-search"/></svg>
+      Search…
+    </button>
+  </div>
+  <div class="mobile-drawer__nav">
+
+    <div class="mdrawer-item">
+      <button class="mdrawer-item__trigger" aria-expanded="false">Services<svg class="icon"><use href="#icon-chevron-down"/></svg></button>
+      <div class="mdrawer-item__panel"><div class="mdrawer-item__panel-inner"><div class="mdrawer-item__links">
+        <a href="services/custom-software-development.html">Custom Software Development</a>
+        <a href="services/web-development.html">Web Development</a>
+        <a href="services/mobile-app-development.html">Mobile App Development</a>
+        <a href="services/ai-development.html">AI &amp; Machine Learning</a>
+        <a href="services/odoo-development.html">Odoo / ERP Development</a>
+        <a href="services/" class="view-all">View all services →</a>
+      </div></div></div>
+    </div>
+
+    <div class="mdrawer-item">
+      <button class="mdrawer-item__trigger" aria-expanded="false">Hire Developers<svg class="icon"><use href="#icon-chevron-down"/></svg></button>
+      <div class="mdrawer-item__panel"><div class="mdrawer-item__panel-inner"><div class="mdrawer-item__links">
+        <a href="hire-developers/reactjs.html">React.js Developers</a>
+        <a href="hire-developers/nodejs.html">Node.js Developers</a>
+        <a href="hire-developers/laravel.html">Laravel Developers</a>
+        <a href="hire-developers/flutter.html">Flutter Developers</a>
+        <a href="hire-developers/" class="view-all">View all roles →</a>
+      </div></div></div>
+    </div>
+
+    <div class="mdrawer-item">
+      <button class="mdrawer-item__trigger" aria-expanded="false">Industries<svg class="icon"><use href="#icon-chevron-down"/></svg></button>
+      <div class="mdrawer-item__panel"><div class="mdrawer-item__panel-inner"><div class="mdrawer-item__links">
+        <a href="industries/healthcare.html">Healthcare &amp; MedTech</a>
+        <a href="industries/fintech.html">Fintech &amp; Banking</a>
+        <a href="industries/retail-ecommerce.html">Retail &amp; E-Commerce</a>
+        <a href="industries/" class="view-all">View all industries →</a>
+      </div></div></div>
+    </div>
+
+    <div class="mdrawer-item">
+      <button class="mdrawer-item__trigger" aria-expanded="false">Our Work<svg class="icon"><use href="#icon-chevron-down"/></svg></button>
+      <div class="mdrawer-item__panel"><div class="mdrawer-item__panel-inner"><div class="mdrawer-item__links">
+        <a href="case-studies.html">Case Studies</a>
+        <a href="portfolio.html">Portfolio</a>
+        <a href="testimonials.html">Client Testimonials</a>
+        <a href="awards.html">Awards &amp; Recognition</a>
+      </div></div></div>
+    </div>
+
+    <div class="mdrawer-item">
+      <button class="mdrawer-item__trigger" aria-expanded="false">Company<svg class="icon"><use href="#icon-chevron-down"/></svg></button>
+      <div class="mdrawer-item__panel"><div class="mdrawer-item__panel-inner"><div class="mdrawer-item__links">
+        <a href="about-us.html">About Us</a>
+        <a href="process.html">How We Work</a>
+        <a href="engagement-models.html">Engagement Models</a>
+        <a href="careers.html">Careers <span class="footer-col__pill">6</span></a>
+        <a href="contact-us.html">Contact Us</a>
+      </div></div></div>
+    </div>
+
+    <div class="mdrawer-item">
+      <button class="mdrawer-item__trigger" aria-expanded="false">Resources<svg class="icon"><use href="#icon-chevron-down"/></svg></button>
+      <div class="mdrawer-item__panel"><div class="mdrawer-item__panel-inner"><div class="mdrawer-item__links">
+        <a href="blog.html">Blog</a>
+        <a href="faqs.html">FAQs</a>
+        <a href="project-cost-calculator.html">Project Cost Calculator</a>
+      </div></div></div>
+    </div>
+
+  </div>
+  <div class="mobile-drawer__foot">
+    <div class="mobile-drawer__contact">
+      <a href="tel:+919876543210"><svg class="icon"><use href="#icon-phone"/></svg>+91 98765 43210</a>
+      <a href="mailto:info@divinedevhub.in"><svg class="icon"><use href="#icon-mail"/></svg>info@divinedevhub.in</a>
+    </div>
+    <a class="btn btn--primary" href="contact-us.html" style="width:100%;">Book a Free Consultation<svg class="icon icon-16 icon-arrow"><use href="#icon-arrow-right"/></svg></a>
+    <div class="mobile-drawer__social">
+      <a class="social-btn" href="#" aria-label="LinkedIn"><svg class="icon"><use href="#icon-linkedin"/></svg></a>
+      <a class="social-btn" href="#" aria-label="Facebook"><svg class="icon"><use href="#icon-facebook"/></svg></a>
+      <a class="social-btn" href="#" aria-label="X"><svg class="icon"><use href="#icon-x-twitter"/></svg></a>
+      <a class="social-btn" href="#" aria-label="Instagram"><svg class="icon"><use href="#icon-instagram"/></svg></a>
+    </div>
+  </div>
+</nav>
+
+<!-- Sticky mobile action bar -->
+<div class="mobile-action-bar">
+  <a href="tel:+919876543210"><svg class="icon"><use href="#icon-phone"/></svg>Call</a>
+  <a href="https://wa.me/919876543210"><svg class="icon"><use href="#icon-message-circle"/></svg>WhatsApp</a>
+  <a href="contact-us.html"><svg class="icon"><use href="#icon-zap"/></svg>Get a Quote</a>
+</div>
+
+<!-- ============================================================
+     MAIN — Homepage (16 sections). See /docs/03-header-footer-homepage.md §6
+     ============================================================ -->
+<main id="main">
+
+  <!-- ============ 1 — HERO ============ -->
+  <section class="hero section--darkest" data-page-hero="dark">
+    <div class="blueprint-grid"></div>
+    <div class="container hero__inner">
+      <div class="reveal">
+        <span class="badge badge--on-dark hero__badge"><svg class="icon icon-16"><use href="#icon-circle-dot"/></svg>Trusted by 510+ clients since 2014</span>
+        <h1 class="display-1 hero__title">Software that<br>moves your <span class="grad-text">business forward.</span></h1>
+        <p class="lead hero__lead">We design, build and scale custom software, AI products and enterprise platforms — 540+ delivered from Ahmedabad to 20+ countries.</p>
+        <div class="btn-group">
+          <a class="btn btn--xl btn--gradient" href="contact-us.html">Book a Free Consultation<svg class="icon icon-arrow"><use href="#icon-arrow-right"/></svg></a>
+          <a class="btn btn--xl btn--secondary-dark" href="portfolio.html">View Our Work</a>
+        </div>
+        <div class="trust-chips hero__trust">
+          <span class="trust-chip"><svg class="icon icon-16"><use href="#icon-star"/></svg>4.9 Clutch</span>
+          <span class="trust-chip"><svg class="icon icon-16"><use href="#icon-star"/></svg>4.8 Google</span>
+          <span class="trust-chip"><svg class="icon icon-16"><use href="#icon-lock"/></svg>NDA protected</span>
+          <span class="trust-chip"><svg class="icon icon-16"><use href="#icon-clock"/></svg>Reply in 4 hrs</span>
+        </div>
+      </div>
+      <div class="reveal hero__visual" style="--i:2;">
+        <div class="hero__frame">
+          <div class="hero__frame-browser">
+            <div class="hero__frame-browser-bar"><span></span><span></span><span></span></div>
+            <div class="hero__frame-browser-body">
+              <div class="bar brand"></div>
+              <div class="bar" style="width:80%"></div>
+              <div class="bar" style="width:65%"></div>
+              <div class="stat-row"><div></div><div></div><div></div></div>
+            </div>
+          </div>
+          <div class="hero__frame-phone"><div class="hero__frame-phone-screen"></div></div>
+        </div>
+        <div class="hero__chip hero__chip--1"><svg class="icon"><use href="#icon-trending-up"/></svg>+312% conversions</div>
+        <div class="hero__chip hero__chip--2"><svg class="icon"><use href="#icon-check-circle"/></svg>Delivered on time</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 2 — CLIENT LOGOS ============ -->
+  <section class="section--tight section--light" aria-labelledby="logos-label">
+    <div class="container">
+      <p class="logos__label" id="logos-label">Certified &amp; partnered with</p>
+      <div class="logos__marquee">
+        <div class="logos__track">
+          <span class="logos__item">Amazon Web Services</span>
+          <span class="logos__item">Odoo</span>
+          <span class="logos__item">Adobe Commerce</span>
+          <span class="logos__item">Microsoft Azure</span>
+          <span class="logos__item">Google Cloud</span>
+          <span class="logos__item">Shopify Plus</span>
+          <span class="logos__item">Clutch</span>
+          <!-- duplicated for seamless loop -->
+          <span class="logos__item" aria-hidden="true">Amazon Web Services</span>
+          <span class="logos__item" aria-hidden="true">Odoo</span>
+          <span class="logos__item" aria-hidden="true">Adobe Commerce</span>
+          <span class="logos__item" aria-hidden="true">Microsoft Azure</span>
+          <span class="logos__item" aria-hidden="true">Google Cloud</span>
+          <span class="logos__item" aria-hidden="true">Shopify Plus</span>
+          <span class="logos__item" aria-hidden="true">Clutch</span>
+        </div>
+      </div>
+      <div class="logos__grid">
+        <span class="logos__item">AWS</span>
+        <span class="logos__item">Odoo</span>
+        <span class="logos__item">Azure</span>
+        <span class="logos__item">Shopify</span>
+        <span class="logos__item">Adobe</span>
+        <span class="logos__item">Clutch</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 3 — INTRODUCTION + REVIEW RATINGS ============ -->
+  <section class="section section--light">
+    <div class="container intro">
+      <div class="reveal">
+        <span class="overline">Who we are</span>
+        <h2>A 50-person engineering team that ships.</h2>
+        <p class="body-text">Since 2014 we've delivered 540+ projects for 510+ clients across healthcare, fintech, retail, logistics and SaaS — with an in-house team, not a subcontractor network.</p>
+        <div class="intro__points">
+          <div class="intro__point"><svg class="icon"><use href="#icon-check"/></svg>In-house team, no subcontracting</div>
+          <div class="intro__point"><svg class="icon"><use href="#icon-check"/></svg>Fixed-scope or dedicated team engagement</div>
+          <div class="intro__point"><svg class="icon"><use href="#icon-check"/></svg>Source code and IP are 100% yours</div>
+        </div>
+        <a class="text-link" href="about-us.html">About Divine Dev Hub<svg class="icon"><use href="#icon-arrow-right"/></svg></a>
+      </div>
+      <div class="intro__proof reveal" style="--i:1;">
+        <div class="intro__rating-row"><span class="platform">⭐ Clutch</span><span class="score">4.9 / 5</span></div>
+        <div class="intro__rating-row"><span class="platform">⭐ Google</span><span class="score">4.8 / 5</span></div>
+        <div class="intro__rating-row"><span class="platform">⭐ GoodFirms</span><span class="score">4.9 / 5</span></div>
+        <blockquote class="intro__proof-quote">
+          "They delivered a complex HRMS platform three weeks ahead of schedule — and the handover docs were genuinely usable."
+          <cite>— Engineering Lead, HR-tech client</cite>
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 4 — SERVICES ============ -->
+  <section class="section section--tinted">
+    <div class="container">
+      <div class="sec-head sec-head--center reveal">
+        <span class="overline" style="justify-content:center;">What we do</span>
+        <h2>End-to-end software services</h2>
+        <p>From discovery to deployment and beyond — one accountable partner.</p>
+      </div>
+      <div class="svc-bento">
+
+        <div class="svc-card svc-card--featured reveal" style="--i:0;">
+          <a class="stretched-link" href="services/custom-software-development.html" aria-label="Custom Software Development"></a>
+          <div class="icon-tile icon-tile--lg"><svg class="icon icon-32"><use href="#icon-code"/></svg></div>
+          <h3 class="h4">Custom Software Development</h3>
+          <p class="svc-card__desc">Enterprise-grade platforms built to your exact process.</p>
+          <div class="svc-card__tags"><span class="chip">React</span><span class="chip">Node.js</span><span class="chip">.NET</span></div>
+          <span class="text-link svc-card__cta">Explore<svg class="icon"><use href="#icon-arrow-right"/></svg></span>
+        </div>
+
+        <div class="svc-card reveal" style="--i:1;">
+          <a class="stretched-link" href="services/mobile-app-development.html" aria-label="Mobile App Development"></a>
+          <div class="icon-tile"><svg class="icon icon-24"><use href="#icon-smartphone"/></svg></div>
+          <h3 class="h5">Mobile App Development</h3>
+          <p class="svc-card__desc">iOS, Android &amp; Flutter.</p>
+          <span class="text-link svc-card__cta">Explore<svg class="icon"><use href="#icon-arrow-right"/></svg></span>
+        </div>
+
+        <div class="svc-card reveal" style="--i:2;">
+          <a class="stretched-link" href="services/ai-development.html" aria-label="AI &amp; Machine Learning"></a>
+          <div class="icon-tile"><svg class="icon icon-24"><use href="#icon-cpu"/></svg></div>
+          <h3 class="h5">AI &amp; Machine Learning</h3>
+          <p class="svc-card__desc">AI agents, LLM apps, automation.</p>
+          <span class="text-link svc-card__cta">Explore<svg class="icon"><use href="#icon-arrow-right"/></svg></span>
+        </div>
+
+        <div class="svc-card reveal" style="--i:3;">
+          <a class="stretched-link" href="services/web-development.html" aria-label="Web Application Development"></a>
+          <div class="icon-tile"><svg class="icon icon-24"><use href="#icon-layers"/></svg></div>
+          <h3 class="h5">Web App Development</h3>
+          <span class="text-link svc-card__cta">Explore<svg class="icon"><use href="#icon-arrow-right"/></svg></span>
+        </div>
+
+        <div class="svc-card reveal" style="--i:4;">
+          <a class="stretched-link" href="services/ecommerce-development.html" aria-label="E-Commerce Development"></a>
+          <div class="icon-tile"><svg class="icon icon-24"><use href="#icon-trending-up"/></svg></div>
+          <h3 class="h5">E-Commerce</h3>
+          <span class="text-link svc-card__cta">Explore<svg class="icon"><use href="#icon-arrow-right"/></svg></span>
+        </div>
+
+        <div class="svc-card svc-card--featured reveal" style="--i:5;">
+          <a class="stretched-link" href="services/odoo-development.html" aria-label="Odoo / ERP Development"></a>
+          <div class="icon-tile icon-tile--lg"><svg class="icon icon-32"><use href="#icon-database"/></svg></div>
+          <h3 class="h4">Odoo / ERP Development</h3>
+          <p class="svc-card__desc">Rare, high-value platform specialisation — implementation, customisation and migration.</p>
+          <div class="svc-card__tags"><span class="chip">Odoo</span><span class="chip">Python</span><span class="chip">PostgreSQL</span></div>
+          <span class="text-link svc-card__cta">Explore<svg class="icon"><use href="#icon-arrow-right"/></svg></span>
+        </div>
+
+        <div class="svc-card reveal" style="--i:6;">
+          <a class="stretched-link" href="services/crm-development.html" aria-label="CRM Development"></a>
+          <div class="icon-tile"><svg class="icon icon-24"><use href="#icon-users"/></svg></div>
+          <h3 class="h5">CRM</h3>
+          <span class="text-link svc-card__cta">Explore<svg class="icon"><use href="#icon-arrow-right"/></svg></span>
+        </div>
+
+        <div class="svc-card reveal" style="--i:7;">
+          <a class="stretched-link" href="services/cloud-devops.html" aria-label="Cloud &amp; DevOps"></a>
+          <div class="icon-tile"><svg class="icon icon-24"><use href="#icon-cloud"/></svg></div>
+          <h3 class="h5">Cloud &amp; DevOps</h3>
+          <span class="text-link svc-card__cta">Explore<svg class="icon"><use href="#icon-arrow-right"/></svg></span>
+        </div>
+
+        <div class="svc-card reveal" style="--i:8;">
+          <a class="stretched-link" href="services/ui-ux-design.html" aria-label="UI/UX Design"></a>
+          <div class="icon-tile"><svg class="icon icon-24"><use href="#icon-layers"/></svg></div>
+          <h3 class="h5">UI/UX Design</h3>
+          <span class="text-link svc-card__cta">Explore<svg class="icon"><use href="#icon-arrow-right"/></svg></span>
+        </div>
+
+        <div class="svc-card reveal" style="--i:9;">
+          <a class="stretched-link" href="services/qa-testing.html" aria-label="QA &amp; Software Testing"></a>
+          <div class="icon-tile"><svg class="icon icon-24"><use href="#icon-check-circle"/></svg></div>
+          <h3 class="h5">QA &amp; Testing</h3>
+          <span class="text-link svc-card__cta">Explore<svg class="icon"><use href="#icon-arrow-right"/></svg></span>
+        </div>
+
+      </div>
+      <div class="sec-foot">
+        <a class="btn btn--secondary" href="services/">View All 14 Services<svg class="icon icon-16 icon-arrow"><use href="#icon-arrow-right"/></svg></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 5 — INDUSTRIES ============ -->
+  <section class="section section--dark">
+    <div class="container">
+      <div class="sec-head sec-head--center reveal">
+        <span class="overline" style="justify-content:center;">Industries we serve</span>
+        <h2>Domain knowledge you don't have to pay for twice</h2>
+        <p>We've shipped in these verticals before. That shortens discovery, de-risks compliance, and gets you to production faster.</p>
+      </div>
+      <div class="ind-grid">
+        <div class="ind-tile reveal" style="--i:0;">
+          <a class="stretched-link" href="industries/healthcare.html" aria-label="Healthcare &amp; MedTech"></a>
+          <div class="icon-tile"><svg class="icon icon-24"><use href="#icon-shield-check"/></svg></div>
+          <h3>Healthcare</h3>
+          <p class="ind-tile__count">40+ projects</p>
+          <span class="ind-tile__cta">View solutions<svg class="icon icon-16"><use href="#icon-arrow-right"/></svg></span>
+        </div>
+        <div class="ind-tile reveal" style="--i:1;">
+          <a class="stretched-link" href="industries/fintech.html" aria-label="Fintech &amp; Banking"></a>
+          <div class="icon-tile"><svg class="icon icon-24"><use href="#icon-trending-up"/></svg></div>
+          <h3>Fintech</h3>
+          <p class="ind-tile__count">25+ projects</p>
+          <span class="ind-tile__cta">View solutions<svg class="icon icon-16"><use href="#icon-arrow-right"/></svg></span>
+        </div>
+        <div class="ind-tile reveal" style="--i:2;">
+          <a class="stretched-link" href="industries/retail-ecommerce.html" aria-label="Retail &amp; E-Commerce"></a>
+          <div class="icon-tile"><svg class="icon icon-24"><use href="#icon-layers"/></svg></div>
+          <h3>E-Commerce</h3>
+          <p class="ind-tile__count">90+ projects</p>
+          <span class="ind-tile__cta">View solutions<svg class="icon icon-16"><use href="#icon-arrow-right"/></svg></span>
+        </div>
+        <div class="ind-tile reveal" style="--i:3;">
+          <a class="stretched-link" href="industries/education.html" aria-label="Education &amp; eLearning"></a>
+          <div class="icon-tile"><svg class="icon icon-24"><use href="#icon-award"/></svg></div>
+          <h3>Education</h3>
+          <p class="ind-tile__count">30+ projects</p>
+          <span class="ind-tile__cta">View solutions<svg class="icon icon-16"><use href="#icon-arrow-right"/></svg></span>
+        </div>
+        <div class="ind-tile reveal" style="--i:4;">
+          <a class="stretched-link" href="industries/logistics.html" aria-label="Logistics &amp; Transportation"></a>
+          <div class="icon-tile"><svg class="icon icon-24"><use href="#icon-globe"/></svg></div>
+          <h3>Logistics</h3>
+          <p class="ind-tile__count">20+ projects</p>
+          <span class="ind-tile__cta">View solutions<svg class="icon icon-16"><use href="#icon-arrow-right"/></svg></span>
+        </div>
+        <div class="ind-tile reveal" style="--i:5;">
+          <a class="stretched-link" href="industries/real-estate.html" aria-label="Real Estate &amp; PropTech"></a>
+          <div class="icon-tile"><svg class="icon icon-24"><use href="#icon-map-pin"/></svg></div>
+          <h3>Real Estate</h3>
+          <p class="ind-tile__count">15+ projects</p>
+          <span class="ind-tile__cta">View solutions<svg class="icon icon-16"><use href="#icon-arrow-right"/></svg></span>
+        </div>
+        <div class="ind-tile reveal" style="--i:6;">
+          <a class="stretched-link" href="industries/travel.html" aria-label="Travel &amp; Hospitality"></a>
+          <div class="icon-tile"><svg class="icon icon-24"><use href="#icon-rocket"/></svg></div>
+          <h3>Travel</h3>
+          <p class="ind-tile__count">12+ projects</p>
+          <span class="ind-tile__cta">View solutions<svg class="icon icon-16"><use href="#icon-arrow-right"/></svg></span>
+        </div>
+        <div class="ind-tile reveal" style="--i:7;">
+          <a class="stretched-link" href="industries/manufacturing.html" aria-label="Manufacturing"></a>
+          <div class="icon-tile"><svg class="icon icon-24"><use href="#icon-cpu"/></svg></div>
+          <h3>Manufacturing</h3>
+          <p class="ind-tile__count">10+ projects</p>
+          <span class="ind-tile__cta">View solutions<svg class="icon icon-16"><use href="#icon-arrow-right"/></svg></span>
+        </div>
+        <div class="ind-tile reveal" style="--i:8;">
+          <a class="stretched-link" href="industries/media-entertainment.html" aria-label="Media &amp; Entertainment"></a>
+          <div class="icon-tile"><svg class="icon icon-24"><use href="#icon-zap"/></svg></div>
+          <h3>Media</h3>
+          <p class="ind-tile__count">14+ projects</p>
+          <span class="ind-tile__cta">View solutions<svg class="icon icon-16"><use href="#icon-arrow-right"/></svg></span>
+        </div>
+        <div class="ind-tile reveal" style="--i:9;">
+          <a class="stretched-link" href="industries/hr-tech.html" aria-label="Professional Services / HR Tech"></a>
+          <div class="icon-tile"><svg class="icon icon-24"><use href="#icon-users"/></svg></div>
+          <h3>HR Tech</h3>
+          <p class="ind-tile__count">18+ projects</p>
+          <span class="ind-tile__cta">View solutions<svg class="icon icon-16"><use href="#icon-arrow-right"/></svg></span>
+        </div>
+      </div>
+      <div class="sec-foot">
+        <a class="text-link" href="industries/" style="justify-content:center;">Explore all industries<svg class="icon"><use href="#icon-arrow-right"/></svg></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 6 — WHY CHOOSE US ============ -->
+  <section class="section section--light">
+    <div class="container">
+      <div class="sec-head sec-head--center reveal">
+        <span class="overline" style="justify-content:center;">Why Divine Dev Hub</span>
+        <h2>Six reasons clients stay with us for years</h2>
+      </div>
+      <div class="why-bento">
+        <div class="why-tile why-tile--hero reveal" style="--i:0;">
+          <div class="blueprint-grid"></div>
+          <p class="stat-num tabular-nums" data-count-to="97" data-count-suffix="%">0%</p>
+          <h3 style="color:var(--ink-0);">Client retention rate</h3>
+          <p>Over half our 2026 revenue comes from clients who started with us before 2022.</p>
+        </div>
+        <div class="why-tile reveal" style="--i:1;">
+          <div class="icon-tile"><svg class="icon icon-24"><use href="#icon-zap"/></svg></div>
+          <h3>4-hour response time</h3>
+          <p>Real people, real answers, within one business half-day.</p>
+        </div>
+        <div class="why-tile reveal" style="--i:2;">
+          <div class="icon-tile"><svg class="icon icon-24"><use href="#icon-lock"/></svg></div>
+          <h3>Your IP, your code</h3>
+          <p>Full source code and IP transfer on delivery. NDA signed before we talk specs.</p>
+        </div>
+        <div class="why-tile reveal" style="--i:3;">
+          <div class="icon-tile"><svg class="icon icon-24"><use href="#icon-users"/></svg></div>
+          <h3>50 in-house engineers</h3>
+          <p>No subcontracting. Ever.</p>
+        </div>
+        <div class="why-tile reveal" style="--i:4;">
+          <div class="icon-tile"><svg class="icon icon-24"><use href="#icon-globe"/></svg></div>
+          <h3>20+ countries served</h3>
+          <p>Timezone overlap guaranteed.</p>
+        </div>
+        <div class="why-tile why-tile--wide reveal" style="--i:5;">
+          <div class="icon-tile"><svg class="icon icon-24"><use href="#icon-check-circle"/></svg></div>
+          <div>
+            <h3>Agile, with proof</h3>
+            <p>Two-week sprints, a demo every sprint, and a shared board you can see any time.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 7 — DEVELOPMENT PROCESS ============ -->
+  <section class="section section--tinted">
+    <div class="container">
+      <div class="sec-head sec-head--center reveal">
+        <span class="overline" style="justify-content:center;">How we work</span>
+        <h2>A process built to remove surprises, not add meetings</h2>
+      </div>
+      <div class="process-timeline">
+        <div class="process-step is-active reveal" style="--i:0;">
+          <div class="process-step__rail"><div class="process-step__node">1</div><div class="process-step__line"></div></div>
+          <div class="process-step__body">
+            <div class="process-step__meta"><span class="process-step__duration">3–5 days</span></div>
+            <h3>Discovery &amp; Scoping</h3>
+            <p>Workshop, estimate, roadmap.</p>
+            <p class="process-step__deliverable"><strong>Deliverable:</strong> Scope doc + estimate</p>
+          </div>
+        </div>
+        <div class="process-step reveal" style="--i:1;">
+          <div class="process-step__rail"><div class="process-step__node">2</div><div class="process-step__line"></div></div>
+          <div class="process-step__body">
+            <div class="process-step__meta"><span class="process-step__duration">1–2 weeks</span></div>
+            <h3>Design &amp; Architecture</h3>
+            <p>Wireframes, UI, tech stack, ADRs.</p>
+            <p class="process-step__deliverable"><strong>Deliverable:</strong> Clickable prototype</p>
+          </div>
+        </div>
+        <div class="process-step reveal" style="--i:2;">
+          <div class="process-step__rail"><div class="process-step__node">3</div><div class="process-step__line"></div></div>
+          <div class="process-step__body">
+            <div class="process-step__meta"><span class="process-step__duration">2-wk cycles</span></div>
+            <h3>Sprint Development</h3>
+            <p>Working software every 2 weeks.</p>
+            <p class="process-step__deliverable"><strong>Deliverable:</strong> Sprint demo + build</p>
+          </div>
+        </div>
+        <div class="process-step reveal" style="--i:3;">
+          <div class="process-step__rail"><div class="process-step__node">4</div><div class="process-step__line"></div></div>
+          <div class="process-step__body">
+            <div class="process-step__meta"><span class="process-step__duration">Continuous</span></div>
+            <h3>QA &amp; Security</h3>
+            <p>Automated + manual testing.</p>
+            <p class="process-step__deliverable"><strong>Deliverable:</strong> Test report + sign-off</p>
+          </div>
+        </div>
+        <div class="process-step reveal" style="--i:4;">
+          <div class="process-step__rail"><div class="process-step__node">5</div><div class="process-step__line"></div></div>
+          <div class="process-step__body">
+            <div class="process-step__meta"><span class="process-step__duration">1 week</span></div>
+            <h3>Launch &amp; Handover</h3>
+            <p>Zero-downtime deploy.</p>
+            <p class="process-step__deliverable"><strong>Deliverable:</strong> Live production + docs</p>
+          </div>
+        </div>
+        <div class="process-step reveal" style="--i:5;">
+          <div class="process-step__rail"><div class="process-step__node">6</div><div class="process-step__line"></div></div>
+          <div class="process-step__body">
+            <div class="process-step__meta"><span class="process-step__duration">Ongoing</span></div>
+            <h3>Scale &amp; Support</h3>
+            <p>SLA-backed monitoring &amp; iteration.</p>
+            <p class="process-step__deliverable"><strong>Deliverable:</strong> Monthly report</p>
+          </div>
+        </div>
+      </div>
+      <div class="sec-foot">
+        <a class="text-link" href="process.html" style="justify-content:center;">See our full process<svg class="icon"><use href="#icon-arrow-right"/></svg></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 8 — CASE STUDIES ============ -->
+  <section class="section section--darkest">
+    <div class="container">
+      <div class="sec-head sec-head--center reveal">
+        <span class="overline" style="justify-content:center;">Proven results</span>
+        <h2>Real projects. Real numbers. Real clients.</h2>
+      </div>
+      <div class="cs-grid">
+        <div class="cs-card cs-card--featured reveal" style="--i:0;">
+          <a class="stretched-link" href="case-studies/wisdom-meds.html" aria-label="Wisdom Meds case study"></a>
+          <div class="cs-card__media"></div>
+          <div class="cs-card__scrim"></div>
+          <div class="cs-card__body">
+            <p class="cs-card__tag">Healthcare</p>
+            <h3 class="cs-card__title">Wisdom Meds — cutting claim processing time by 68%</h3>
+            <div class="cs-card__metrics"><span class="chip chip--metric">68% faster</span><span class="chip chip--metric">4 systems integrated</span></div>
+            <p class="cs-card__tech">React · Node.js · AWS · HL7</p>
+          </div>
+        </div>
+        <div class="cs-card cs-card--tall reveal" style="--i:1;">
+          <a class="stretched-link" href="case-studies/quickclock.html" aria-label="QuickClock case study"></a>
+          <div class="cs-card__media" style="background:linear-gradient(135deg, var(--brand-600), var(--brand-900));"></div>
+          <div class="cs-card__scrim"></div>
+          <div class="cs-card__body">
+            <p class="cs-card__tag">HR Tech</p>
+            <h3 class="cs-card__title">QuickClock — 12,000 employees onboarded in 6 months</h3>
+            <div class="cs-card__metrics"><span class="chip chip--metric">12k users</span></div>
+            <p class="cs-card__tech">Laravel · Vue</p>
+          </div>
+        </div>
+        <div class="cs-card cs-card--wide reveal" style="--i:2;">
+          <a class="stretched-link" href="case-studies/aus-plates.html" aria-label="Aus Plates case study"></a>
+          <div class="cs-card__media" style="background:linear-gradient(135deg, var(--accent-500), var(--brand-700));"></div>
+          <div class="cs-card__scrim"></div>
+          <div class="cs-card__body">
+            <p class="cs-card__tag">Marketplace</p>
+            <h3 class="cs-card__title">Aus Plates — 3.2× listing growth</h3>
+            <p class="cs-card__tech">Next.js · PostgreSQL</p>
+          </div>
+        </div>
+        <div class="cs-card cs-card--wide reveal" style="--i:3;">
+          <a class="stretched-link" href="case-studies/stock-market-service.html" aria-label="Stock Market Service case study"></a>
+          <div class="cs-card__media" style="background:linear-gradient(135deg, var(--ink-700), var(--brand-800));"></div>
+          <div class="cs-card__scrim"></div>
+          <div class="cs-card__body">
+            <p class="cs-card__tag">Fintech</p>
+            <h3 class="cs-card__title">Sub-100ms real-time market data</h3>
+            <p class="cs-card__tech">Go · WebSocket · Redis</p>
+          </div>
+        </div>
+      </div>
+      <div class="sec-foot">
+        <a class="btn btn--secondary-dark" href="case-studies.html">View All Case Studies<svg class="icon icon-16 icon-arrow"><use href="#icon-arrow-right"/></svg></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 9 — STATISTICS BAND ============ -->
+  <section class="section--tight section--brand stats-band">
+    <div class="blueprint-grid"></div>
+    <div class="container stats-band__grid">
+      <div class="stats-band__item reveal" style="--i:0;"><p class="stats-band__num tabular-nums" data-count-to="540" data-count-suffix="+">0+</p><p class="stats-band__label">Projects delivered</p></div>
+      <div class="stats-band__item reveal" style="--i:1;"><p class="stats-band__num tabular-nums" data-count-to="510" data-count-suffix="+">0+</p><p class="stats-band__label">Clients served</p></div>
+      <div class="stats-band__item reveal" style="--i:2;"><p class="stats-band__num tabular-nums" data-count-to="50">0</p><p class="stats-band__label">Engineers in-house</p></div>
+      <div class="stats-band__item reveal" style="--i:3;"><p class="stats-band__num tabular-nums" data-count-to="12">0</p><p class="stats-band__label">Years in business</p></div>
+      <div class="stats-band__item reveal" style="--i:4;"><p class="stats-band__num tabular-nums" data-count-to="20" data-count-suffix="+">0+</p><p class="stats-band__label">Countries served</p></div>
+      <div class="stats-band__item reveal" style="--i:5;"><p class="stats-band__num tabular-nums" data-count-to="97" data-count-suffix="%">0%</p><p class="stats-band__label">Retention rate</p></div>
+    </div>
+  </section>
+
+  <!-- ============ 10 — TESTIMONIALS ============ -->
+  <section class="section section--light">
+    <div class="container">
+      <div class="sec-head sec-head--center reveal">
+        <span class="overline" style="justify-content:center;">Client voices</span>
+        <h2>What it's actually like to work with us</h2>
+      </div>
+      <div data-carousel>
+        <div class="testi-track" data-carousel-track>
+          <div class="testi-card">
+            <span class="testi-card__quote-mark">"</span>
+            <div class="rating"><svg class="icon icon-16"><use href="#icon-star"/></svg><svg class="icon icon-16"><use href="#icon-star"/></svg><svg class="icon icon-16"><use href="#icon-star"/></svg><svg class="icon icon-16"><use href="#icon-star"/></svg><svg class="icon icon-16"><use href="#icon-star"/></svg></div>
+            <p class="quote">"They delivered a complex HRMS three weeks early, and the handover docs were genuinely usable."</p>
+            <div class="testi-card__author">
+              <div class="testi-card__avatar">R</div>
+              <div>
+                <p class="testi-card__name">Ravi Mehta</p>
+                <p class="testi-card__role">VP Engineering, HR-tech SaaS</p>
+                <p class="testi-card__source"><svg class="icon icon-16"><use href="#icon-check-circle"/></svg>via Clutch</p>
+              </div>
+            </div>
+          </div>
+          <div class="testi-card">
+            <span class="testi-card__quote-mark">"</span>
+            <div class="rating"><svg class="icon icon-16"><use href="#icon-star"/></svg><svg class="icon icon-16"><use href="#icon-star"/></svg><svg class="icon icon-16"><use href="#icon-star"/></svg><svg class="icon icon-16"><use href="#icon-star"/></svg><svg class="icon icon-16"><use href="#icon-star"/></svg></div>
+            <p class="quote">"The only vendor we've worked with that flagged risks before we noticed them."</p>
+            <div class="testi-card__author">
+              <div class="testi-card__avatar">S</div>
+              <div>
+                <p class="testi-card__name">Sarah Collins</p>
+                <p class="testi-card__role">Founder, healthcare marketplace</p>
+                <p class="testi-card__source"><svg class="icon icon-16"><use href="#icon-check-circle"/></svg>via Google</p>
+              </div>
+            </div>
+          </div>
+          <div class="testi-card">
+            <span class="testi-card__quote-mark">"</span>
+            <div class="rating"><svg class="icon icon-16"><use href="#icon-star"/></svg><svg class="icon icon-16"><use href="#icon-star"/></svg><svg class="icon icon-16"><use href="#icon-star"/></svg><svg class="icon icon-16"><use href="#icon-star"/></svg><svg class="icon icon-16"><use href="#icon-star"/></svg></div>
+            <p class="quote">"Three weeks ahead of schedule and under budget. That doesn't happen."</p>
+            <div class="testi-card__author">
+              <div class="testi-card__avatar">A</div>
+              <div>
+                <p class="testi-card__name">Amit Shah</p>
+                <p class="testi-card__role">CTO, fintech platform</p>
+                <p class="testi-card__source"><svg class="icon icon-16"><use href="#icon-check-circle"/></svg>via Clutch</p>
+              </div>
+            </div>
+          </div>
+          <div class="testi-card">
+            <span class="testi-card__quote-mark">"</span>
+            <div class="rating"><svg class="icon icon-16"><use href="#icon-star"/></svg><svg class="icon icon-16"><use href="#icon-star"/></svg><svg class="icon icon-16"><use href="#icon-star"/></svg><svg class="icon icon-16"><use href="#icon-star"/></svg><svg class="icon icon-16"><use href="#icon-star"/></svg></div>
+            <p class="quote">"Deep Odoo expertise — they untangled a mess our last vendor left behind."</p>
+            <div class="testi-card__author">
+              <div class="testi-card__avatar">L</div>
+              <div>
+                <p class="testi-card__name">Leah Novak</p>
+                <p class="testi-card__role">Operations Director, retail group</p>
+                <p class="testi-card__source"><svg class="icon icon-16"><use href="#icon-check-circle"/></svg>via GoodFirms</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="testi-controls">
+          <button class="testi-controls__btn" data-carousel-prev aria-label="Previous testimonial"><svg class="icon"><use href="#icon-chevron-left"/></svg></button>
+          <div class="testi-dots" data-carousel-dots></div>
+          <button class="testi-controls__btn" data-carousel-next aria-label="Next testimonial"><svg class="icon"><use href="#icon-chevron-right"/></svg></button>
+        </div>
+      </div>
+      <div class="sec-foot">
+        <a class="text-link" href="testimonials.html" style="justify-content:center;">Read all reviews<svg class="icon"><use href="#icon-arrow-right"/></svg></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 11 — TECHNOLOGIES ============ -->
+  <section class="section section--tinted">
+    <div class="container">
+      <div class="sec-head sec-head--center reveal">
+        <span class="overline" style="justify-content:center;">Our technology stack</span>
+        <h2>We pick the tool that fits — not the one we sell</h2>
+      </div>
+      <div data-tabs>
+        <div class="tech-tabs" role="tablist" aria-label="Technology categories">
+          <button class="tech-tab" role="tab" id="tab-frontend" aria-controls="panel-frontend" aria-selected="true" tabindex="0">Frontend</button>
+          <button class="tech-tab" role="tab" id="tab-backend" aria-controls="panel-backend" aria-selected="false" tabindex="-1">Backend</button>
+          <button class="tech-tab" role="tab" id="tab-mobile" aria-controls="panel-mobile" aria-selected="false" tabindex="-1">Mobile</button>
+          <button class="tech-tab" role="tab" id="tab-ai" aria-controls="panel-ai" aria-selected="false" tabindex="-1">AI/ML</button>
+          <button class="tech-tab" role="tab" id="tab-cloud" aria-controls="panel-cloud" aria-selected="false" tabindex="-1">Cloud</button>
+        </div>
+
+        <div class="tech-panel" role="tabpanel" id="panel-frontend" aria-labelledby="tab-frontend">
+          <div class="tech-grid">
+            <a class="tech-tile" href="technologies/reactjs.html"><span class="tech-tile__logo">R</span><span class="tech-tile__name">React</span></a>
+            <a class="tech-tile" href="technologies/nextjs.html"><span class="tech-tile__logo">N</span><span class="tech-tile__name">Next.js</span></a>
+            <a class="tech-tile" href="technologies/angular.html"><span class="tech-tile__logo">A</span><span class="tech-tile__name">Angular</span></a>
+            <a class="tech-tile" href="technologies/vuejs.html"><span class="tech-tile__logo">V</span><span class="tech-tile__name">Vue</span></a>
+            <a class="tech-tile" href="technologies/typescript.html"><span class="tech-tile__logo">TS</span><span class="tech-tile__name">TypeScript</span></a>
+            <a class="tech-tile" href="technologies/tailwind.html"><span class="tech-tile__logo">TW</span><span class="tech-tile__name">Tailwind</span></a>
+            <a class="tech-tile" href="technologies/"><span class="tech-tile__logo">+</span><span class="tech-tile__name">More</span></a>
+          </div>
+        </div>
+        <div class="tech-panel" role="tabpanel" id="panel-backend" aria-labelledby="tab-backend" hidden>
+          <div class="tech-grid">
+            <a class="tech-tile" href="technologies/nodejs.html"><span class="tech-tile__logo">N</span><span class="tech-tile__name">Node.js</span></a>
+            <a class="tech-tile" href="technologies/laravel.html"><span class="tech-tile__logo">L</span><span class="tech-tile__name">Laravel</span></a>
+            <a class="tech-tile" href="technologies/python.html"><span class="tech-tile__logo">Py</span><span class="tech-tile__name">Python</span></a>
+            <a class="tech-tile" href="technologies/dotnet.html"><span class="tech-tile__logo">.NET</span><span class="tech-tile__name">.NET</span></a>
+            <a class="tech-tile" href="technologies/java.html"><span class="tech-tile__logo">J</span><span class="tech-tile__name">Java</span></a>
+            <a class="tech-tile" href="technologies/golang.html"><span class="tech-tile__logo">Go</span><span class="tech-tile__name">Go</span></a>
+          </div>
+        </div>
+        <div class="tech-panel" role="tabpanel" id="panel-mobile" aria-labelledby="tab-mobile" hidden>
+          <div class="tech-grid">
+            <a class="tech-tile" href="technologies/flutter.html"><span class="tech-tile__logo">Fl</span><span class="tech-tile__name">Flutter</span></a>
+            <a class="tech-tile" href="technologies/react-native.html"><span class="tech-tile__logo">RN</span><span class="tech-tile__name">React Native</span></a>
+            <a class="tech-tile" href="technologies/swift.html"><span class="tech-tile__logo">Sw</span><span class="tech-tile__name">Swift</span></a>
+            <a class="tech-tile" href="technologies/kotlin.html"><span class="tech-tile__logo">Kt</span><span class="tech-tile__name">Kotlin</span></a>
+          </div>
+        </div>
+        <div class="tech-panel" role="tabpanel" id="panel-ai" aria-labelledby="tab-ai" hidden>
+          <div class="tech-grid">
+            <a class="tech-tile" href="technologies/openai.html"><span class="tech-tile__logo">AI</span><span class="tech-tile__name">OpenAI</span></a>
+            <a class="tech-tile" href="technologies/langchain.html"><span class="tech-tile__logo">Lc</span><span class="tech-tile__name">LangChain</span></a>
+            <a class="tech-tile" href="technologies/tensorflow.html"><span class="tech-tile__logo">TF</span><span class="tech-tile__name">TensorFlow</span></a>
+            <a class="tech-tile" href="technologies/pytorch.html"><span class="tech-tile__logo">Pt</span><span class="tech-tile__name">PyTorch</span></a>
+          </div>
+        </div>
+        <div class="tech-panel" role="tabpanel" id="panel-cloud" aria-labelledby="tab-cloud" hidden>
+          <div class="tech-grid">
+            <a class="tech-tile" href="technologies/aws.html"><span class="tech-tile__logo">AWS</span><span class="tech-tile__name">AWS</span></a>
+            <a class="tech-tile" href="technologies/azure.html"><span class="tech-tile__logo">Az</span><span class="tech-tile__name">Azure</span></a>
+            <a class="tech-tile" href="technologies/gcp.html"><span class="tech-tile__logo">GCP</span><span class="tech-tile__name">Google Cloud</span></a>
+            <a class="tech-tile" href="technologies/docker.html"><span class="tech-tile__logo">Do</span><span class="tech-tile__name">Docker</span></a>
+            <a class="tech-tile" href="technologies/kubernetes.html"><span class="tech-tile__logo">K8s</span><span class="tech-tile__name">Kubernetes</span></a>
+          </div>
+        </div>
+      </div>
+      <div class="sec-foot">
+        <a class="text-link" href="technologies/" style="justify-content:center;">Explore all technologies<svg class="icon"><use href="#icon-arrow-right"/></svg></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 12 — ENGAGEMENT MODELS ============ -->
+  <section class="section section--light">
+    <div class="container">
+      <div class="sec-head sec-head--center reveal">
+        <span class="overline" style="justify-content:center;">How to work with us</span>
+        <h2>Three engagement models. No lock-in on any of them.</h2>
+      </div>
+      <div class="eng-grid">
+        <div class="eng-card reveal" style="--i:0;">
+          <h3 class="h4">Dedicated Team</h3>
+          <p class="eng-card__best-for">Best for: long-term product development</p>
+          <div class="eng-card__divider"></div>
+          <ul class="eng-card__features">
+            <li><svg class="icon icon-16"><use href="#icon-check"/></svg>Monthly billing</li>
+            <li><svg class="icon icon-16"><use href="#icon-check"/></svg>You direct the team</li>
+            <li><svg class="icon icon-16"><use href="#icon-check"/></svg>Minimum 3 months</li>
+            <li><svg class="icon icon-16"><use href="#icon-check"/></svg>Scale any time</li>
+          </ul>
+          <p class="eng-card__price">From $4,500<span>/mo</span></p>
+          <a class="btn btn--secondary" href="engagement-models.html" style="width:100%;">Talk to us</a>
+        </div>
+        <div class="eng-card eng-card--featured reveal" style="--i:1;">
+          <span class="eng-card__badge">Most popular</span>
+          <h3 class="h4">Fixed Scope</h3>
+          <p class="eng-card__best-for">Best for: well-defined projects</p>
+          <div class="eng-card__divider"></div>
+          <ul class="eng-card__features">
+            <li><svg class="icon icon-16"><use href="#icon-check"/></svg>Fixed price</li>
+            <li><svg class="icon icon-16"><use href="#icon-check"/></svg>Fixed timeline</li>
+            <li><svg class="icon icon-16"><use href="#icon-check"/></svg>Milestone-based</li>
+            <li><svg class="icon icon-16"><use href="#icon-check"/></svg>Change requests quoted upfront</li>
+          </ul>
+          <p class="eng-card__price">From $15,000</p>
+          <a class="btn btn--primary" href="project-cost-calculator.html" style="width:100%;">Get an estimate</a>
+        </div>
+        <div class="eng-card reveal" style="--i:2;">
+          <h3 class="h4">Time &amp; Material</h3>
+          <p class="eng-card__best-for">Best for: evolving scope, fast starts</p>
+          <div class="eng-card__divider"></div>
+          <ul class="eng-card__features">
+            <li><svg class="icon icon-16"><use href="#icon-check"/></svg>Pay for hours used</li>
+            <li><svg class="icon icon-16"><use href="#icon-check"/></svg>Scale up or down monthly</li>
+            <li><svg class="icon icon-16"><use href="#icon-check"/></svg>Weekly reporting</li>
+            <li><svg class="icon icon-16"><use href="#icon-check"/></svg>No minimum</li>
+          </ul>
+          <p class="eng-card__price">From $28<span>/hour</span></p>
+          <a class="btn btn--secondary" href="engagement-models.html" style="width:100%;">Talk to us</a>
+        </div>
+      </div>
+      <div class="sec-foot">
+        <a class="text-link" href="project-cost-calculator.html" style="justify-content:center;">Not sure which fits? Use the project cost calculator<svg class="icon"><use href="#icon-arrow-right"/></svg></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 13 — CERTIFICATIONS & AWARDS ============ -->
+  <section class="section--tight section--tinted">
+    <div class="container">
+      <div class="sec-head sec-head--center reveal">
+        <span class="overline" style="justify-content:center;">Recognised &amp; certified</span>
+        <h2>Institutional trust, not just claims</h2>
+      </div>
+      <div class="certs-row">
+        <div class="cert-badge reveal" style="--i:0;"><div class="icon-tile"><svg class="icon icon-24"><use href="#icon-shield-check"/></svg></div><span class="cert-badge__name">GDPR Compliant</span></div>
+        <div class="cert-badge reveal" style="--i:1;"><div class="icon-tile"><svg class="icon icon-24"><use href="#icon-award"/></svg></div><span class="cert-badge__name">Clutch Top Developer</span></div>
+        <div class="cert-badge reveal" style="--i:2;"><div class="icon-tile"><svg class="icon icon-24"><use href="#icon-cloud"/></svg></div><span class="cert-badge__name">AWS Partner</span></div>
+        <div class="cert-badge reveal" style="--i:3;"><div class="icon-tile"><svg class="icon icon-24"><use href="#icon-database"/></svg></div><span class="cert-badge__name">Odoo Partner</span></div>
+        <div class="cert-badge reveal" style="--i:4;"><div class="icon-tile"><svg class="icon icon-24"><use href="#icon-code"/></svg></div><span class="cert-badge__name">Adobe Commerce</span></div>
+        <div class="cert-badge reveal" style="--i:5;"><div class="icon-tile"><svg class="icon icon-24"><use href="#icon-shield"/></svg></div><span class="cert-badge__name">NDA on Every Project</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 14 — FAQ ============ -->
+  <section class="section section--light">
+    <div class="container">
+      <div class="faq-layout">
+        <div class="faq-intro reveal">
+          <span class="overline">Frequently asked</span>
+          <h2>Straight answers to the questions we get every week.</h2>
+          <p>Still have a question?</p>
+          <a class="text-link" href="contact-us.html">Ask us directly<svg class="icon"><use href="#icon-arrow-right"/></svg></a>
+        </div>
+        <div class="faq-list reveal" style="--i:1;">
+          <details class="faq-item" open name="faq-home">
+            <summary><span>How much does custom software cost?</span><svg class="icon"><use href="#icon-chevron-down"/></svg></summary>
+            <div class="faq-item__a">Most projects range from $15,000 for a focused MVP to $150,000+ for a full enterprise platform. We provide a fixed estimate after a free scoping call — or try the <a class="text-link" href="project-cost-calculator.html" style="display:inline-flex;">cost calculator<svg class="icon"><use href="#icon-arrow-right"/></svg></a> for an instant range.</div>
+          </details>
+          <details class="faq-item" name="faq-home">
+            <summary><span>How long does a typical project take?</span><svg class="icon"><use href="#icon-chevron-down"/></svg></summary>
+            <div class="faq-item__a">Most projects run 8–20 weeks. An MVP typically ships in 10–12 weeks; larger platforms are scoped in phases so you see working software every two weeks.</div>
+          </details>
+          <details class="faq-item" name="faq-home">
+            <summary><span>Who owns the code and IP?</span><svg class="icon"><use href="#icon-chevron-down"/></svg></summary>
+            <div class="faq-item__a">You do — 100%, on delivery. Full source code and IP transfer, no exceptions, no retained licensing.</div>
+          </details>
+          <details class="faq-item" name="faq-home">
+            <summary><span>Do you sign NDAs?</span><svg class="icon"><use href="#icon-chevron-down"/></svg></summary>
+            <div class="faq-item__a">Always, before we discuss specifics. We'll sign yours or send ours — whichever you prefer.</div>
+          </details>
+          <details class="faq-item" name="faq-home">
+            <summary><span>How do you handle scope changes?</span><svg class="icon"><use href="#icon-chevron-down"/></svg></summary>
+            <div class="faq-item__a">Change requests are quoted upfront with a clear cost and timeline impact before any work starts — no surprise invoices.</div>
+          </details>
+          <details class="faq-item" name="faq-home">
+            <summary><span>What if I already have a codebase?</span><svg class="icon"><use href="#icon-chevron-down"/></svg></summary>
+            <div class="faq-item__a">We regularly take over existing projects. A short technical audit up front tells us — and you — exactly what state it's in before we commit to a timeline.</div>
+          </details>
+          <details class="faq-item" name="faq-home">
+            <summary><span>How do you protect our data?</span><svg class="icon"><use href="#icon-chevron-down"/></svg></summary>
+            <div class="faq-item__a">GDPR-aligned processes, access-controlled environments, and NDAs on every engagement. See our <a class="text-link" href="certifications.html" style="display:inline-flex;">certifications &amp; compliance page<svg class="icon"><use href="#icon-arrow-right"/></svg></a> for the full picture.</div>
+          </details>
+          <details class="faq-item" name="faq-home">
+            <summary><span>What happens after launch?</span><svg class="icon"><use href="#icon-chevron-down"/></svg></summary>
+            <div class="faq-item__a">Every project includes a support window, and ongoing SLA-backed maintenance plans are available for as long as you need them.</div>
+          </details>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 15 — BLOG / INSIGHTS ============ -->
+  <section class="section section--tinted">
+    <div class="container">
+      <div class="sec-head sec-head--center reveal">
+        <span class="overline" style="justify-content:center;">Insights</span>
+        <h2>Engineering notes from the team, not marketing filler</h2>
+      </div>
+      <div class="blog-grid">
+        <article class="blog-card reveal" style="--i:0;">
+          <a class="stretched-link" href="blog/what-ai-agents-actually-cost-in-2026.html" aria-label="Read: What AI agents actually cost in 2026"></a>
+          <div class="blog-card__media"></div>
+          <div class="blog-card__body">
+            <div class="blog-card__meta"><span class="cat">AI</span><span>· 8 min read</span></div>
+            <h3 class="blog-card__title">What AI agents actually cost in 2026 (a real breakdown)</h3>
+            <div class="blog-card__author"><span class="av"></span>Vasudev Dantani · Jun 2026</div>
+          </div>
+        </article>
+        <article class="blog-card reveal" style="--i:1;">
+          <a class="stretched-link" href="blog/monolith-vs-microservices-2026.html" aria-label="Read: Monolith vs microservices in 2026"></a>
+          <div class="blog-card__media" style="background:linear-gradient(135deg, var(--accent-300), var(--brand-400));"></div>
+          <div class="blog-card__body">
+            <div class="blog-card__meta"><span class="cat">Architecture</span><span>· 6 min read</span></div>
+            <h3 class="blog-card__title">Monolith vs. microservices in 2026: a decision framework</h3>
+            <div class="blog-card__author"><span class="av"></span>Paras Vamja · Jun 2026</div>
+          </div>
+        </article>
+        <article class="blog-card reveal" style="--i:2;">
+          <a class="stretched-link" href="blog/odoo-migration-checklist.html" aria-label="Read: The Odoo migration checklist"></a>
+          <div class="blog-card__media" style="background:linear-gradient(135deg, var(--brand-300), var(--accent-500));"></div>
+          <div class="blog-card__body">
+            <div class="blog-card__meta"><span class="cat">Odoo</span><span>· 5 min read</span></div>
+            <h3 class="blog-card__title">The Odoo migration checklist we use on every client project</h3>
+            <div class="blog-card__author"><span class="av"></span>Ravi Parmar · May 2026</div>
+          </div>
+        </article>
+      </div>
+      <div class="sec-foot">
+        <a class="btn btn--secondary" href="blog.html">Read All Articles<svg class="icon icon-16 icon-arrow"><use href="#icon-arrow-right"/></svg></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 16 — FINAL CTA ============
+       Rendered by the shared footer's pre-footer CTA band (Zone 0) below,
+       with homepage-specific copy. See site-footer. ============ -->
+
+</main>
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer class="site-footer">
+
+  <div class="container footer-cta">
+    <div class="footer-cta__card">
+      <div class="blueprint-grid"></div>
+      <h2>Let's talk about what you're building.</h2>
+      <p>A free 30-minute call with a senior engineer — not a salesperson. You'll leave with a scoped approach and a realistic budget range, whether or not you work with us.</p>
+      <div class="footer-cta__actions">
+        <a class="btn btn--lg btn--white-on-brand" href="contact-us.html">Book a Free Consultation<svg class="icon icon-arrow"><use href="#icon-arrow-right"/></svg></a>
+        <a class="btn btn--lg btn--ghost-on-brand" href="tel:+919876543210"><svg class="icon"><use href="#icon-phone"/></svg>Call +91 98765 43210</a>
+      </div>
+      <div class="footer-cta__trust">
+        <span><svg class="icon icon-16"><use href="#icon-lock"/></svg>NDA protected</span>
+        <span><svg class="icon icon-16"><use href="#icon-clock"/></svg>4-hour response</span>
+        <span><svg class="icon icon-16"><use href="#icon-message-circle"/></svg>Free 30-min consult</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-newsletter">
+    <div class="container footer-newsletter__inner">
+      <div class="footer-newsletter__copy">
+        <h3>Engineering insights, monthly. No fluff.</h3>
+        <p>2,400+ CTOs and founders subscribe · Unsubscribe anytime</p>
+      </div>
+      <form class="footer-newsletter__form" novalidate>
+        <label class="visually-hidden" for="footer-email">Email address</label>
+        <input type="email" id="footer-email" placeholder="your@email.com" required autocomplete="email">
+        <button type="submit" class="btn btn--primary"><span>Join</span></button>
+      </form>
+    </div>
+    <div class="container"><p class="footer-newsletter__status" aria-live="polite"></p></div>
+  </div>
+
+  <div class="footer-main">
+    <div class="container footer-grid">
+
+      <div class="footer-brand">
+        <div class="footer-brand__logo">
+          <img class="logo__img" src="assets/img/logo-divinedevhub-white.png" alt="Divine Dev Hub" width="168" height="66">
+        </div>
+        <p class="footer-brand__desc">A 50-person engineering team in Ahmedabad building custom software, AI products and enterprise platforms since 2014.</p>
+        <div class="footer-brand__ratings">
+          <div class="footer-brand__rating"><span class="rating"><svg class="icon icon-16"><use href="#icon-star"/></svg><svg class="icon icon-16"><use href="#icon-star"/></svg><svg class="icon icon-16"><use href="#icon-star"/></svg><svg class="icon icon-16"><use href="#icon-star"/></svg><svg class="icon icon-16"><use href="#icon-star"/></svg></span><strong>4.9</strong> Clutch</div>
+          <div class="footer-brand__rating"><span class="rating"><svg class="icon icon-16"><use href="#icon-star"/></svg><svg class="icon icon-16"><use href="#icon-star"/></svg><svg class="icon icon-16"><use href="#icon-star"/></svg><svg class="icon icon-16"><use href="#icon-star"/></svg><svg class="icon icon-16"><use href="#icon-star"/></svg></span><strong>4.8</strong> Google</div>
+          <div class="footer-brand__rating"><span class="rating"><svg class="icon icon-16"><use href="#icon-star"/></svg><svg class="icon icon-16"><use href="#icon-star"/></svg><svg class="icon icon-16"><use href="#icon-star"/></svg><svg class="icon icon-16"><use href="#icon-star"/></svg><svg class="icon icon-16"><use href="#icon-star"/></svg></span><strong>4.9</strong> GoodFirms</div>
+        </div>
+        <div class="footer-brand__contact">
+          <a href="https://maps.google.com/?q=Palladium+Business+Hub+Chandkheda+Ahmedabad" target="_blank" rel="noopener"><svg class="icon"><use href="#icon-map-pin"/></svg>304, Palladium Business Hub, Opp. 4D Square Mall, Chandkheda, Ahmedabad, Gujarat – 382424</a>
+          <a href="tel:+919876543210"><svg class="icon"><use href="#icon-phone"/></svg>+91 98765 43210</a>
+          <a href="mailto:info@divinedevhub.in"><svg class="icon"><use href="#icon-mail"/></svg>info@divinedevhub.in</a>
+          <a href="https://wa.me/919876543210"><svg class="icon"><use href="#icon-message-circle"/></svg>Chat on WhatsApp</a>
+        </div>
+      </div>
+
+      <div class="footer-grid__links">
+        <details class="footer-col-accordion" open>
+          <summary>Services<svg class="icon icon-16"><use href="#icon-chevron-down"/></svg></summary>
+          <div class="footer-col">
+            <p class="footer-col__title">Services</p>
+            <ul>
+              <li><a href="services/custom-software-development.html">Custom Software Dev</a></li>
+              <li><a href="services/web-development.html">Web Development</a></li>
+              <li><a href="services/mobile-app-development.html">Mobile Apps</a></li>
+              <li><a href="services/ai-development.html">AI &amp; ML</a></li>
+              <li><a href="services/saas-development.html">SaaS Development</a></li>
+              <li><a href="services/ecommerce-development.html">E-Commerce</a></li>
+              <li><a href="services/odoo-development.html">Odoo / ERP</a></li>
+              <li><a href="services/crm-development.html">CRM</a></li>
+              <li><a href="services/cloud-devops.html">Cloud &amp; DevOps</a></li>
+              <li><a href="services/ui-ux-design.html">UI/UX Design</a></li>
+              <li><a href="services/qa-testing.html">QA Testing</a></li>
+              <li><a href="services/" class="footer-col__viewall">View all →</a></li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="footer-col-accordion">
+          <summary>Hire Developers<svg class="icon icon-16"><use href="#icon-chevron-down"/></svg></summary>
+          <div class="footer-col">
+            <p class="footer-col__title">Hire Developers</p>
+            <ul>
+              <li><a href="hire-developers/reactjs.html">React.js</a></li>
+              <li><a href="hire-developers/nodejs.html">Node.js</a></li>
+              <li><a href="hire-developers/laravel.html">Laravel</a></li>
+              <li><a href="hire-developers/python.html">Python</a></li>
+              <li><a href="hire-developers/flutter.html">Flutter</a></li>
+              <li><a href="hire-developers/odoo.html">Odoo</a></li>
+              <li><a href="hire-developers/magento.html">Magento</a></li>
+              <li><a href="hire-developers/ai-ml.html">AI/ML Engineers</a></li>
+              <li><a href="hire-developers/full-stack.html">Full-Stack</a></li>
+              <li><a href="hire-developers/" class="footer-col__viewall">View all →</a></li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="footer-col-accordion">
+          <summary>Industries<svg class="icon icon-16"><use href="#icon-chevron-down"/></svg></summary>
+          <div class="footer-col">
+            <p class="footer-col__title">Industries</p>
+            <ul>
+              <li><a href="industries/healthcare.html">Healthcare</a></li>
+              <li><a href="industries/fintech.html">Fintech</a></li>
+              <li><a href="industries/retail-ecommerce.html">E-Commerce</a></li>
+              <li><a href="industries/education.html">Education</a></li>
+              <li><a href="industries/logistics.html">Logistics</a></li>
+              <li><a href="industries/real-estate.html">Real Estate</a></li>
+              <li><a href="industries/travel.html">Travel</a></li>
+              <li><a href="industries/manufacturing.html">Manufacturing</a></li>
+              <li><a href="industries/" class="footer-col__viewall">View all →</a></li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="footer-col-accordion">
+          <summary>Company<svg class="icon icon-16"><use href="#icon-chevron-down"/></svg></summary>
+          <div class="footer-col">
+            <p class="footer-col__title">Company</p>
+            <ul>
+              <li><a href="about-us.html">About Us</a></li>
+              <li><a href="about-us.html#team">Our Team</a></li>
+              <li><a href="process.html">Process</a></li>
+              <li><a href="careers.html">Careers <span class="footer-col__pill">6</span></a></li>
+              <li><a href="case-studies.html">Case Studies</a></li>
+              <li><a href="blog.html">Blog</a></li>
+              <li><a href="contact-us.html">Contact</a></li>
+              <li><a href="testimonials.html">Testimonials</a></li>
+              <li><a href="faqs.html">FAQs</a></li>
+            </ul>
+          </div>
+        </details>
+      </div>
+    </div>
+
+    <div class="container footer-tech">
+      <div class="footer-tech__row">
+        <span class="footer-tech__label">Technologies:</span>
+        <a href="technologies/reactjs.html">React</a>
+        <a href="technologies/nodejs.html">Node.js</a>
+        <a href="technologies/laravel.html">Laravel</a>
+        <a href="technologies/python.html">Python</a>
+        <a href="technologies/dotnet.html">.NET</a>
+        <a href="technologies/flutter.html">Flutter</a>
+        <a href="technologies/react-native.html">React Native</a>
+        <a href="technologies/aws.html">AWS</a>
+        <a href="technologies/azure.html">Azure</a>
+        <a href="technologies/docker.html">Docker</a>
+        <a href="technologies/kubernetes.html">Kubernetes</a>
+        <a href="technologies/postgresql.html">PostgreSQL</a>
+        <a href="technologies/mongodb.html">MongoDB</a>
+        <a href="technologies/openai.html">OpenAI</a>
+        <a href="technologies/langchain.html">LangChain</a>
+        <a href="technologies/odoo.html">Odoo</a>
+        <a href="technologies/magento.html">Magento</a>
+        <a href="technologies/shopify.html">Shopify</a>
+        <a href="technologies/wordpress.html">WordPress</a>
+        <a href="technologies/" class="footer-col__viewall">View all →</a>
+      </div>
+    </div>
+
+    <div class="container footer-trust">
+      <div class="footer-trust__row">
+        <span class="footer-trust__badge"><svg class="icon"><use href="#icon-shield-check"/></svg>GDPR Compliant Process</span>
+        <span class="footer-trust__badge"><svg class="icon"><use href="#icon-shield"/></svg>NDA on Every Project</span>
+        <span class="footer-trust__badge"><svg class="icon"><use href="#icon-cloud"/></svg>AWS Partner</span>
+        <span class="footer-trust__badge"><svg class="icon"><use href="#icon-database"/></svg>Odoo Partner</span>
+        <span class="footer-trust__badge"><svg class="icon"><use href="#icon-award"/></svg>Clutch Top Developer</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-legal">
+    <div class="container footer-legal__inner">
+      <p class="footer-legal__copy">© 2014–2026 Divine Dev Hub. All rights reserved.</p>
+      <div class="footer-legal__links">
+        <a href="privacy-policy.html">Privacy</a>
+        <a href="terms-conditions.html">Terms</a>
+        <a href="cookie-policy.html">Cookies</a>
+        <a href="accessibility.html">Accessibility</a>
+        <a href="sitemap.html">Sitemap</a>
+        <div class="footer-legal__social">
+          <a class="social-btn" href="#" aria-label="LinkedIn"><svg class="icon"><use href="#icon-linkedin"/></svg></a>
+          <a class="social-btn" href="#" aria-label="Facebook"><svg class="icon"><use href="#icon-facebook"/></svg></a>
+          <a class="social-btn" href="#" aria-label="X"><svg class="icon"><use href="#icon-x-twitter"/></svg></a>
+          <a class="social-btn" href="#" aria-label="Instagram"><svg class="icon"><use href="#icon-instagram"/></svg></a>
+          <a class="social-btn" href="#" aria-label="YouTube"><svg class="icon"><use href="#icon-youtube"/></svg></a>
+          <a class="social-btn" href="#" aria-label="Dribbble"><svg class="icon"><use href="#icon-dribbble"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</footer>
+
+<script src="assets/js/header.js" defer></script>
+<script src="assets/js/footer.js" defer></script>
+<script src="assets/js/reveal.js" defer></script>
+<script src="assets/js/counter.js" defer></script>
+<script src="assets/js/tabs.js" defer></script>
+<script src="assets/js/carousel.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,171 @@
+/* ============================================================
+   01 — DESIGN TOKENS
+   Divine Dev Hub Design System — "Engineered Clarity"
+   Every value used anywhere on the site must originate here.
+   See /docs/02-design-system.md for the full specification.
+   ============================================================ */
+
+:root {
+
+  /* ---------- COLOUR — BRAND (violet) ---------- */
+  --brand-50:  #F2EFFE;
+  --brand-100: #E4DDFD;
+  --brand-200: #C8BBFB;
+  --brand-300: #AB97F9;
+  --brand-400: #8D71F7;
+  --brand-500: #6D4DF6;
+  --brand-600: #5B3DF5;
+  --brand-700: #4A2FD1;
+  --brand-800: #3A24A3;
+  --brand-900: #2B1B78;
+  --brand-950: #1A1049;
+
+  /* ---------- COLOUR — ACCENT (cyan) ---------- */
+  --accent-300: #67E8F9;
+  --accent-400: #22D3EE;
+  --accent-500: #06B6D4;
+  --accent-600: #0891B2;
+
+  /* ---------- COLOUR — INK (violet-tinted neutrals) ---------- */
+  --ink-0:   #FFFFFF;
+  --ink-25:  #FBFBFD;
+  --ink-50:  #F6F6FA;
+  --ink-100: #EDEDF4;
+  --ink-200: #DEDEE9;
+  --ink-300: #C2C2D4;
+  --ink-400: #9494AE;
+  --ink-500: #6C6C87;
+  --ink-600: #4E4E67;
+  --ink-700: #38384D;
+  --ink-800: #232336;
+  --ink-900: #141426;
+  --ink-950: #0A0A18;
+
+  /* ---------- COLOUR — ON DARK ---------- */
+  --on-dark-primary:   #FFFFFF;
+  --on-dark-secondary: #B9B9CE;
+  --on-dark-tertiary:  #83839C;
+  --on-dark-border:    rgba(255,255,255,.10);
+  --on-dark-surface:   rgba(255,255,255,.04);
+  --on-dark-surface-hover: rgba(255,255,255,.07);
+
+  /* ---------- COLOUR — SEMANTIC ---------- */
+  --success-500: #10B981; --success-50: #ECFDF5;
+  --warning-500: #F59E0B; --warning-50: #FFFBEB;
+  --error-500:   #EF4444; --error-50:   #FEF2F2;
+  --info-500:    #3B82F6;
+
+  /* ---------- GRADIENTS ---------- */
+  --grad-brand:      linear-gradient(135deg, #6D4DF6 0%, #8D71F7 55%, #22D3EE 130%);
+  --grad-brand-soft: linear-gradient(135deg, #5B3DF5 0%, #4A2FD1 100%);
+  --grad-dark-mesh:
+    radial-gradient(60% 80% at 15% 0%,  rgba(109,77,246,.28) 0%, transparent 60%),
+    radial-gradient(50% 70% at 90% 20%, rgba(34,211,238,.16) 0%, transparent 60%),
+    linear-gradient(180deg, #0A0A18 0%, #141426 100%);
+  --grad-text:       linear-gradient(96deg, #FFFFFF 0%, #C8BBFB 50%, #67E8F9 100%);
+  --grad-border:     linear-gradient(135deg, rgba(109,77,246,.6), rgba(34,211,238,.25));
+
+  /* ---------- TYPOGRAPHY — FAMILIES ---------- */
+  --font-display: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body:    'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono:    'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+
+  /* ---------- TYPOGRAPHY — FLUID SCALE ---------- */
+  --fs-display-1: clamp(2.5rem, 1.4rem + 4.8vw, 4.75rem);
+  --fs-display-2: clamp(2.125rem, 1.35rem + 3.4vw, 3.75rem);
+  --fs-h1:  clamp(1.875rem, 1.35rem + 2.3vw, 3rem);
+  --fs-h2:  clamp(1.625rem, 1.28rem + 1.5vw, 2.375rem);
+  --fs-h3:  clamp(1.375rem, 1.2rem + .75vw, 1.75rem);
+  --fs-h4:  clamp(1.1875rem, 1.12rem + .3vw, 1.375rem);
+  --fs-h5:  clamp(1.0625rem, 1.04rem + .1vw, 1.125rem);
+  --fs-body-lg: clamp(1.0625rem, 1.02rem + .2vw, 1.1875rem);
+  --fs-body:    clamp(1rem, .99rem + .05vw, 1.03rem);
+  --fs-body-sm: .9375rem;
+  --fs-caption: .84375rem;
+  --fs-overline: .78125rem;
+  --fs-stat: clamp(2.75rem, 1.9rem + 3.6vw, 4.25rem);
+
+  /* ---------- SPACING — 8px grid ---------- */
+  --space-0: 0;
+  --space-1: .25rem;   /* 4  */
+  --space-2: .5rem;    /* 8  */
+  --space-3: .75rem;   /* 12 */
+  --space-4: 1rem;     /* 16 */
+  --space-5: 1.25rem;  /* 20 */
+  --space-6: 1.5rem;   /* 24 */
+  --space-8: 2rem;     /* 32 */
+  --space-10: 2.5rem;  /* 40 */
+  --space-12: 3rem;    /* 48 */
+  --space-16: 4rem;    /* 64 */
+  --space-20: 5rem;    /* 80 */
+  --space-24: 6rem;    /* 96 */
+  --space-30: 7.5rem;  /* 120 */
+  --space-40: 10rem;   /* 160 */
+
+  --section-pad:        clamp(4rem, 2rem + 7vw, 7.5rem);
+  --section-pad-tight:   clamp(3rem, 1.75rem + 4vw, 5rem);
+  --section-pad-hero:    clamp(6rem, 3rem + 10vw, 10rem);
+
+  /* ---------- CONTAINERS ---------- */
+  --container-xs: 720px;
+  --container-sm: 900px;
+  --container: 1280px;
+  --container-lg: 1440px;
+  --container-gutter: 20px;
+
+  /* ---------- RADIUS ---------- */
+  --radius-xs: .375rem;   /* 6  */
+  --radius-sm: .625rem;   /* 10 */
+  --radius-md: .875rem;   /* 14 */
+  --radius-lg: 1.25rem;   /* 20 */
+  --radius-xl: 1.75rem;   /* 28 */
+  --radius-2xl: 2.5rem;   /* 40 */
+  --radius-full: 9999px;
+
+  /* ---------- SHADOWS ---------- */
+  --shadow-xs: 0 1px 2px rgba(20,20,38,.06);
+  --shadow-sm: 0 1px 2px rgba(20,20,38,.05), 0 2px 6px -1px rgba(20,20,38,.07);
+  --shadow-md: 0 2px 4px rgba(20,20,38,.04), 0 8px 20px -6px rgba(20,20,38,.10);
+  --shadow-lg: 0 4px 8px rgba(20,20,38,.04), 0 18px 38px -10px rgba(20,20,38,.13);
+  --shadow-xl: 0 8px 16px rgba(20,20,38,.05), 0 36px 70px -20px rgba(20,20,38,.18);
+  --shadow-brand: 0 8px 20px -6px rgba(91,61,245,.34), 0 2px 6px rgba(91,61,245,.18);
+  --glow-dark: 0 0 0 1px rgba(255,255,255,.06), 0 20px 60px -20px rgba(109,77,246,.45);
+
+  /* ---------- MOTION ---------- */
+  --dur-instant: 100ms;
+  --dur-fast: 160ms;
+  --dur-base: 240ms;
+  --dur-slow: 360ms;
+  --dur-slower: 560ms;
+  --dur-marquee: 40s;
+
+  --ease-out: cubic-bezier(.22, 1, .36, 1);
+  --ease-in-out: cubic-bezier(.65, 0, .35, 1);
+  --ease-spring: cubic-bezier(.34, 1.56, .64, 1);
+
+  --stagger: 60ms;
+
+  /* ---------- Z-INDEX ---------- */
+  --z-base: 0;
+  --z-raised: 10;
+  --z-subnav: 20;
+  --z-header: 30;
+  --z-dropdown: 40;
+  --z-drawer: 50;
+  --z-mobilebar: 60;
+  --z-modal-backdrop: 70;
+  --z-modal: 80;
+  --z-toast: 90;
+  --z-cookie: 100;
+
+  /* ---------- FOCUS RING ---------- */
+  --focus-ring: 0 0 0 2px var(--ink-0), 0 0 0 5px var(--brand-300);
+  --focus-ring-dark: 0 0 0 2px var(--ink-950), 0 0 0 5px var(--accent-400);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --dur-instant: .01ms; --dur-fast: .01ms; --dur-base: .01ms;
+    --dur-slow: .01ms; --dur-slower: .01ms;
+  }
+}
