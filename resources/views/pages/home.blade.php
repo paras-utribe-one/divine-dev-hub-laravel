@@ -217,12 +217,6 @@
                 data-reveal
             />
 
-            <div class="mt-6 text-center" data-reveal>
-                <a href="{{ route('services.index') }}" class="inline-flex items-center gap-1.5 text-sm font-semibold text-primary">
-                    View all services
-                    <x-svg-icon name="arrow-right" class="h-4 w-4" />
-                </a>
-            </div>
 
             <div x-data="{ active: 0 }" class="mt-14 grid gap-4 lg:grid-cols-[22rem_1fr] lg:gap-10">
                 <div data-reveal style="--reveal-delay:80ms" class="flex flex-col overflow-hidden rounded-2xl border border-border bg-white lg:border-0 lg:bg-transparent">
@@ -285,6 +279,13 @@
                     @endforeach
                 </div>
             </div>
+
+            <div class="mt-6 text-center" data-reveal>
+                <a href="{{ route('services.index') }}" class="inline-flex items-center gap-1.5 text-sm font-semibold text-primary">
+                    View all services
+                    <x-svg-icon name="arrow-right" class="h-4 w-4" />
+                </a>
+            </div>
         </div>
     </section>
 
@@ -299,13 +300,6 @@
                 align="center"
                 data-reveal
             />
-
-            <div class="mt-6 text-center" data-reveal>
-                <a href="{{ route('technologies.index') }}" class="inline-flex items-center gap-1.5 text-sm font-semibold text-primary">
-                    View all technologies
-                    <x-svg-icon name="arrow-right" class="h-4 w-4" />
-                </a>
-            </div>
 
             <div x-data="{ active: 0 }" class="mt-14 grid gap-4 lg:grid-cols-[20rem_1fr] lg:gap-10">
                 <div data-reveal style="--reveal-delay:80ms" class="flex flex-col overflow-hidden rounded-2xl border border-border bg-white lg:border-0 lg:bg-transparent">
@@ -366,6 +360,13 @@
                     @endforeach
                 </div>
             </div>
+
+            <div class="mt-6 text-center" data-reveal>
+                <a href="{{ route('technologies.index') }}" class="inline-flex items-center gap-1.5 text-sm font-semibold text-primary">
+                    View all technologies
+                    <x-svg-icon name="arrow-right" class="h-4 w-4" />
+                </a>
+            </div>
         </div>
     </section>
 
@@ -417,6 +418,13 @@
                         </div>
                     </div>
                 @endforeach
+            </div>
+
+            <div class="mt-6 text-center" data-reveal>
+                <a href="{{ route('industries.index') }}" class="inline-flex items-center gap-1.5 text-sm font-semibold text-primary">
+                    View all industries
+                    <x-svg-icon name="arrow-right" class="h-4 w-4" />
+                </a>
             </div>
         </div>
     </section>

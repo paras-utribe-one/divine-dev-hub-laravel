@@ -26,6 +26,8 @@ return [
 
     'address' => '304, Palladium Business Hub, Opposite 4D Square Mall, Chandkheda, Ahmedabad, Gujarat 382424',
 
+    'address_map_link' => 'https://maps.app.goo.gl/hBxGrDZchp9s4hSB8',
+
     'founded_year' => 2014,
 
     'social' => [

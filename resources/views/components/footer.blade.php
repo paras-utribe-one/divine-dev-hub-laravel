@@ -87,13 +87,20 @@
                 @if (config('company.whatsapp'))
                     <a href="https://wa.me/{{ config('company.whatsapp') }}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 transition hover:text-white">
                         <x-svg-icon name="message" class="h-4 w-4 text-accent" />
-                        WhatsApp
+                        Chat on WhatsApp
                     </a>
                 @endif
-                <span class="inline-flex items-center gap-2 leading-relaxed">
-                    <x-svg-icon name="map-pin" class="h-4 w-4 shrink-0 text-accent" />
-                    {{ config('company.address') }}
-                </span>
+                @if (config('company.address') && (config('company.address_map_link')))
+                    <a href="{{ config('company.address_map_link') }}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 transition hover:text-white">
+                        <x-svg-icon name="map-pin" class="h-4 w-4 text-accent" />
+                        {{ config('company.address') }}
+                    </a>
+                @else
+                    <span class="inline-flex items-center gap-2 leading-relaxed">
+                        <x-svg-icon name="map-pin" class="h-4 w-4 shrink-0 text-accent" />
+                        {{ config('company.address') }}
+                    </span>
+                @endif
             </div>
         </div>
     </div>
