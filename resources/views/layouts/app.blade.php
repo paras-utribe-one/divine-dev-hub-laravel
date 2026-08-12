@@ -22,6 +22,8 @@
         <meta name="twitter:image" content="{{ asset('images/logo-divinedevhub.png') }}">
 
         <link rel="icon" href="{{ asset('favicon.ico') }}" sizes="any">
+        <link rel="icon" href="{{ asset('images/favicon-256.png') }}" type="image/png" sizes="256x256">
+        <link rel="apple-touch-icon" href="{{ asset('images/apple-touch-icon.png') }}">
 
         @fonts
 
@@ -34,6 +36,13 @@
         @endif
     </head>
     <body class="bg-background font-sans text-text-primary antialiased">
+        <a
+            href="#main-content"
+            class="sr-only z-[100] rounded-md bg-primary px-4 py-2 text-sm font-semibold text-white focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+        >
+            Skip to main content
+        </a>
+
         <x-header />
 
         <main id="main-content">

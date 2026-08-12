@@ -8,10 +8,14 @@
     'featured' => false,
 ])
 
+{{--
+    No target="_blank" here on purpose: posts under /blog/<slug> are internal
+    pages and should open in the same tab. Pass target="_blank" rel="noopener
+    noreferrer" via attributes at the call site for genuinely external links
+    (e.g. while posts still live on the old WordPress site).
+--}}
 <a
     href="{{ $href }}"
-    target="_blank"
-    rel="noopener noreferrer"
     {{ $attributes->merge(['class' => 'group flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-white transition duration-300 hover:-translate-y-1 hover:border-primary/25 hover:shadow-xl']) }}
 >
     <div class="relative aspect-16/10 overflow-hidden">

@@ -1,20 +1,8 @@
 @php
-    $serviceLinks = [
-        'Web Development',
-        'Software Services',
-        'CRM Solutions',
-        'App Development',
-        'E-Commerce',
-        'Odoo Services',
-        'Magento Services',
-    ];
-
-    $socialLinks = [
-        ['label' => 'Facebook', 'icon' => 'facebook', 'href' => 'https://www.facebook.com/profile.php?id=61572012705524'],
-        ['label' => 'X (Twitter)', 'icon' => 'twitter', 'href' => 'https://x.com/DivineDevHub'],
-        ['label' => 'LinkedIn', 'icon' => 'linkedin', 'href' => 'https://www.linkedin.com/company/divine-dev-hub/'],
-        ['label' => 'Instagram', 'icon' => 'instagram', 'href' => 'https://www.instagram.com/divine_dev_hub/'],
-    ];
+    // Single source of truth in App\Support\Content / config/company.php —
+    // don't reintroduce a local copy of the services or social list here.
+    $services = \App\Support\Content::services();
+    $socialLinks = config('company.social');
 @endphp
 
 <footer class="relative overflow-hidden bg-secondary text-white">
@@ -56,40 +44,55 @@
         <nav class="lg:col-span-2" aria-label="Company">
             <h2 class="text-xs font-semibold uppercase tracking-wider text-white/40">Company</h2>
             <ul class="mt-5 space-y-3.5 text-sm">
-                <li><a href="#about" class="inline-block text-white/65 transition-all duration-200 hover:translate-x-0.5 hover:text-white">About</a></li>
-                <li><a href="https://divinedevhub.in/careers/" target="_blank" rel="noopener noreferrer" class="inline-block text-white/65 transition-all duration-200 hover:translate-x-0.5 hover:text-white">Careers</a></li>
-                <li><a href="#contact" class="inline-block text-white/65 transition-all duration-200 hover:translate-x-0.5 hover:text-white">Contact</a></li>
+                <li><a href="{{ route('about') }}" class="inline-block text-white/65 transition-all duration-200 hover:translate-x-0.5 hover:text-white">About</a></li>
+                <li><a href="{{ route('careers.index') }}" class="inline-block text-white/65 transition-all duration-200 hover:translate-x-0.5 hover:text-white">Careers</a></li>
+                <li><a href="{{ route('testimonials') }}" class="inline-block text-white/65 transition-all duration-200 hover:translate-x-0.5 hover:text-white">Testimonials</a></li>
+                <li><a href="{{ route('contact.show') }}" class="inline-block text-white/65 transition-all duration-200 hover:translate-x-0.5 hover:text-white">Contact</a></li>
             </ul>
         </nav>
 
         <nav class="lg:col-span-3" aria-label="Services">
             <h2 class="text-xs font-semibold uppercase tracking-wider text-white/40">Services</h2>
             <ul class="mt-5 space-y-3.5 text-sm">
-                @foreach ($serviceLinks as $service)
-                    <li><a href="#services" class="inline-block text-white/65 transition-all duration-200 hover:translate-x-0.5 hover:text-white">{{ $service }}</a></li>
+                @foreach ($services as $service)
+                    <li><a href="{{ route('services.show', $service['slug']) }}" class="inline-block text-white/65 transition-all duration-200 hover:translate-x-0.5 hover:text-white">{{ $service['title'] }}</a></li>
                 @endforeach
             </ul>
         </nav>
 
-        <div class="lg:col-span-3">
+        <nav class="lg:col-span-3" aria-label="Resources">
             <h2 class="text-xs font-semibold uppercase tracking-wider text-white/40">Resources</h2>
             <ul class="mt-5 space-y-3.5 text-sm">
-                <li><a href="#technologies" class="inline-block text-white/65 transition-all duration-200 hover:translate-x-0.5 hover:text-white">Technologies</a></li>
-                <li><a href="#blog" class="inline-block text-white/65 transition-all duration-200 hover:translate-x-0.5 hover:text-white">Blog</a></li>
-                <li><a href="#faq" class="inline-block text-white/65 transition-all duration-200 hover:translate-x-0.5 hover:text-white">FAQs</a></li>
+                <li><a href="{{ route('work.index') }}" class="inline-block text-white/65 transition-all duration-200 hover:translate-x-0.5 hover:text-white">Our Work</a></li>
+                <li><a href="{{ route('industries.index') }}" class="inline-block text-white/65 transition-all duration-200 hover:translate-x-0.5 hover:text-white">Industries</a></li>
+                <li><a href="{{ route('technologies.index') }}" class="inline-block text-white/65 transition-all duration-200 hover:translate-x-0.5 hover:text-white">Technologies</a></li>
+                <li><a href="{{ route('blog.index') }}" class="inline-block text-white/65 transition-all duration-200 hover:translate-x-0.5 hover:text-white">Blog</a></li>
+                <li><a href="{{ route('faqs') }}" class="inline-block text-white/65 transition-all duration-200 hover:translate-x-0.5 hover:text-white">FAQs</a></li>
             </ul>
-        </div>
+        </nav>
 
         <div class="sm:col-span-2 lg:col-span-12 lg:border-t lg:border-white/10 lg:pt-8">
             <h2 class="text-xs font-semibold uppercase tracking-wider text-white/40">Contact</h2>
             <div class="mt-5 flex flex-col gap-3 text-sm text-white/65 sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-8">
-                <a href="mailto:info@divinedevhub.in" class="inline-flex items-center gap-2 transition hover:text-white">
+                <a href="mailto:{{ config('company.email') }}" class="inline-flex items-center gap-2 transition hover:text-white">
                     <x-svg-icon name="mail" class="h-4 w-4 text-accent" />
-                    info@divinedevhub.in
+                    {{ config('company.email') }}
                 </a>
+                @if (config('company.phone'))
+                    <a href="tel:{{ preg_replace('/[^0-9+]/', '', config('company.phone')) }}" class="inline-flex items-center gap-2 transition hover:text-white">
+                        <x-svg-icon name="smartphone" class="h-4 w-4 text-accent" />
+                        {{ config('company.phone') }}
+                    </a>
+                @endif
+                @if (config('company.whatsapp'))
+                    <a href="https://wa.me/{{ config('company.whatsapp') }}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 transition hover:text-white">
+                        <x-svg-icon name="message" class="h-4 w-4 text-accent" />
+                        WhatsApp
+                    </a>
+                @endif
                 <span class="inline-flex items-center gap-2 leading-relaxed">
                     <x-svg-icon name="map-pin" class="h-4 w-4 shrink-0 text-accent" />
-                    304, Palladium Business Hub, Opposite 4D Square Mall, Chandkheda, Ahmedabad, Gujarat 382424
+                    {{ config('company.address') }}
                 </span>
             </div>
         </div>
@@ -99,9 +102,10 @@
         <div class="page-container flex flex-col items-center justify-between gap-4 py-6 text-xs text-white/40 sm:flex-row">
             <p>&copy; {{ date('Y') }} Divine Dev Hub. All rights reserved.</p>
             <div class="flex items-center gap-6">
-                <a href="https://divinedevhub.in/terms-condition/" target="_blank" rel="noopener noreferrer" class="transition-colors duration-200 hover:text-white">Terms &amp; Conditions</a>
-                @if (\Illuminate\Support\Facades\Route::has('sitemap'))
-                    <a href="{{ route('sitemap') }}" class="transition-colors duration-200 hover:text-white">Sitemap</a>
+                <a href="{{ route('privacy-policy') }}" class="transition-colors duration-200 hover:text-white">Privacy Policy</a>
+                <a href="{{ route('terms-conditions') }}" class="transition-colors duration-200 hover:text-white">Terms &amp; Conditions</a>
+                @if (\Illuminate\Support\Facades\Route::has('sitemap.html'))
+                    <a href="{{ route('sitemap.html') }}" class="transition-colors duration-200 hover:text-white">Sitemap</a>
                 @endif
             </div>
         </div>

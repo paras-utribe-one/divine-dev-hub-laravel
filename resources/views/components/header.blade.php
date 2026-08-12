@@ -1,21 +1,16 @@
 @php
-    $services = [
-        ['title' => 'Web Development', 'description' => 'Custom sites and platforms, from design to deployment.', 'icon' => 'code'],
-        ['title' => 'App Development', 'description' => 'Mobile apps built for seamless end-to-end experiences.', 'icon' => 'smartphone'],
-        ['title' => 'Software Services', 'description' => 'Development, integration and customization at scale.', 'icon' => 'layers'],
-        ['title' => 'CRM Solutions', 'description' => 'Custom CRM builds that sharpen customer relationships.', 'icon' => 'users'],
-        ['title' => 'Odoo Services', 'description' => 'Implementation and customization on the Odoo ERP suite.', 'icon' => 'database'],
-        ['title' => 'E-Commerce', 'description' => 'Storefronts designed, built and optimized to convert.', 'icon' => 'cart'],
-        ['title' => 'Magento Services', 'description' => 'Builds and upgrades on the Magento commerce platform.', 'icon' => 'cloud'],
-    ];
+    // Services is the single source of truth in App\Support\Content — the
+    // header, footer and homepage used to each keep their own copy of this
+    // list, out of sync with each other. Don't reintroduce a local copy here.
+    $services = \App\Support\Content::services();
 
     $navLinks = [
-        ['label' => 'Home', 'href' => '/', 'icon' => null],
-        ['label' => 'Technologies', 'href' => '#technologies', 'icon' => 'cpu'],
-        ['label' => 'Industries', 'href' => '#industries', 'icon' => 'target'],
-        ['label' => 'Portfolio', 'href' => '#portfolio', 'icon' => 'monitor'],
-        ['label' => 'About', 'href' => '#about', 'icon' => 'users'],
-        ['label' => 'Contact', 'href' => '#contact', 'icon' => 'mail'],
+        ['label' => 'Home', 'href' => route('home'), 'icon' => null],
+        ['label' => 'Technologies', 'href' => route('technologies.index'), 'icon' => 'cpu'],
+        ['label' => 'Industries', 'href' => route('industries.index'), 'icon' => 'target'],
+        ['label' => 'Our Work', 'href' => route('work.index'), 'icon' => 'monitor'],
+        ['label' => 'About', 'href' => route('about'), 'icon' => 'users'],
+        ['label' => 'Contact', 'href' => route('contact.show'), 'icon' => 'mail'],
     ];
 @endphp
 
@@ -104,7 +99,7 @@
                                 <p class="mt-3 text-lg font-semibold leading-snug text-text-primary">Full-cycle software delivery</p>
                                 <p class="mt-2 text-sm leading-relaxed text-text-secondary">From first release to long-term platform growth.</p>
                             </div>
-                            <a href="#services" @click="closeServices()" class="group mt-6 inline-flex items-center gap-1.5 rounded-md text-sm font-semibold text-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary">
+                            <a href="{{ route('services.index') }}" @click="closeServices()" class="group mt-6 inline-flex items-center gap-1.5 rounded-md text-sm font-semibold text-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary">
                                 View all
                                 <x-svg-icon name="arrow-right" class="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
                             </a>
@@ -113,7 +108,7 @@
                         <div class="grid grid-cols-2 gap-0.5 p-2" role="none">
                             @foreach ($services as $service)
                                 <a
-                                    href="#services"
+                                    href="{{ route('services.show', $service['slug']) }}"
                                     role="menuitem"
                                     @click="closeServices()"
                                     class="group flex items-start gap-3 rounded-xl p-3 transition-all duration-200 hover:translate-x-0.5 hover:bg-surface focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
@@ -149,8 +144,21 @@
             @endforeach
         </nav>
 
-        <div class="flex items-center gap-2">
-            <x-button href="#contact" class="group hidden lg:inline-flex">
+        <div class="flex items-center gap-3">
+            @if (config('company.phone'))
+                <a
+                    href="tel:{{ preg_replace('/[^0-9+]/', '', config('company.phone')) }}"
+                    class="hidden items-center gap-2 rounded-md px-2 py-2 text-sm font-medium text-text-primary transition hover:text-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary xl:inline-flex"
+                >
+                    <span class="relative flex h-2 w-2">
+                        <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-success opacity-75"></span>
+                        <span class="relative inline-flex h-2 w-2 rounded-full bg-success"></span>
+                    </span>
+                    {{ config('company.phone') }}
+                </a>
+            @endif
+
+            <x-button href="{{ route('contact.show') }}" class="group hidden lg:inline-flex">
                 Get in Touch
                 <x-svg-icon name="arrow-right" class="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" />
             </x-button>
@@ -185,7 +193,7 @@
             <a href="/" @click="mobileOpen = false" class="flex items-center gap-3 rounded-lg px-3 py-3 text-base font-medium text-text-primary hover:bg-surface focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary">
                 <x-svg-icon name="home" class="h-5 w-5 text-primary" /> Home
             </a>
-            <a href="#services" @click="mobileOpen = false" class="flex items-center gap-3 rounded-lg px-3 py-3 text-base font-medium text-text-primary hover:bg-surface focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary">
+            <a href="{{ route('services.index') }}" @click="mobileOpen = false" class="flex items-center gap-3 rounded-lg px-3 py-3 text-base font-medium text-text-primary hover:bg-surface focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary">
                 <x-svg-icon name="layers" class="h-5 w-5 text-primary" /> Services
             </a>
             @foreach ($navLinks as $link)
@@ -195,7 +203,14 @@
                     </a>
                 @endif
             @endforeach
-            <x-button href="#contact" class="mt-3 justify-center" @click="mobileOpen = false">Get in Touch</x-button>
+
+            @if (config('company.phone'))
+                <a href="tel:{{ preg_replace('/[^0-9+]/', '', config('company.phone')) }}" @click="mobileOpen = false" class="flex items-center gap-3 rounded-lg px-3 py-3 text-base font-medium text-text-primary hover:bg-surface focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary">
+                    <x-svg-icon name="smartphone" class="h-5 w-5 text-primary" /> {{ config('company.phone') }}
+                </a>
+            @endif
+
+            <x-button href="{{ route('contact.show') }}" class="mt-3 justify-center" @click="mobileOpen = false">Get in Touch</x-button>
         </nav>
     </div>
 </header>
