@@ -16,7 +16,7 @@
     <section class="py-20 sm:py-28">
         <div class="page-container max-w-3xl space-y-12">
             @foreach ($faqGroups as $group => $items)
-                <div>
+                <div data-reveal style="--reveal-delay: {{ $loop->index * 100 }}ms">
                     <h2 class="text-xl font-semibold text-text-primary">{{ $group }}</h2>
                     <div class="mt-5 space-y-4">
                         @foreach ($items as $item)
@@ -31,7 +31,7 @@
     </section>
 
     <section class="bg-surface py-20 sm:py-28">
-        <div class="page-container">
+        <div data-reveal-scale class="page-container">
             <x-cta-banner
                 title="Still have a question?"
                 description="Ask us directly — we'll follow up at info@divinedevhub.in with next steps."

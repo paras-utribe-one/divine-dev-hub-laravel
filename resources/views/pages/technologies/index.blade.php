@@ -15,8 +15,8 @@
 
     <section class="py-16 sm:py-20">
         <div class="page-container grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            @foreach ($categories as $category)
-                <div class="rounded-2xl border border-border bg-white p-7">
+            @foreach ($categories as $i => $category)
+                <div data-reveal style="--reveal-delay: {{ $i * 60 }}ms" class="rounded-2xl border border-border bg-white p-7">
                     <span class="flex h-12 w-12 items-center justify-center rounded-xl bg-primary-50 text-primary">
                         <x-svg-icon :name="$category['icon']" class="h-6 w-6" />
                     </span>
@@ -38,10 +38,10 @@
     @if (count($details))
         <section class="bg-surface py-16 sm:py-20">
             <div class="page-container">
-                <x-section-heading eyebrow="Deep Dives" title="Featured technologies" align="center" />
+                <x-section-heading eyebrow="Deep Dives" title="Featured technologies" align="center" data-reveal />
                 <div class="mt-10 grid gap-5 sm:grid-cols-3">
-                    @foreach ($details as $technology)
-                        <a href="{{ route('technologies.show', $technology['slug']) }}" class="group flex items-center gap-4 rounded-2xl border border-border bg-white p-6 transition hover:border-primary/20 hover:shadow-lg hover:shadow-secondary/5">
+                    @foreach ($details as $i => $technology)
+                        <a href="{{ route('technologies.show', $technology['slug']) }}" data-reveal style="--reveal-delay: {{ $i * 60 }}ms" class="group flex items-center gap-4 rounded-2xl border border-border bg-white p-6 transition hover:border-primary/20 hover:shadow-lg hover:shadow-secondary/5">
                             <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-primary-50 text-primary">
                                 <x-svg-icon :name="$technology['icon']" class="h-5 w-5" />
                             </span>

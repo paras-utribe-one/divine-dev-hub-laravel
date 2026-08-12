@@ -15,7 +15,7 @@
 
     <section class="py-16 sm:py-20">
         <div class="page-container grid gap-14 lg:grid-cols-12 lg:gap-10">
-            <div class="lg:col-span-8">
+            <div data-reveal class="lg:col-span-8">
                 <span class="flex h-14 w-14 items-center justify-center rounded-2xl bg-primary-50 text-primary">
                     <x-svg-icon :name="$industry['icon']" class="h-7 w-7" />
                 </span>
@@ -28,11 +28,13 @@
                     <div class="mt-10">
                         <h2 class="text-lg font-semibold text-text-primary">Related work</h2>
                         <div class="mt-5 grid gap-5 sm:grid-cols-2">
-                            @foreach ($relatedProjects as $project)
+                            @foreach ($relatedProjects as $i => $project)
                                 <x-project-card
                                     :title="$project['title']"
                                     :category="$project['category']"
                                     :image="asset('images/projects/' . $project['image'])"
+                                    data-reveal
+                                    :style="'--reveal-delay: ' . ($i * 60) . 'ms'"
                                 />
                             @endforeach
                         </div>
@@ -40,7 +42,7 @@
                 @endif
             </div>
 
-            <div class="lg:col-span-4">
+            <div data-reveal style="--reveal-delay:120ms" class="lg:col-span-4">
                 <div class="rounded-2xl border border-border bg-white p-6">
                     <h2 class="text-sm font-semibold uppercase tracking-wide text-text-secondary">Other industries</h2>
                     <ul class="mt-4 space-y-1">
@@ -63,7 +65,7 @@
     </section>
 
     <section class="bg-surface py-20 sm:py-28">
-        <div class="page-container">
+        <div data-reveal-scale class="page-container">
             <x-cta-banner
                 :title="'Building for ' . strtolower($industry['label']) . '?'"
                 description="Tell us what you're building — we'll follow up at info@divinedevhub.in with next steps."

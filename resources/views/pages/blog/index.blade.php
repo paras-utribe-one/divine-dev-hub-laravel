@@ -17,7 +17,7 @@
         <div class="page-container">
             @if (count($posts))
                 <div class="grid gap-6 lg:grid-cols-2">
-                    @foreach ($posts as $post)
+                    @foreach ($posts as $i => $post)
                         <x-blog-card
                             :href="route('blog.show', $post['slug'])"
                             :image="asset('images/blog/' . $post['image'])"
@@ -25,11 +25,14 @@
                             :date="$post['date']"
                             :title="$post['title']"
                             :excerpt="$post['excerpt']"
+                            data-reveal
+                            :style="'--reveal-delay: ' . ($i * 100) . 'ms'"
                         />
                     @endforeach
                 </div>
             @else
                 <x-empty-state
+                    data-reveal
                     icon="layers"
                     title="The blog is just getting started"
                     description="We're working on our first posts. In the meantime, take a look at the work we've delivered."

@@ -36,34 +36,12 @@ function initScrollReveal() {
     });
 }
 
-function initNavScrollSpy() {
-    const sections = document.querySelectorAll('main section[id]');
-    const links = document.querySelectorAll('[data-nav-link]');
-
-    if (!sections.length || !links.length || !('IntersectionObserver' in window)) return;
-
-    const setActive = (id) => {
-        links.forEach((link) => {
-            const isMatch = link.getAttribute('href') === `#${id}`;
-            link.classList.toggle('text-primary', isMatch);
-            const underline = link.querySelector('span');
-            if (underline) underline.classList.toggle('scale-x-100', isMatch);
-        });
-    };
-
-    const observer = new IntersectionObserver(
-        (entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) setActive(entry.target.id);
-            });
-        },
-        { rootMargin: '-45% 0px -45% 0px', threshold: 0 }
-    );
-
-    sections.forEach((section) => observer.observe(section));
-}
+// Nav active-state used to be computed here by watching which #anchor section
+// was scrolled into view — that only made sense while nav links were anchors
+// into a single homepage. Now that they're real page URLs, which link is
+// "active" is known at request time, so it's computed server-side in
+// components/header.blade.php (via request()->routeIs()) instead of here.
 
 document.addEventListener('DOMContentLoaded', () => {
     initScrollReveal();
-    initNavScrollSpy();
 });

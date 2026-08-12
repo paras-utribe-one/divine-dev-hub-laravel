@@ -7,7 +7,7 @@
 <section class="relative overflow-hidden bg-surface py-16 sm:py-20" aria-labelledby="page-hero-heading">
     <div class="pointer-events-none absolute inset-0 -z-10 bg-dot-grid text-primary/10" aria-hidden="true"></div>
 
-    <div class="page-container max-w-3xl">
+    <div data-reveal class="page-container max-w-3xl">
         @if ($eyebrow)
             <p class="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-wide text-primary">
                 <span class="h-1.5 w-1.5 rounded-full bg-primary"></span>

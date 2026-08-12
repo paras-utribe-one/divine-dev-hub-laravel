@@ -9,7 +9,7 @@
 
     <section class="relative overflow-hidden bg-secondary py-16 sm:py-20" aria-labelledby="project-hero-heading">
         <div class="pointer-events-none absolute inset-0 -z-10 bg-dot-grid text-white/5" aria-hidden="true"></div>
-        <div class="page-container max-w-3xl">
+        <div data-reveal class="page-container max-w-3xl">
             <p class="text-sm font-semibold uppercase tracking-wide text-accent">{{ $project['category'] }}</p>
             <h1 id="project-hero-heading" class="mt-4 text-4xl font-semibold tracking-tight text-white sm:text-5xl">{{ $project['title'] }}</h1>
 
@@ -23,7 +23,7 @@
 
     <section class="py-16 sm:py-20">
         <div class="page-container grid gap-14 lg:grid-cols-12 lg:gap-10">
-            <div class="lg:col-span-8">
+            <div data-reveal class="lg:col-span-8">
                 <img
                     src="{{ asset('images/projects/' . $project['image']) }}"
                     alt="{{ $project['title'] }} — {{ $project['category'] }} project preview"
@@ -53,7 +53,7 @@
                 @endif
             </div>
 
-            <div class="lg:col-span-4">
+            <div data-reveal style="--reveal-delay:120ms" class="lg:col-span-4">
                 <div class="rounded-2xl border border-border bg-white p-6">
                     <h2 class="text-sm font-semibold uppercase tracking-wide text-text-secondary">More work</h2>
                     <ul class="mt-4 space-y-1">
@@ -76,7 +76,7 @@
     </section>
 
     <section class="bg-surface py-20 sm:py-28">
-        <div class="page-container">
+        <div data-reveal-scale class="page-container">
             <x-cta-banner
                 title="Want to see something similar built for you?"
                 description="Tell us what you're building — we'll follow up at info@divinedevhub.in with next steps."

@@ -18,6 +18,8 @@
             @foreach ($services as $i => $service)
                 <a
                     href="{{ route('services.show', $service['slug']) }}"
+                    data-reveal
+                    style="--reveal-delay: {{ $i * 60 }}ms"
                     class="group relative flex flex-col overflow-hidden rounded-2xl border border-border bg-white p-7 transition-all duration-300 hover:-translate-y-1 hover:border-primary/20 hover:shadow-xl hover:shadow-secondary/10"
                 >
                     <span class="flex h-12 w-12 items-center justify-center rounded-xl bg-primary-50 text-primary transition group-hover:bg-primary group-hover:text-white">
@@ -39,7 +41,7 @@
     </section>
 
     <section class="bg-surface py-20 sm:py-28">
-        <div class="page-container">
+        <div data-reveal-scale class="page-container">
             <x-cta-banner
                 title="Not sure which service fits?"
                 description="Tell us what you're building — we'll follow up at info@divinedevhub.in with next steps."

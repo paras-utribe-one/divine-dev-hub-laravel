@@ -10,7 +10,7 @@
     <x-page-hero eyebrow="Legal" title="Terms & Conditions" />
 
     <section class="py-16 sm:py-20">
-        <div class="page-container max-w-2xl">
+        <div data-reveal class="page-container max-w-2xl">
             <div class="mb-10 rounded-xl border border-accent/30 bg-accent/5 px-5 py-4 text-sm leading-relaxed text-text-secondary">
                 <strong class="text-text-primary">Draft pending formal legal review.</strong>
                 These are general terms for using this website. Terms governing an actual client engagement (scope, IP ownership, payment, confidentiality) are set out separately in that engagement's signed agreement, not on this page.

@@ -11,7 +11,7 @@
 
     <section class="py-16 sm:py-20">
         <div class="page-container grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
-            <div>
+            <div data-reveal style="--reveal-delay: 0ms">
                 <h2 class="text-xs font-semibold uppercase tracking-wide text-text-secondary">Company</h2>
                 <ul class="mt-4 space-y-3 text-sm">
                     <li><a href="{{ route('home') }}" class="text-text-secondary hover:text-primary">Home</a></li>
@@ -24,7 +24,7 @@
                 </ul>
             </div>
 
-            <div>
+            <div data-reveal style="--reveal-delay: 60ms">
                 <h2 class="text-xs font-semibold uppercase tracking-wide text-text-secondary">Services</h2>
                 <ul class="mt-4 space-y-3 text-sm">
                     <li><a href="{{ route('services.index') }}" class="text-text-secondary hover:text-primary">All Services</a></li>
@@ -34,7 +34,7 @@
                 </ul>
             </div>
 
-            <div>
+            <div data-reveal style="--reveal-delay: 120ms">
                 <h2 class="text-xs font-semibold uppercase tracking-wide text-text-secondary">Industries &amp; Technologies</h2>
                 <ul class="mt-4 space-y-3 text-sm">
                     <li><a href="{{ route('industries.index') }}" class="text-text-secondary hover:text-primary">All Industries</a></li>
@@ -48,7 +48,7 @@
                 </ul>
             </div>
 
-            <div>
+            <div data-reveal style="--reveal-delay: 180ms">
                 <h2 class="text-xs font-semibold uppercase tracking-wide text-text-secondary">Our Work</h2>
                 <ul class="mt-4 space-y-3 text-sm">
                     <li><a href="{{ route('work.index') }}" class="text-text-secondary hover:text-primary">All Projects</a></li>

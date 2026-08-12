@@ -10,7 +10,7 @@
     <x-page-hero eyebrow="Legal" title="Privacy Policy" />
 
     <section class="py-16 sm:py-20">
-        <div class="page-container max-w-2xl">
+        <div data-reveal class="page-container max-w-2xl">
             <div class="mb-10 rounded-xl border border-accent/30 bg-accent/5 px-5 py-4 text-sm leading-relaxed text-text-secondary">
                 <strong class="text-text-primary">Draft pending formal legal review.</strong>
                 This page accurately describes what this website currently does, but has not yet been reviewed by counsel. Treat it as provisional until that review is complete.

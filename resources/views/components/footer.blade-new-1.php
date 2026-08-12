@@ -40,28 +40,16 @@
             </p>
             <ul class="mt-7 flex items-center gap-3">
                 @foreach ($socialLinks as $social)
-                    @php
-                        $socialHoverClass = match ($social['icon']) {
-                            'facebook' => 'hover:border-[#1877F2]/60 hover:bg-[#1877F2]/10 hover:text-[#1877F2] hover:shadow-[0_0_0_4px_rgba(24,119,242,0.08)]',
-                            'twitter', 'x' => 'hover:border-white/40 hover:bg-white/10 hover:text-white hover:shadow-[0_0_0_4px_rgba(255,255,255,0.06)]',
-                            'linkedin' => 'hover:border-[#0A66C2]/60 hover:bg-[#0A66C2]/10 hover:text-[#0A66C2] hover:shadow-[0_0_0_4px_rgba(10,102,194,0.08)]',
-                            'instagram' => 'hover:border-[#E4405F]/60 hover:bg-[#E4405F]/10 hover:text-[#E4405F] hover:shadow-[0_0_0_4px_rgba(228,64,95,0.08)]',
-                            default => 'hover:border-accent/60 hover:bg-accent/10 hover:text-accent hover:shadow-[0_0_0_4px_rgba(217,154,61,0.08)]',
-                        };
-                    @endphp
-
                     <li>
                         <a
                             href="{{ $social['href'] }}"
                             target="_blank"
                             rel="noopener noreferrer"
-                            class="group flex h-11 w-11 items-center justify-center rounded-full border border-white/15 bg-white/[0.03] text-white/60 transition-all duration-200 hover:-translate-y-1 {{ $socialHoverClass }} focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                            data-class-old="flex h-10 w-10 items-center justify-center rounded-full border border-white/15 text-white/60 transition duration-200 hover:-translate-y-0.5 hover:border-accent/60 hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                            class="flex h-11 w-11 items-center justify-center rounded-full border border-white/15 bg-white/[0.03] text-white/60 transition-all duration-200 hover:-translate-y-1 hover:border-accent/60 hover:bg-accent/10 hover:text-accent hover:shadow-[0_0_0_4px_rgba(217,154,61,0.08)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
                             aria-label="{{ $social['label'] }} (opens in a new tab)"
                         >
-                            <x-svg-icon
-                                :name="$social['icon']"
-                                class="h-[18px] w-[18px] transition-transform duration-200 group-hover:scale-110"
-                            />
+                            <x-svg-icon :name="$social['icon']" class="h-4 w-4" />
                         </a>
                     </li>
                 @endforeach
@@ -69,6 +57,7 @@
         </div>
 
         <nav class="lg:col-span-2" aria-label="Company">
+            <!-- <h2 class="text-xs font-semibold uppercase tracking-wider text-white/40">Company</h2> -->
             <h2 class="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-white/60">
                 <span class="h-1 w-3 rounded-full bg-accent"></span>
                 Company
@@ -82,6 +71,7 @@
         </nav>
 
         <nav class="lg:col-span-3" aria-label="Services">
+            <!-- <h2 class="text-xs font-semibold uppercase tracking-wider text-white/40">Services</h2> -->
             <h2 class="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-white/60">
                 <span class="h-1 w-3 rounded-full bg-accent"></span>
                 Services
@@ -94,6 +84,7 @@
         </nav>
 
         <nav class="lg:col-span-3" aria-label="Resources">
+            <!-- <h2 class="text-xs font-semibold uppercase tracking-wider text-white/40">Resources</h2> -->
             <h2 class="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-white/60">
                 <span class="h-1 w-3 rounded-full bg-accent"></span>
                 Resources
@@ -108,11 +99,16 @@
         </nav>
 
         <div class="sm:col-span-2 lg:col-span-12 lg:border-t lg:border-white/10 lg:pt-8">
+            <!-- <h2 class="text-xs font-semibold uppercase tracking-wider text-white/40">Contact</h2> -->
             <h2 class="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-white/60">
                 <span class="h-1 w-3 rounded-full bg-accent"></span>
                 Contact
             </h2>
             <div class="mt-5 flex flex-col gap-3 text-sm text-white/65 sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-8">
+                <!-- <a href="mailto:{{ config('company.email') }}" class="inline-flex items-center gap-2 transition hover:text-white">
+                    <x-svg-icon name="mail" class="h-4 w-4 text-accent" />
+                    {{ config('company.email') }}
+                </a> -->
                 <a href="mailto:{{ config('company.email') }}" class="group inline-flex items-center gap-2.5 transition hover:text-white">
                     <span class="flex h-8 w-8 items-center justify-center rounded-full bg-accent/10 text-accent transition group-hover:bg-accent group-hover:text-secondary">
                         <x-svg-icon name="mail" class="h-4 w-4" />
@@ -120,6 +116,10 @@
                     {{ config('company.email') }}
                 </a>
                 @if (config('company.phone'))
+                    <!-- <a href="tel:{{ preg_replace('/[^0-9+]/', '', config('company.phone')) }}" class="inline-flex items-center gap-2 transition hover:text-white">
+                        <x-svg-icon name="smartphone" class="h-4 w-4 text-accent" />
+                        {{ config('company.phone') }}
+                    </a> -->
                     <a href="tel:{{ preg_replace('/[^0-9+]/', '', config('company.phone')) }}" class="group inline-flex items-center gap-2.5 transition hover:text-white">
                         <span class="flex h-8 w-8 items-center justify-center rounded-full bg-accent/10 text-accent transition group-hover:bg-accent group-hover:text-secondary">
                             <x-svg-icon name="smartphone" class="h-4 w-4" />
@@ -128,14 +128,22 @@
                     </a>
                 @endif
                 @if (config('company.whatsapp'))
-                    <a href="https://wa.me/{{ config('company.whatsapp') }}" target="_blank" rel="noopener noreferrer" class="group inline-flex items-center gap-2.5 transition hover:text-[#25D366]">
-                        <span class="flex h-8 w-8 items-center justify-center rounded-full bg-accent/10 text-accent transition group-hover:bg-[#25D366] group-hover:text-white">
-                            <x-svg-icon name="whatsapp" class="h-4 w-4" />
+                    <!-- <a href="https://wa.me/{{ config('company.whatsapp') }}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 transition hover:text-white">
+                        <x-svg-icon name="message" class="h-4 w-4 text-accent" />
+                        Chat on WhatsApp
+                    </a> -->
+                    <a href="https://wa.me/{{ config('company.whatsapp') }}" target="_blank" rel="noopener noreferrer" class="group inline-flex items-center gap-2.5 transition hover:text-white">
+                        <span class="flex h-8 w-8 items-center justify-center rounded-full bg-accent/10 text-accent transition group-hover:bg-accent group-hover:text-secondary">
+                            <x-svg-icon name="message" class="h-4 w-4" />
                         </span>
                         Chat on WhatsApp
                     </a>
                 @endif
                 @if (config('company.address') && (config('company.address_map_link')))
+                    <!-- <a href="{{ config('company.address_map_link') }}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 transition hover:text-white">
+                        <x-svg-icon name="map-pin" class="h-4 w-4 text-accent" />
+                        {{ config('company.address') }}
+                    </a> -->
                     <a href="{{ config('company.address_map_link') }}" target="_blank" rel="noopener noreferrer" class="group inline-flex items-center gap-2.5 transition hover:text-white">
                         <span class="flex h-8 w-8 items-center justify-center rounded-full bg-accent/10 text-accent transition group-hover:bg-accent group-hover:text-secondary">
                             <x-svg-icon name="map-pin" class="h-4 w-4" />
@@ -143,8 +151,12 @@
                         {{ config('company.address') }}
                     </a>
                 @else
-                    <span class="inline-flex items-center gap-2 leading-relaxed">
-                        <span class="flex h-8 w-8 items-center justify-center rounded-full bg-accent/10 text-accent">
+                    <!-- <span class="inline-flex items-center gap-2 leading-relaxed">
+                        <x-svg-icon name="map-pin" class="h-4 w-4 shrink-0 text-accent" />
+                        {{ config('company.address') }}
+                    </span> -->
+                    <span class="group inline-flex items-center gap-2 leading-relaxed">
+                        <span class="flex h-8 w-8 items-center justify-center rounded-full bg-accent/10 text-accent transition group-hover:bg-accent group-hover:text-secondary">
                             <x-svg-icon name="map-pin" class="h-4 w-4" />
                         </span>
                         {{ config('company.address') }}

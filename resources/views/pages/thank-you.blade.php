@@ -6,7 +6,7 @@
 @section('content')
 
     <section class="flex min-h-[60vh] items-center justify-center py-24">
-        <div class="page-container max-w-lg text-center">
+        <div data-reveal class="page-container max-w-lg text-center">
             <span class="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-success/10 text-success">
                 <x-svg-icon name="check-circle" class="h-8 w-8" />
             </span>

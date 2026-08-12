@@ -15,7 +15,7 @@
 
     <section class="py-20 sm:py-28" aria-labelledby="contact-heading">
         <div class="page-container grid gap-14 lg:grid-cols-12 lg:gap-10">
-            <div class="lg:col-span-7">
+            <div data-reveal class="lg:col-span-7">
                 <h2 id="contact-heading" class="sr-only">Contact form</h2>
 
                 @if (session('status') === 'sent')
@@ -72,7 +72,7 @@
                 </form>
             </div>
 
-            <div class="lg:col-span-5">
+            <div data-reveal style="--reveal-delay:120ms" class="lg:col-span-5">
                 <div class="rounded-2xl border border-border bg-surface p-8">
                     <h2 class="text-lg font-semibold text-text-primary">Other ways to reach us</h2>
 
@@ -110,6 +110,12 @@
                             <div>
                                 <p class="font-medium text-text-primary">Office</p>
                                 <p class="text-text-secondary">{{ config('company.address') }}</p>
+                                @if (config('company.address_map_link'))
+                                    <a href="{{ config('company.address_map_link') }}" target="_blank" rel="noopener noreferrer" class="mt-1 inline-flex items-center gap-1 text-sm font-medium text-primary hover:underline">
+                                        Get directions
+                                        <x-svg-icon name="arrow-up-right" class="h-3.5 w-3.5" />
+                                    </a>
+                                @endif
                             </div>
                         </li>
                     </ul>

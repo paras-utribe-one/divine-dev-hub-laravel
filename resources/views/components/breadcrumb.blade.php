@@ -4,7 +4,13 @@
     'items' => [],
 ])
 
-<nav aria-label="Breadcrumb" class="border-b border-border bg-surface">
+{{--
+    mt-20 clears the fixed header (h-20 / 80px unscrolled — see header.blade.php)
+    so the breadcrumb isn't rendered underneath it. Every non-home page starts
+    with this component first, so the fix belongs here once rather than
+    repeated as top padding on every page-hero.
+--}}
+<nav aria-label="Breadcrumb" class="mt-20 border-b border-border bg-surface">
     <ol class="page-container flex flex-wrap items-center gap-1.5 py-3 text-xs text-text-secondary">
         <li class="flex items-center gap-1.5">
             <a href="{{ route('home') }}" class="transition hover:text-primary">Home</a>

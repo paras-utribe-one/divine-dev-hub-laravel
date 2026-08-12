@@ -4,14 +4,18 @@
     // list, out of sync with each other. Don't reintroduce a local copy here.
     $services = \App\Support\Content::services();
 
+    // 'active' is computed server-side from the current route rather than by
+    // watching scroll position — see resources/js/app.js for why that changed.
     $navLinks = [
-        ['label' => 'Home', 'href' => route('home'), 'icon' => null],
-        ['label' => 'Technologies', 'href' => route('technologies.index'), 'icon' => 'cpu'],
-        ['label' => 'Industries', 'href' => route('industries.index'), 'icon' => 'target'],
-        ['label' => 'Our Work', 'href' => route('work.index'), 'icon' => 'monitor'],
-        ['label' => 'About', 'href' => route('about'), 'icon' => 'users'],
-        ['label' => 'Contact', 'href' => route('contact.show'), 'icon' => 'mail'],
+        ['label' => 'Home', 'href' => route('home'), 'icon' => null, 'active' => request()->routeIs('home')],
+        ['label' => 'Technologies', 'href' => route('technologies.index'), 'icon' => 'cpu', 'active' => request()->routeIs('technologies.*')],
+        ['label' => 'Industries', 'href' => route('industries.index'), 'icon' => 'target', 'active' => request()->routeIs('industries.*')],
+        ['label' => 'Our Work', 'href' => route('work.index'), 'icon' => 'monitor', 'active' => request()->routeIs('work.*')],
+        ['label' => 'About', 'href' => route('about'), 'icon' => 'users', 'active' => request()->routeIs('about')],
+        ['label' => 'Contact', 'href' => route('contact.show'), 'icon' => 'mail', 'active' => request()->routeIs('contact.*')],
     ];
+
+    $servicesActive = request()->routeIs('services.*');
 @endphp
 
 <header
@@ -51,9 +55,13 @@
         </a>
 
         <nav class="hidden items-center lg:flex" aria-label="Primary">
-            <a href="/" class="nav-link group relative rounded-md px-3.5 py-2 text-sm font-medium text-text-primary transition hover:text-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary">
+            <a
+                href="/"
+                class="nav-link group relative rounded-md px-3.5 py-2 text-sm font-medium transition hover:text-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary {{ request()->routeIs('home') ? 'text-primary' : 'text-text-primary' }}"
+                @if (request()->routeIs('home')) aria-current="page" @endif
+            >
                 Home
-                <span class="pointer-events-none absolute inset-x-3.5 -bottom-0.5 h-px scale-x-0 bg-primary transition-transform duration-300 ease-out group-hover:scale-x-100" aria-hidden="true"></span>
+                <span class="pointer-events-none absolute inset-x-3.5 -bottom-0.5 h-px bg-primary transition-transform duration-300 ease-out group-hover:scale-x-100 {{ request()->routeIs('home') ? 'scale-x-100' : 'scale-x-0' }}" aria-hidden="true"></span>
             </a>
 
             <div
@@ -67,7 +75,7 @@
                 <button
                     type="button"
                     x-ref="servicesTrigger"
-                    class="relative flex items-center gap-1.5 rounded-md px-3.5 py-2 text-sm font-medium text-text-primary transition hover:text-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+                    class="relative flex items-center gap-1.5 rounded-md px-3.5 py-2 text-sm font-medium transition hover:text-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary {{ $servicesActive ? 'text-primary' : 'text-text-primary' }}"
                     aria-haspopup="true"
                     :aria-expanded="servicesOpen"
                     aria-controls="services-menu"
@@ -75,7 +83,11 @@
                 >
                     Services
                     <x-svg-icon name="chevron-down" class="h-3.5 w-3.5 transition-transform duration-200" x-bind:class="servicesOpen ? 'rotate-180' : ''" />
-                    <span class="pointer-events-none absolute inset-x-3.5 -bottom-0.5 h-px bg-primary transition-transform duration-300 ease-out" :class="servicesOpen ? 'scale-x-100' : 'scale-x-0'" aria-hidden="true"></span>
+                    <span
+                        class="pointer-events-none absolute inset-x-3.5 -bottom-0.5 h-px bg-primary transition-transform duration-300 ease-out"
+                        :class="(servicesOpen || {{ $servicesActive ? 'true' : 'false' }}) ? 'scale-x-100' : 'scale-x-0'"
+                        aria-hidden="true"
+                    ></span>
                 </button>
 
                 <div
@@ -134,11 +146,11 @@
                 @if ($link['label'] !== 'Home')
                     <a
                         href="{{ $link['href'] }}"
-                        data-nav-link
-                        class="nav-link group relative rounded-md px-3.5 py-2 text-sm font-medium text-text-primary transition hover:text-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+                        class="nav-link group relative rounded-md px-3.5 py-2 text-sm font-medium transition hover:text-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary {{ $link['active'] ? 'text-primary' : 'text-text-primary' }}"
+                        @if ($link['active']) aria-current="page" @endif
                     >
                         {{ $link['label'] }}
-                        <span class="pointer-events-none absolute inset-x-3.5 -bottom-0.5 h-px scale-x-0 bg-primary transition-transform duration-300 ease-out group-hover:scale-x-100" aria-hidden="true"></span>
+                        <span class="pointer-events-none absolute inset-x-3.5 -bottom-0.5 h-px bg-primary transition-transform duration-300 ease-out group-hover:scale-x-100 {{ $link['active'] ? 'scale-x-100' : 'scale-x-0' }}" aria-hidden="true"></span>
                     </a>
                 @endif
             @endforeach

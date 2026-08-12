@@ -17,17 +17,20 @@
         <div class="page-container">
             @if (count($jobs))
                 <div class="space-y-4">
-                    @foreach ($jobs as $job)
+                    @foreach ($jobs as $i => $job)
                         <x-job-card
                             :title="$job['title']"
                             :location="$job['location']"
                             :type="$job['type']"
                             :href="route('careers.show', $job['slug'])"
+                            data-reveal
+                            :style="'--reveal-delay: ' . ($i * 60) . 'ms'"
                         />
                     @endforeach
                 </div>
             @else
                 <x-empty-state
+                    data-reveal
                     icon="users"
                     title="No open roles right now"
                     description="We're not actively hiring at the moment, but we're always glad to hear from strong engineers and designers. Send an introduction and we'll keep it on file."

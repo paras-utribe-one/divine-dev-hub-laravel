@@ -18,6 +18,8 @@
             @foreach ($industries as $industry)
                 <a
                     href="{{ route('industries.show', $industry['slug']) }}"
+                    data-reveal
+                    style="--reveal-delay: {{ $loop->index * 60 }}ms"
                     class="group relative overflow-hidden rounded-2xl bg-white/[0.03] p-6 ring-1 ring-inset ring-white/10 transition-all duration-300 hover:-translate-y-1 hover:bg-white/[0.06] hover:ring-accent/40"
                 >
                     <x-svg-icon
@@ -39,7 +41,7 @@
     </section>
 
     <section class="py-20 sm:py-28">
-        <div class="page-container">
+        <div data-reveal-scale class="page-container">
             <x-cta-banner
                 title="Don't see your industry?"
                 description="We're always working outside these six — tell us what you're building and we'll follow up at info@divinedevhub.in."

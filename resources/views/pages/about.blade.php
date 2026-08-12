@@ -16,7 +16,7 @@
     {{-- Company story --}}
     <section class="py-20 sm:py-28" aria-labelledby="story-heading">
         <div class="page-container grid gap-14 lg:grid-cols-12 lg:gap-8">
-            <div class="lg:col-span-5 lg:flex lg:h-full lg:flex-col lg:justify-center">
+            <div data-reveal class="lg:col-span-5 lg:flex lg:h-full lg:flex-col lg:justify-center">
                 <div class="flex items-baseline gap-4">
                     <span class="text-7xl font-bold leading-none tracking-tight text-primary sm:text-8xl">2014</span>
                     <span class="max-w-32 text-xs font-medium uppercase leading-snug tracking-wide text-text-secondary">Founded in Ahmedabad, India</span>
@@ -27,7 +27,7 @@
                 </p>
             </div>
 
-            <div class="lg:col-span-7">
+            <div data-reveal style="--reveal-delay:120ms" class="lg:col-span-7">
                 <p class="text-lg leading-relaxed text-text-secondary">
                     Established in 2014, Divine Dev Hub delivers high-performance software development, e-commerce platforms, enterprise-grade security and CRM systems to businesses worldwide. We've helped emerging startups and established enterprises alike build scalable, future-ready technology — with every engagement scoped around measurable business outcomes, not just feature delivery.
                 </p>
@@ -60,7 +60,7 @@
     {{-- Why choose us --}}
     <section class="bg-surface py-20 sm:py-28" aria-labelledby="why-heading">
         <div class="page-container grid gap-12 lg:grid-cols-12 lg:gap-8">
-            <div class="lg:col-span-4">
+            <div data-reveal class="lg:col-span-4">
                 <p class="text-sm font-semibold uppercase tracking-wide text-primary">Why Choose Us</p>
                 <h2 id="why-heading" class="mt-4 text-3xl font-semibold tracking-tight text-text-primary sm:text-4xl">
                     Engineering quality, without the overhead
@@ -70,7 +70,7 @@
             <div class="lg:col-span-8">
                 <div class="divide-y divide-border border-t border-border">
                     @foreach ($benefits as $i => $benefit)
-                        <div class="flex items-start gap-5 py-7">
+                        <div data-reveal style="--reveal-delay: {{ $i * 80 }}ms" class="flex items-start gap-5 py-7">
                             <span class="hidden shrink-0 pt-2 text-xs font-semibold tabular-nums text-muted sm:block">0{{ $i + 1 }}</span>
                             <span class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary-50 text-primary">
                                 <x-svg-icon :name="$benefit['icon']" class="h-5 w-5" />
@@ -94,19 +94,22 @@
                 eyebrow="How We Work"
                 title="A transparent path from idea to launch"
                 align="center"
+                data-reveal
             />
 
             <div class="relative mt-16">
                 <div class="absolute inset-x-0 top-6 hidden h-px bg-border lg:block" aria-hidden="true"></div>
                 <div class="grid gap-10 lg:grid-cols-7 lg:gap-4">
-                    @foreach ($processSteps as $step)
-                        <x-process-step
-                            :number="$step['number']"
-                            :title="$step['title']"
-                            :description="$step['description']"
-                            :icon="$step['icon']"
-                            :last="$loop->last"
-                        />
+                    @foreach ($processSteps as $i => $step)
+                        <div data-reveal style="--reveal-delay: {{ $i * 70 }}ms">
+                            <x-process-step
+                                :number="$step['number']"
+                                :title="$step['title']"
+                                :description="$step['description']"
+                                :icon="$step['icon']"
+                                :last="$loop->last"
+                            />
+                        </div>
                     @endforeach
                 </div>
             </div>
@@ -115,7 +118,7 @@
 
     {{-- Team — pending real photography, see docs/build-log.md --}}
     <section class="bg-surface py-20 sm:py-28" aria-labelledby="team-heading">
-        <div class="page-container max-w-2xl text-center">
+        <div data-reveal class="page-container max-w-2xl text-center">
             <p class="text-sm font-semibold uppercase tracking-wide text-primary">Our Team</p>
             <h2 id="team-heading" class="mt-4 text-3xl font-semibold tracking-tight text-text-primary sm:text-4xl">
                 50+ engineers, designers and specialists
@@ -127,7 +130,7 @@
     </section>
 
     <section class="py-20 sm:py-28" aria-labelledby="about-cta-heading">
-        <div class="page-container">
+        <div data-reveal-scale class="page-container">
             <x-cta-banner
                 title="Want to talk through your project?"
                 description="Tell us what you're building — we'll follow up at info@divinedevhub.in with next steps."

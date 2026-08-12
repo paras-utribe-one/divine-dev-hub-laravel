@@ -16,17 +16,20 @@
         <div class="page-container">
             @if (count($testimonials))
                 <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                    @foreach ($testimonials as $testimonial)
+                    @foreach ($testimonials as $i => $testimonial)
                         <x-testimonial-card
                             :quote="$testimonial['quote']"
                             :name="$testimonial['name']"
                             :role="$testimonial['role']"
                             :company="$testimonial['company']"
+                            data-reveal
+                            :style="'--reveal-delay: ' . ($i * 60) . 'ms'"
                         />
                     @endforeach
                 </div>
             @else
                 <x-empty-state
+                    data-reveal
                     icon="message"
                     title="Client testimonials are on the way"
                     description="We're collecting written, attributed feedback from recent clients. In the meantime, take a look at the work we've delivered."

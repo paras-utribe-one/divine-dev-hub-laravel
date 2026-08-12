@@ -15,8 +15,8 @@
 
     <section class="py-16 sm:py-20">
         <div class="page-container grid gap-5 lg:grid-cols-3 lg:grid-rows-2">
-            @foreach ($projects as $project)
-                <div class="{{ $project['featured'] ?? false ? 'lg:col-span-2 lg:row-span-2' : '' }}">
+            @foreach ($projects as $i => $project)
+                <div data-reveal style="--reveal-delay: {{ $i * 60 }}ms" class="{{ $project['featured'] ?? false ? 'lg:col-span-2 lg:row-span-2' : '' }}">
                     <a href="{{ route('work.show', $project['slug']) }}" class="block h-full">
                         <x-project-card
                             :title="$project['title']"
@@ -31,7 +31,7 @@
     </section>
 
     <section class="bg-surface py-20 sm:py-28">
-        <div class="page-container">
+        <div data-reveal-scale class="page-container">
             <x-cta-banner
                 title="Want to see something similar built for you?"
                 description="Tell us what you're building — we'll follow up at info@divinedevhub.in with next steps."
