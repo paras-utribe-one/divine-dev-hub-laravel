@@ -1,0 +1,299 @@
+/* ============================================================
+   03 — COMPONENTS
+   Buttons, badges/chips, forms, icon utilities, cards (base)
+   See /docs/02-design-system.md §3.9 for full specification
+   ============================================================ */
+
+/* ---------- ICON UTILITY ---------- */
+.icon {
+  display: inline-block;
+  flex-shrink: 0;
+  width: 20px; height: 20px;
+  fill: none;
+}
+.icon-16 { width: 16px; height: 16px; }
+.icon-20 { width: 20px; height: 20px; }
+.icon-24 { width: 24px; height: 24px; }
+.icon-32 { width: 32px; height: 32px; }
+
+.icon-tile {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px; height: 48px;
+  border-radius: var(--radius-md);
+  background: var(--brand-50);
+  color: var(--brand-600);
+  flex-shrink: 0;
+  transition: background var(--dur-base) var(--ease-out), transform var(--dur-base) var(--ease-out);
+}
+.icon-tile--lg { width: 56px; height: 56px; }
+[data-on-dark] .icon-tile, .on-dark .icon-tile {
+  background: rgba(109,77,246,.14);
+  color: var(--brand-400);
+}
+
+/* ---------- BUTTONS ---------- */
+.btn {
+  --btn-h: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  height: var(--btn-h);
+  min-height: 44px;
+  padding-inline: var(--space-5);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: .9375rem;
+  line-height: 1;
+  white-space: nowrap;
+  border: 1.5px solid transparent;
+  cursor: pointer;
+  transition: background-color var(--dur-fast) var(--ease-out),
+              border-color var(--dur-fast) var(--ease-out),
+              color var(--dur-fast) var(--ease-out),
+              transform var(--dur-fast) var(--ease-out),
+              box-shadow var(--dur-fast) var(--ease-out);
+}
+.btn .icon { transition: transform var(--dur-base) var(--ease-out); }
+.btn:hover .icon-arrow { transform: translateX(4px); }
+.btn:active { transform: translateY(0) scale(.98); }
+
+.btn--sm { --btn-h: 36px; padding-inline: var(--space-4); font-size: .875rem; }
+.btn--lg { --btn-h: 52px; padding-inline: var(--space-7, 1.75rem); font-size: 1rem; }
+.btn--xl { --btn-h: 60px; padding-inline: var(--space-8); font-size: 1.0625rem; }
+
+.btn--icon { width: var(--btn-h); padding-inline: 0; border-radius: var(--radius-full); }
+
+/* Primary */
+.btn--primary {
+  background: var(--brand-600);
+  color: var(--ink-0);
+  box-shadow: var(--shadow-brand);
+}
+.btn--primary:hover { background: var(--brand-700); transform: translateY(-2px); box-shadow: var(--shadow-lg), var(--shadow-brand); }
+.btn--primary:active { background: var(--brand-800); }
+
+/* Gradient — reserved for the single highest-value CTA on a page */
+.btn--gradient {
+  background: var(--grad-brand);
+  color: var(--ink-0);
+  box-shadow: var(--shadow-brand);
+}
+.btn--gradient:hover { filter: brightness(1.08); transform: translateY(-2px); box-shadow: var(--shadow-lg), var(--shadow-brand); }
+
+/* Secondary (light) */
+.btn--secondary {
+  background: var(--ink-0);
+  color: var(--ink-800);
+  border-color: var(--ink-200);
+}
+.btn--secondary:hover { border-color: var(--ink-800); background: var(--ink-25); }
+.btn--secondary:active { background: var(--ink-100); }
+
+/* Ghost */
+.btn--ghost { background: transparent; color: var(--ink-700); }
+.btn--ghost:hover { background: var(--ink-100); }
+.btn--ghost:active { background: var(--ink-200); }
+
+/* On dark */
+.btn--primary-dark { background: var(--ink-0); color: var(--ink-900); }
+.btn--primary-dark:hover { background: var(--ink-100); transform: translateY(-2px); }
+
+.btn--secondary-dark {
+  background: transparent;
+  color: var(--ink-0);
+  border-color: rgba(255,255,255,.25);
+}
+.btn--secondary-dark:hover { background: rgba(255,255,255,.1); border-color: var(--ink-0); }
+
+.btn--white-on-brand { background: var(--ink-0); color: var(--brand-700); }
+.btn--white-on-brand:hover { background: var(--ink-50); transform: translateY(-2px); }
+
+.btn--ghost-on-brand { background: transparent; color: var(--ink-0); border-color: rgba(255,255,255,.4); }
+.btn--ghost-on-brand:hover { background: rgba(255,255,255,.14); border-color: var(--ink-0); }
+
+.btn:disabled, .btn[aria-disabled="true"] {
+  background: var(--ink-200) !important;
+  color: var(--ink-400) !important;
+  border-color: transparent !important;
+  box-shadow: none !important;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+.btn-group { display: flex; align-items: center; gap: var(--space-4); flex-wrap: wrap; }
+
+/* ---------- BADGES / CHIPS ---------- */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  font-size: var(--fs-overline);
+  font-weight: 600;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  background: var(--brand-50);
+  color: var(--brand-700);
+}
+.badge--on-dark { background: rgba(109,77,246,.16); color: var(--brand-300); border: 1px solid rgba(109,77,246,.35); }
+.badge--status { text-transform: none; letter-spacing: normal; font-weight: 500; gap: var(--space-2); }
+.badge--status .dot {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--success-500);
+  box-shadow: 0 0 0 0 rgba(16,185,129,.5);
+  animation: pulse-dot 2s var(--ease-in-out) infinite;
+}
+.badge--status .dot.is-away { background: var(--warning-500); box-shadow: 0 0 0 0 rgba(245,158,11,.5); animation-name: pulse-dot-amber; }
+
+@keyframes pulse-dot {
+  0% { box-shadow: 0 0 0 0 rgba(16,185,129,.5); }
+  70% { box-shadow: 0 0 0 6px rgba(16,185,129,0); }
+  100% { box-shadow: 0 0 0 0 rgba(16,185,129,0); }
+}
+@keyframes pulse-dot-amber {
+  0% { box-shadow: 0 0 0 0 rgba(245,158,11,.5); }
+  70% { box-shadow: 0 0 0 6px rgba(245,158,11,0); }
+  100% { box-shadow: 0 0 0 0 rgba(245,158,11,0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .badge--status .dot { animation: none; }
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: var(--radius-xs);
+  font-size: var(--fs-body-sm);
+  font-weight: 500;
+  background: var(--ink-50);
+  color: var(--ink-600);
+}
+.chip--outline { background: var(--ink-0); border: 1px solid var(--ink-200); color: var(--ink-700); border-radius: var(--radius-full); }
+.chip--metric { background: var(--grad-brand); color: var(--ink-0); font-weight: 700; border-radius: var(--radius-full); padding: 6px 14px; }
+
+/* Trust chip row */
+.trust-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2) var(--space-6);
+  align-items: center;
+}
+.trust-chips .trust-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--fs-body-sm);
+  color: var(--ink-500);
+  font-weight: 500;
+}
+.trust-chips .trust-chip .icon { color: var(--brand-500); }
+[data-on-dark] .trust-chips .trust-chip, .on-dark .trust-chips .trust-chip { color: var(--on-dark-secondary); }
+[data-on-dark] .trust-chips .trust-chip .icon, .on-dark .trust-chips .trust-chip .icon { color: var(--accent-400); }
+
+/* Rating stars */
+.rating {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+}
+.rating .icon-16 { color: var(--warning-500); }
+.rating .icon-16.is-empty { color: var(--ink-200); }
+
+/* ---------- FORM FIELDS ---------- */
+.field { display: flex; flex-direction: column; gap: var(--space-2); }
+.field label {
+  font-size: .875rem;
+  font-weight: 600;
+  color: var(--ink-700);
+}
+[data-on-dark] .field label, .on-dark .field label { color: var(--ink-0); }
+
+.field input[type="text"],
+.field input[type="email"],
+.field input[type="tel"],
+.field input[type="search"],
+.field textarea,
+.field select {
+  height: 52px;
+  padding: 14px 16px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--ink-200);
+  background: var(--ink-0);
+  font-size: 1rem;
+  color: var(--ink-800);
+  transition: border-color var(--dur-fast) var(--ease-out), box-shadow var(--dur-fast) var(--ease-out);
+}
+.field textarea { height: auto; min-height: 140px; padding-top: 14px; resize: vertical; }
+.field input::placeholder, .field textarea::placeholder { color: var(--ink-400); }
+.field input:focus, .field textarea:focus, .field select:focus {
+  outline: none;
+  border-color: var(--brand-600);
+  box-shadow: 0 0 0 3px rgba(109,77,246,.18);
+}
+[data-on-dark] .field input, [data-on-dark] .field textarea, [data-on-dark] .field select,
+.on-dark .field input, .on-dark .field textarea, .on-dark .field select {
+  background: rgba(255,255,255,.05);
+  border-color: rgba(255,255,255,.14);
+  color: var(--ink-0);
+}
+
+.field-inline {
+  display: flex;
+  gap: var(--space-3);
+}
+.field-inline .field { flex: 1; }
+
+.form-privacy {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-2);
+  font-size: var(--fs-caption);
+  color: var(--ink-500);
+}
+.form-privacy .icon { color: var(--ink-400); flex-shrink: 0; margin-top: 1px; }
+
+/* ---------- CARD BASE ---------- */
+.card {
+  background: var(--ink-0);
+  border: 1px solid var(--ink-200);
+  border-radius: var(--radius-lg);
+  padding: var(--space-8);
+  transition: transform var(--dur-base) var(--ease-out),
+              box-shadow var(--dur-base) var(--ease-out),
+              border-color var(--dur-base) var(--ease-out),
+              background-color var(--dur-base) var(--ease-out);
+}
+.card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); border-color: var(--brand-200); }
+
+.card--dark {
+  background: var(--on-dark-surface);
+  border-color: var(--on-dark-border);
+  color: var(--on-dark-secondary);
+}
+.card--dark:hover { background: var(--on-dark-surface-hover); border-color: rgba(109,77,246,.5); box-shadow: var(--glow-dark); }
+
+.card-link { position: relative; }
+.card-link > a.card-link__target {
+  position: absolute; inset: 0; z-index: 2;
+  border-radius: inherit;
+}
+
+/* ---------- SOCIAL ICON BUTTON ---------- */
+.social-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px; height: 36px;
+  border-radius: var(--radius-full);
+  color: var(--on-dark-secondary);
+  transition: color var(--dur-fast) var(--ease-out), transform var(--dur-fast) var(--ease-out);
+}
+.social-btn:hover { color: var(--brand-400); transform: translateY(-2px); }
+.social-btn .icon { width: 18px; height: 18px; }
