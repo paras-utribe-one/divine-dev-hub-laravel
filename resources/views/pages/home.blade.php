@@ -532,10 +532,14 @@
         </div>
     </section>
 
-    {{-- Blog / Insights — intentionally omitted when there are no real posts yet.
-         This used to show two placeholder cards linking off-domain to the old
-         WordPress blog with picsum.photos stock images; an honest missing
-         section beats a fake-looking one. See docs/build-log.md. --}}
+    {{-- Blog / Insights — renders only when $posts isn't empty. Currently
+         populated with Phase-A placeholder posts for design review (see
+         docs/build-log.md) — this section goes back to rendering nothing
+         (an honest missing section beats a fake-looking one) the moment
+         Content::posts() is emptied out again, until real posts exist. This
+         used to show two placeholder cards linking off-domain to the old
+         WordPress blog with picsum.photos stock images; that's gone for
+         good regardless of what fills this section. --}}
     @if (count($posts))
         <section id="blog" class="scroll-mt-24 bg-surface py-24 sm:py-32" aria-labelledby="blog-heading">
             <div class="page-container">
@@ -547,7 +551,12 @@
                     data-reveal
                 />
 
-                <div class="mt-14 grid gap-6 lg:grid-cols-2">
+                <div data-reveal class="mx-auto mt-6 max-w-2xl rounded-xl border border-dashed border-accent/50 bg-accent/5 px-5 py-4 text-center text-sm leading-relaxed text-text-secondary">
+                    <strong class="text-text-primary">Placeholder data — design review only.</strong>
+                    Every post below is fictional sample content added to review this section's populated layout.
+                </div>
+
+                <div class="mt-10 grid gap-6 lg:grid-cols-2">
                     @foreach ($posts as $post)
                         <div data-reveal style="--reveal-delay: {{ $loop->index * 100 }}ms">
                             <x-blog-card
@@ -558,6 +567,7 @@
                                 :title="$post['title']"
                                 :excerpt="$post['excerpt']"
                                 :featured="$loop->first"
+                                placeholder
                             />
                         </div>
                     @endforeach

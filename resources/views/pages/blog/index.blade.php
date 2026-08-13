@@ -16,6 +16,11 @@
     <section class="py-16 sm:py-20">
         <div class="page-container">
             @if (count($posts))
+                <div data-reveal class="mb-6 rounded-xl border border-dashed border-accent/50 bg-accent/5 px-5 py-4 text-sm leading-relaxed text-text-secondary">
+                    <strong class="text-text-primary">Placeholder data — design review only.</strong>
+                    Every post below is fictional sample content, including the images, added to review this page's populated layout. See <code class="text-xs">docs/build-log.md</code>.
+                </div>
+
                 <div class="grid gap-6 lg:grid-cols-2">
                     @foreach ($posts as $i => $post)
                         <x-blog-card
@@ -25,6 +30,7 @@
                             :date="$post['date']"
                             :title="$post['title']"
                             :excerpt="$post['excerpt']"
+                            placeholder
                             data-reveal
                             :style="'--reveal-delay: ' . ($i * 100) . 'ms'"
                         />

@@ -164,7 +164,15 @@ class Content
      * client-confirmed number exists — see docs/build-log.md. Do not fill this
      * in with an invented figure.
      *
-     * @return array<int, array{slug:string,title:string,category:string,image:string,industry:?string,featured?:bool,summary:string,metric:?string}>
+     * `placeholder_metric` is separate, Phase-A-only sample data (see
+     * docs/build-log.md, "Phase A — placeholder data for design QA") so the
+     * case-study metric badge can be reviewed populated. It is never treated
+     * as a real value anywhere it's rendered — the template always shows a
+     * <x-placeholder-tag /> next to it and keeps the "gathering real numbers"
+     * note visible. Setting `metric` for real in Phase C makes this field
+     * irrelevant; delete it then rather than leaving it stale.
+     *
+     * @return array<int, array{slug:string,title:string,category:string,image:string,industry:?string,featured?:bool,summary:string,metric:?string,placeholder_metric:?string}>
      */
     public static function projects(): array
     {
@@ -178,6 +186,7 @@ class Content
                 'featured' => true,
                 'summary' => 'A booking and itinerary platform built for the travel and hospitality space, covering the guest-facing booking flow end to end.',
                 'metric' => null,
+                'placeholder_metric' => 'Sample: +42% faster bookings',
             ],
             [
                 'slug' => 'agripari',
@@ -187,6 +196,7 @@ class Content
                 'industry' => 'agriculture-ecommerce',
                 'summary' => 'A marketplace connecting agricultural growers and buyers, built as an e-commerce platform tailored to the agriculture sector.',
                 'metric' => null,
+                'placeholder_metric' => 'Sample: 1,200+ active buyers',
             ],
             [
                 'slug' => 'live-medical-service',
@@ -196,6 +206,7 @@ class Content
                 'industry' => 'healthcare-telemedicine',
                 'summary' => 'A telemedicine platform supporting remote-care workflows between patients and providers.',
                 'metric' => null,
+                'placeholder_metric' => 'Sample: 30% shorter wait times',
             ],
             [
                 'slug' => 'stock-market-service',
@@ -205,6 +216,7 @@ class Content
                 'industry' => 'fintech-trading',
                 'summary' => 'AI-assisted trading and market-data tooling built for the fintech sector.',
                 'metric' => null,
+                'placeholder_metric' => 'Sample: sub-100ms data refresh',
             ],
             [
                 'slug' => 'quickclock',
@@ -217,6 +229,7 @@ class Content
                 'industry' => null,
                 'summary' => 'An HR management system covering core workforce operations for its client organization.',
                 'metric' => null,
+                'placeholder_metric' => 'Sample: 5,000+ employees onboarded',
             ],
             [
                 'slug' => 'school-management',
@@ -226,6 +239,7 @@ class Content
                 'industry' => 'education',
                 'summary' => 'A school management system built for the education sector, covering institutional administration workflows.',
                 'metric' => null,
+                'placeholder_metric' => 'Sample: 40+ institutions supported',
             ],
         ];
     }
@@ -323,15 +337,48 @@ class Content
     }
 
     /**
-     * No open roles today — this stays an empty array until the client provides
-     * real listings. The Careers page renders an honest empty state rather than
-     * inventing job postings. See docs/build-log.md.
+     * ============================================================
+     * PLACEHOLDER DATA — QA / DESIGN REVIEW ONLY. NOT REAL CONTENT.
+     * ============================================================
+     * No real open roles exist yet. These 3 entries are Phase-A sample data
+     * (see docs/build-log.md, "Phase A — placeholder data for design QA") so
+     * /careers can be reviewed in its populated state instead of only its
+     * empty state. Every title is suffixed "(Placeholder)" and the job-card
+     * template stamps a visible <x-placeholder-tag /> on each one — this is
+     * never meant to look like a real listing, on this page or in the XML
+     * sitemap it also feeds.
+     *
+     * Phase C: replace this whole array with real listings (or restore it to
+     * `[]` if there genuinely are none) — see docs/build-log.md's pending-
+     * content table, which this data does NOT satisfy.
      *
      * @return array<int, array{slug:string,title:string,location:string,type:string,description:string}>
      */
     public static function jobs(): array
     {
-        return [];
+        return [
+            [
+                'slug' => 'sample-backend-engineer',
+                'title' => 'Backend Engineer (Placeholder)',
+                'location' => 'Ahmedabad, India',
+                'type' => 'Full-time',
+                'description' => 'Sample placeholder listing for design review only — not a real open role. Replace with a genuine job description before this ever ships.',
+            ],
+            [
+                'slug' => 'sample-product-designer',
+                'title' => 'Product Designer (Placeholder)',
+                'location' => 'Remote',
+                'type' => 'Full-time',
+                'description' => 'Sample placeholder listing for design review only — not a real open role. Replace with a genuine job description before this ever ships.',
+            ],
+            [
+                'slug' => 'sample-qa-engineer',
+                'title' => 'QA Engineer (Placeholder)',
+                'location' => 'Ahmedabad, India',
+                'type' => 'Contract',
+                'description' => 'Sample placeholder listing for design review only — not a real open role. Replace with a genuine job description before this ever ships.',
+            ],
+        ];
     }
 
     public static function job(string $slug): ?array
@@ -340,24 +387,164 @@ class Content
     }
 
     /**
-     * No published posts yet — the Blog page renders an honest empty state.
-     * See docs/build-log.md.
+     * ============================================================
+     * PLACEHOLDER DATA — QA / DESIGN REVIEW ONLY. NOT REAL CONTENT.
+     * ============================================================
+     * No real posts exist yet. These 4 entries are Phase-A sample data (see
+     * docs/build-log.md) so /blog and the homepage blog section can be
+     * reviewed populated. Images are locally generated solid-color
+     * placeholders (public/images/blog/placeholder-*.png — see
+     * docs/build-log.md for how), not stock photography or hotlinked
+     * images. Every title is suffixed "(Placeholder)".
      *
-     * @return array<int, array{slug:string,title:string,excerpt:string,category:string,date:string}>
+     * Phase C: replace this whole array with real posts (or restore it to
+     * `[]`) — see docs/build-log.md's pending-content table.
+     *
+     * @return array<int, array{slug:string,title:string,excerpt:string,category:string,date:string,image:string}>
      */
     public static function posts(): array
     {
-        return [];
+        return [
+            [
+                'slug' => 'sample-post-one',
+                'title' => 'Sample Blog Post Title (Placeholder)',
+                'excerpt' => 'This is placeholder excerpt text standing in for a real post, added only so the blog listing can be reviewed in its populated state.',
+                'category' => 'Placeholder',
+                'date' => 'Jan 2026',
+                'image' => 'placeholder-1.png',
+            ],
+            [
+                'slug' => 'sample-post-two',
+                'title' => 'Another Sample Post Title (Placeholder)',
+                'excerpt' => 'Placeholder excerpt text — not a real article. Swap this whole entry out once real posts exist.',
+                'category' => 'Placeholder',
+                'date' => 'Jan 2026',
+                'image' => 'placeholder-2.png',
+            ],
+            [
+                'slug' => 'sample-post-three',
+                'title' => 'A Third Sample Post (Placeholder)',
+                'excerpt' => 'Placeholder excerpt text for design-review purposes only. Not real content, not published anywhere.',
+                'category' => 'Placeholder',
+                'date' => 'Dec 2025',
+                'image' => 'placeholder-3.png',
+            ],
+            [
+                'slug' => 'sample-post-four',
+                'title' => 'Fourth Sample Post Title (Placeholder)',
+                'excerpt' => 'Placeholder excerpt text standing in for a real post while the blog card grid layout is reviewed.',
+                'category' => 'Placeholder',
+                'date' => 'Dec 2025',
+                'image' => 'placeholder-4.png',
+            ],
+        ];
     }
 
     /**
-     * No real, attributed testimonials exist yet — see docs/build-log.md.
-     * Never populate this with invented quotes.
+     * ============================================================
+     * PLACEHOLDER DATA — QA / DESIGN REVIEW ONLY. NOT REAL CONTENT.
+     * ============================================================
+     * No real, attributed testimonials exist yet. These 5 entries are
+     * Phase-A sample data (see docs/build-log.md) so the testimonial card
+     * grid can be reviewed populated. Names and companies are deliberately,
+     * unmistakably fake ("Sample Client", "Placeholder Co.") — never
+     * anything that could read as a real person or business. The
+     * testimonial-card template stamps a visible <x-placeholder-tag /> on
+     * every card.
+     *
+     * Phase C: replace this whole array with real, attributed quotes (or
+     * restore it to `[]`) — see docs/build-log.md's pending-content table,
+     * which this data does NOT satisfy.
      *
      * @return array<int, array{quote:string,name:string,role:string,company:string}>
      */
     public static function testimonials(): array
     {
-        return [];
+        return [
+            [
+                'quote' => 'This is sample placeholder testimonial text used only to review the card layout, spacing and typography — not a real client quote.',
+                'name' => 'Sample Client One',
+                'role' => 'Placeholder Role',
+                'company' => 'Placeholder Co.',
+            ],
+            [
+                'quote' => 'Another placeholder quote standing in for real client feedback, so the testimonial grid can be judged with content actually filling it.',
+                'name' => 'Sample Client Two',
+                'role' => 'Placeholder Role',
+                'company' => 'Example Industries (Placeholder)',
+            ],
+            [
+                'quote' => 'Placeholder testimonial text — this name, role and company are all fictional and exist only for local design review.',
+                'name' => 'Sample Client Three',
+                'role' => 'Placeholder Title',
+                'company' => 'Fictional Corp (Placeholder)',
+            ],
+            [
+                'quote' => 'Sample quote text used to check how the testimonial card handles a somewhat longer passage, wrapping across more lines than a short one-liner would.',
+                'name' => 'Sample Client Four',
+                'role' => 'Placeholder Role',
+                'company' => 'Not A Real Company Ltd. (Placeholder)',
+            ],
+            [
+                'quote' => 'Final placeholder testimonial, included to get the grid to a full row at desktop width for review purposes only.',
+                'name' => 'Sample Client Five',
+                'role' => 'Placeholder Role',
+                'company' => 'Placeholder Ventures',
+            ],
+        ];
+    }
+
+    /**
+     * ============================================================
+     * PLACEHOLDER DATA — QA / DESIGN REVIEW ONLY. NOT REAL CONTENT.
+     * ============================================================
+     * No real team photography or bios exist yet (see the strategy doc,
+     * Part 2.5, and docs/build-log.md). These 5 entries are Phase-A sample
+     * data so the About page's team section can be reviewed populated. Every
+     * "avatar" is initials-on-a-colour-tile — deliberately not a photo, so it
+     * can never be mistaken for a real person. Names are generic placeholder
+     * names, never a real employee.
+     *
+     * Phase C: replace this whole array with real team members (photo, name,
+     * role) once a photo shoot exists — see docs/build-log.md.
+     *
+     * @return array<int, array{name:string,role:string,initials:string}>
+     */
+    public static function team(): array
+    {
+        return [
+            ['name' => 'Sample Member One', 'role' => 'Engineering (Placeholder)', 'initials' => 'S1'],
+            ['name' => 'Sample Member Two', 'role' => 'Design (Placeholder)', 'initials' => 'S2'],
+            ['name' => 'Sample Member Three', 'role' => 'Product (Placeholder)', 'initials' => 'S3'],
+            ['name' => 'Sample Member Four', 'role' => 'Engineering (Placeholder)', 'initials' => 'S4'],
+            ['name' => 'Sample Member Five', 'role' => 'QA (Placeholder)', 'initials' => 'S5'],
+        ];
+    }
+
+    /**
+     * ============================================================
+     * PLACEHOLDER DATA — QA / DESIGN REVIEW ONLY. NOT REAL CONTENT.
+     * ============================================================
+     * No certifications or awards have been confirmed as genuinely held yet
+     * (see the strategy doc, Part 4, and docs/build-log.md — a false
+     * certification badge is a bigger credibility risk than showing none).
+     * These 4 entries are Phase-A sample data so the trust-badge row's
+     * layout can be reviewed populated. Labels are deliberately generic and
+     * never a real certification body's name or logo.
+     *
+     * Phase C: replace this whole array with real, confirmed certifications
+     * (or restore it to `[]`) — see docs/build-log.md's pending-content
+     * table, which this data does NOT satisfy.
+     *
+     * @return array<int, array{name:string,issuer:string}>
+     */
+    public static function trustBadges(): array
+    {
+        return [
+            ['name' => 'Certification Placeholder A', 'issuer' => 'Sample Issuing Body'],
+            ['name' => 'Certification Placeholder B', 'issuer' => 'Sample Issuing Body'],
+            ['name' => 'Certification Placeholder C', 'issuer' => 'Sample Issuing Body'],
+            ['name' => 'Certification Placeholder D', 'issuer' => 'Sample Issuing Body'],
+        ];
     }
 }

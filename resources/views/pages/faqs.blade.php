@@ -7,6 +7,27 @@
 
     <x-breadcrumb :items="[['label' => 'FAQs']]" />
 
+    @php
+        // FAQPage schema generated from the same $faqGroups data the visible
+        // accordion below renders — the two can't drift apart.
+        $faqSchema = [
+            '@context' => 'https://schema.org',
+            '@type' => 'FAQPage',
+            'mainEntity' => collect($faqGroups)
+                ->flatten(1)
+                ->map(fn ($item) => [
+                    '@type' => 'Question',
+                    'name' => $item['question'],
+                    'acceptedAnswer' => [
+                        '@type' => 'Answer',
+                        'text' => $item['answer'],
+                    ],
+                ])
+                ->all(),
+        ];
+    @endphp
+    <script type="application/ld+json">{!! json_encode($faqSchema, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) !!}</script>
+
     <x-page-hero
         eyebrow="FAQ"
         title="Common questions"

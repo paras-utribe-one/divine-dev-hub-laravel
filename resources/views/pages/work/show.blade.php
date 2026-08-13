@@ -17,6 +17,17 @@
                 <span class="mt-6 inline-flex items-center gap-2 rounded-full bg-accent/15 px-4 py-2 text-sm font-semibold text-accent">
                     {{ $project['metric'] }}
                 </span>
+            @elseif (! empty($project['placeholder_metric']))
+                {{-- Phase-A sample data only — see docs/build-log.md. Dashed
+                     border (vs. the solid badge above) plus the tag as a
+                     separate sibling element, not nested inside the pill,
+                     so no Tailwind class ever needs to be "overridden". --}}
+                <div class="mt-6 flex flex-wrap items-center gap-2">
+                    <span class="inline-flex items-center rounded-full border border-dashed border-accent/60 bg-accent/5 px-4 py-2 text-sm font-semibold text-accent">
+                        {{ $project['placeholder_metric'] }}
+                    </span>
+                    <x-placeholder-tag />
+                </div>
             @endif
         </div>
     </section>

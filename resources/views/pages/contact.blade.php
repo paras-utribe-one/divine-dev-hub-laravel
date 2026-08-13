@@ -125,12 +125,26 @@
                         <ul class="mt-3 flex items-center gap-3">
                             @foreach (config('company.social') as $social)
                                 <li>
+                                    @php
+                                        $socialHoverClass = match ($social['icon']) {
+                                            'facebook' => 'hover:border-[#1877F2]/60 hover:bg-[#1877F2]/10 hover:text-[#1877F2] hover:shadow-[0_0_0_4px_rgba(24,119,242,0.08)]',
+                                            'twitter', 'x' => 'hover:border-white/40 hover:bg-white/10 hover:text-text-primary hover:shadow-[0_0_0_4px_rgba(0,0,0,0.06)]',
+                                            'linkedin' => 'hover:border-[#0A66C2]/60 hover:bg-[#0A66C2]/10 hover:text-[#0A66C2] hover:shadow-[0_0_0_4px_rgba(10,102,194,0.08)]',
+                                            'instagram' => 'hover:border-[#E4405F]/60 hover:bg-[#E4405F]/10 hover:text-[#E4405F] hover:shadow-[0_0_0_4px_rgba(228,64,95,0.08)]',
+                                            default => 'hover:border-primary/60 hover:bg-primary/10 hover:text-primary hover:shadow-[0_0_0_4px_rgba(0,0,0,0.06)]',
+                                        };
+                                    @endphp
                                     <a
-                                        href="{{ $social['href'] }}" target="_blank" rel="noopener noreferrer"
-                                        class="flex h-9 w-9 items-center justify-center rounded-full border border-border text-text-secondary transition hover:border-primary hover:text-primary"
+                                        href="{{ $social['href'] }}"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        class="group flex h-9 w-9 items-center justify-center rounded-full border border-border text-text-secondary transition-all duration-200 hover:-translate-y-0.5 {{ $socialHoverClass }}"
                                         aria-label="{{ $social['label'] }} (opens in a new tab)"
                                     >
-                                        <x-svg-icon :name="$social['icon']" class="h-4 w-4" />
+                                        <x-svg-icon
+                                            :name="$social['icon']"
+                                            class="h-4 w-4 transition-transform duration-200 group-hover:scale-110"
+                                        />
                                     </a>
                                 </li>
                             @endforeach

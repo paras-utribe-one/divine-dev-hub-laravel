@@ -25,6 +25,38 @@
         <link rel="icon" href="{{ asset('images/favicon-256.png') }}" type="image/png" sizes="256x256">
         <link rel="apple-touch-icon" href="{{ asset('images/apple-touch-icon.png') }}">
 
+        @php
+            // Organization schema, site-wide. Built as a plain array + json_encode
+            // (not hand-written JSON in Blade) so conditional fields — telephone
+            // specifically — can be omitted cleanly instead of risking malformed
+            // JSON from an @if around a trailing comma. Every value here comes
+            // from config('company.*'), the same single source of truth used by
+            // the header, footer and contact page — nothing is hardcoded twice.
+            $organizationSchema = [
+                '@context' => 'https://schema.org',
+                '@type' => 'Organization',
+                'name' => config('company.name'),
+                'url' => url('/'),
+                'logo' => asset('images/logo-divinedevhub.png'),
+                'email' => config('company.email'),
+                'foundingDate' => (string) config('company.founded_year'),
+                'address' => [
+                    '@type' => 'PostalAddress',
+                    'streetAddress' => config('company.address_structured.street'),
+                    'addressLocality' => config('company.address_structured.locality'),
+                    'addressRegion' => config('company.address_structured.region'),
+                    'postalCode' => config('company.address_structured.postal_code'),
+                    'addressCountry' => config('company.address_structured.country'),
+                ],
+                'sameAs' => collect(config('company.social'))->pluck('href')->all(),
+            ];
+
+            if (config('company.phone')) {
+                $organizationSchema['telephone'] = config('company.phone');
+            }
+        @endphp
+        <script type="application/ld+json">{!! json_encode($organizationSchema, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) !!}</script>
+
         @fonts
 
         @if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))

@@ -6,6 +6,9 @@
     'excerpt' => null,
     'href',
     'featured' => false,
+    // Set true only for Phase-A sample data — stamps a visible "Placeholder"
+    // tag on the card. See docs/build-log.md.
+    'placeholder' => false,
 ])
 
 {{--
@@ -38,6 +41,10 @@
                 {{ $category }}
             </span>
         </div>
+
+        @if ($placeholder)
+            <x-placeholder-tag class="absolute right-4 top-4" />
+        @endif
     </div>
 
     <div class="flex flex-1 flex-col justify-center p-6 sm:p-7">

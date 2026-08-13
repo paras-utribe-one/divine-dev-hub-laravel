@@ -4,6 +4,31 @@
     'items' => [],
 ])
 
+@php
+    // BreadcrumbList schema generated from the exact same $items this
+    // component already renders visibly — one source of truth, so the
+    // structured data can never drift out of sync with what's on the page.
+    $breadcrumbSchema = [
+        '@context' => 'https://schema.org',
+        '@type' => 'BreadcrumbList',
+        'itemListElement' => [
+            [
+                '@type' => 'ListItem',
+                'position' => 1,
+                'name' => 'Home',
+                'item' => route('home'),
+            ],
+            ...collect($items)->values()->map(fn ($item, $i) => [
+                '@type' => 'ListItem',
+                'position' => $i + 2,
+                'name' => $item['label'],
+                'item' => $item['href'] ?? url()->current(),
+            ])->all(),
+        ],
+    ];
+@endphp
+<script type="application/ld+json">{!! json_encode($breadcrumbSchema, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) !!}</script>
+
 {{--
     mt-20 clears the fixed header (h-20 / 80px unscrolled — see header.blade.php)
     so the breadcrumb isn't rendered underneath it. Every non-home page starts

@@ -3,6 +3,8 @@
     // don't reintroduce a local copy of the services or social list here.
     $services = \App\Support\Content::services();
     $socialLinks = config('company.social');
+    // Phase-A placeholder sample data for design review — see docs/build-log.md.
+    $trustBadges = \App\Support\Content::trustBadges();
 @endphp
 
 <footer class="relative overflow-hidden bg-secondary text-white">
@@ -20,6 +22,52 @@
                 Start the conversation
                 <x-svg-icon name="arrow-right" class="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" />
             </x-button>
+        </div>
+    </div>
+
+    {{--
+        Newsletter signup — UI only, not wired to a real provider. Part
+        10.1 of the strategy doc blocks this on a mailing-list provider
+        decision (Mailchimp/Brevo/etc.); building a form that silently goes
+        nowhere would be worse than no form, so the submit handler is an
+        explicit no-op that tells the user that, rather than faking a
+        "subscribed!" confirmation. See docs/build-log.md, Phase A.
+    --}}
+    <div class="relative border-b border-white/10 bg-white/[0.02]">
+        <div class="page-container flex flex-col items-center justify-between gap-4 py-8 sm:flex-row">
+            <div class="flex items-center gap-3">
+                <div>
+                    <p class="text-sm font-semibold text-white">Engineering notes, monthly</p>
+                    <p class="mt-1 text-xs text-white/50">No fluff, unsubscribe anytime.</p>
+                </div>
+                <x-placeholder-tag />
+            </div>
+
+            <div x-data="{ submitted: false }" class="w-full sm:w-auto">
+                <form
+                    @submit.prevent="submitted = true"
+                    class="flex w-full max-w-sm items-center gap-2 sm:w-auto"
+                    x-show="! submitted"
+                >
+                    <label for="newsletter-email" class="sr-only">Email address</label>
+                    <input
+                        type="email"
+                        id="newsletter-email"
+                        placeholder="you@company.com"
+                        required
+                        class="w-full min-w-0 rounded-lg border border-white/15 bg-white/5 px-4 py-2.5 text-sm text-white placeholder:text-white/40 focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20"
+                    >
+                    <button
+                        type="submit"
+                        class="shrink-0 rounded-lg bg-accent px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-accent-hover"
+                    >
+                        Join
+                    </button>
+                </form>
+                <p x-show="submitted" style="display: none;" class="max-w-sm text-sm text-white/70">
+                    This form isn't connected to a mailing list yet — it's placeholder UI for design review. No email was sent anywhere.
+                </p>
+            </div>
         </div>
     </div>
 
@@ -153,6 +201,19 @@
             </div>
         </div>
     </div>
+
+    {{-- Trust badges — no certifications confirmed as genuinely held yet;
+         see docs/build-log.md. Placeholder sample badges for design review. --}}
+    @if (count($trustBadges))
+        <div class="relative border-t border-white/10 bg-white/[0.02]">
+            <div class="page-container py-8 text-center">
+                <p class="text-xs text-white/40">Placeholder data — design review only, not real certifications</p>
+                <div class="mt-4">
+                    <x-trust-badge-row :badges="$trustBadges" placeholder />
+                </div>
+            </div>
+        </div>
+    @endif
 
     <div class="relative border-t border-white/10">
         <div class="page-container flex flex-col items-center justify-between gap-4 py-6 text-xs text-white/40 sm:flex-row">

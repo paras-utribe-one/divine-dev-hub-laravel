@@ -23,6 +23,11 @@ Route::get('/terms-conditions', [PageController::class, 'termsConditions'])->nam
 Route::get('/thank-you', [PageController::class, 'thankYou'])->name('thank-you');
 Route::get('/sitemap', [PageController::class, 'htmlSitemap'])->name('sitemap.html');
 
+// Internal dev reference — gated to local in the controller itself (not just
+// left unlinked), excluded from sitemap.xml below, and marked noindex,
+// nofollow in the view. See docs/build-log.md.
+Route::get('/styleguide', [PageController::class, 'styleguide'])->name('styleguide');
+
 Route::get('/contact', [ContactController::class, 'show'])->name('contact.show');
 Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
 
@@ -104,10 +109,66 @@ Route::get('/sitemap.xml', function () {
     return response($xml, 200)->header('Content-Type', 'application/xml; charset=UTF-8');
 })->name('sitemap.xml');
 
+Route::get('/llms.txt', function () {
+    $lines = [
+        '# ' . config('company.name'),
+        '',
+        '> Software engineering partner based in ' . config('company.address_structured.locality') . ', India — '
+            . config('company.founded_year') . '-founded, 540+ projects delivered for 510+ clients, 50+ in-house engineers.',
+        '',
+        'Divine Dev Hub designs and builds cloud-native applications, AI-driven solutions and modern e-commerce '
+            . 'platforms end-to-end, from strategy to launch. In-house team covering web, mobile, CRM, e-commerce '
+            . 'and platform specializations in Odoo and Magento.',
+        '',
+        '## Services',
+        '',
+    ];
+
+    foreach (Content::services() as $service) {
+        $lines[] = '- [' . $service['title'] . '](' . route('services.show', $service['slug']) . '): ' . $service['description'];
+    }
+
+    $lines[] = '';
+    $lines[] = '## Technologies';
+    $lines[] = '';
+
+    foreach (Content::technologyCategories() as $category) {
+        $lines[] = '- ' . $category['label'] . ': ' . implode(', ', $category['items']);
+    }
+
+    $lines[] = '';
+    $lines[] = '## Industries';
+    $lines[] = '';
+
+    foreach (Content::industries() as $industry) {
+        $lines[] = '- [' . $industry['label'] . '](' . route('industries.show', $industry['slug']) . '): ' . $industry['description'];
+    }
+
+    $lines[] = '';
+    $lines[] = '## Key pages';
+    $lines[] = '';
+    $lines[] = '- [Home](' . route('home') . ')';
+    $lines[] = '- [About](' . route('about') . ')';
+    $lines[] = '- [All services](' . route('services.index') . ')';
+    $lines[] = '- [All technologies](' . route('technologies.index') . ')';
+    $lines[] = '- [All industries](' . route('industries.index') . ')';
+    $lines[] = '- [Our work](' . route('work.index') . ')';
+    $lines[] = '- [FAQs](' . route('faqs') . ')';
+    $lines[] = '- [Contact](' . route('contact.show') . ')';
+    $lines[] = '';
+    $lines[] = '## Contact';
+    $lines[] = '';
+    $lines[] = '- Email: ' . config('company.email');
+    $lines[] = '- Address: ' . config('company.address');
+
+    return response(implode("\n", $lines), 200)->header('Content-Type', 'text/plain; charset=UTF-8');
+})->name('llms.txt');
+
 Route::get('/robots.txt', function () {
     $lines = [
         'User-agent: *',
         'Allow: /',
+        'Disallow: /styleguide',
         '',
         'Sitemap: ' . route('sitemap.xml'),
     ];

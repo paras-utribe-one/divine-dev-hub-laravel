@@ -16,6 +16,11 @@
     <section class="py-16 sm:py-20">
         <div class="page-container">
             @if (count($jobs))
+                <div data-reveal class="mb-6 rounded-xl border border-dashed border-accent/50 bg-accent/5 px-5 py-4 text-sm leading-relaxed text-text-secondary">
+                    <strong class="text-text-primary">Placeholder data — design review only.</strong>
+                    Every listing below is fictional sample content added to review this page's populated layout. See <code class="text-xs">docs/build-log.md</code>.
+                </div>
+
                 <div class="space-y-4">
                     @foreach ($jobs as $i => $job)
                         <x-job-card
@@ -23,6 +28,7 @@
                             :location="$job['location']"
                             :type="$job['type']"
                             :href="route('careers.show', $job['slug'])"
+                            placeholder
                             data-reveal
                             :style="'--reveal-delay: ' . ($i * 60) . 'ms'"
                         />

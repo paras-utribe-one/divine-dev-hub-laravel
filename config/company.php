@@ -5,11 +5,12 @@
  *
  * `phone` and `whatsapp` are null until a real number is confirmed by the
  * client (see docs/redesign-strategy.md Part 10.3 and docs/build-log.md).
- * Every place these appear — header, footer, contact page, final CTA —
- * reads from this file, so publishing the real number later is a single
- * .env change, not a find-and-replace across the codebase. Views should
- * hide the phone/WhatsApp UI entirely when these are null rather than
- * showing a fake number to visitors.
+ * Every place these appear — header, footer, contact page, final CTA,
+ * Organization schema — reads from this file, so publishing the real number
+ * later is a single .env change, not a find-and-replace across the codebase.
+ * Views should hide the phone/WhatsApp UI entirely when these are null
+ * rather than showing a fake number to visitors, and schema markup should
+ * omit the `telephone` field entirely under the same condition.
  */
 return [
     'name' => 'Divine Dev Hub',
@@ -27,6 +28,17 @@ return [
     'address' => '304, Palladium Business Hub, Opposite 4D Square Mall, Chandkheda, Ahmedabad, Gujarat 382424',
 
     'address_map_link' => 'https://maps.app.goo.gl/hBxGrDZchp9s4hSB8',
+
+    // Structured breakdown of the same address above, for schema.org
+    // PostalAddress markup — kept in sync manually since it's one line that
+    // rarely changes. If `address` above is ever edited, update this too.
+    'address_structured' => [
+        'street' => '304, Palladium Business Hub, Opposite 4D Square Mall, Chandkheda',
+        'locality' => 'Ahmedabad',
+        'region' => 'Gujarat',
+        'postal_code' => '382424',
+        'country' => 'IN',
+    ],
 
     'founded_year' => 2014,
 

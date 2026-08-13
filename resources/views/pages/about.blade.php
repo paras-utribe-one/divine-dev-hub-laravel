@@ -116,18 +116,63 @@
         </div>
     </section>
 
-    {{-- Team — pending real photography, see docs/build-log.md --}}
+    {{-- Team — real photography/bios still pending, see docs/build-log.md.
+         The cards below are Phase-A placeholder sample data for design
+         review only (initials, never a photo, never a real name). --}}
     <section class="bg-surface py-20 sm:py-28" aria-labelledby="team-heading">
-        <div data-reveal class="page-container max-w-2xl text-center">
-            <p class="text-sm font-semibold uppercase tracking-wide text-primary">Our Team</p>
-            <h2 id="team-heading" class="mt-4 text-3xl font-semibold tracking-tight text-text-primary sm:text-4xl">
-                50+ engineers, designers and specialists
-            </h2>
-            <p class="mt-5 text-base leading-relaxed text-text-secondary">
-                Individual team profiles are on the way. In the meantime, every engagement gives you direct access to the people actually building your product — not an account manager relaying updates secondhand.
-            </p>
+        <div class="page-container">
+            <div data-reveal class="mx-auto max-w-2xl text-center">
+                <p class="text-sm font-semibold uppercase tracking-wide text-primary">Our Team</p>
+                <h2 id="team-heading" class="mt-4 text-3xl font-semibold tracking-tight text-text-primary sm:text-4xl">
+                    50+ engineers, designers and specialists
+                </h2>
+                <p class="mt-5 text-base leading-relaxed text-text-secondary">
+                    Real team profiles and photography are on the way. In the meantime, every engagement gives you direct access to the people actually building your product — not an account manager relaying updates secondhand.
+                </p>
+            </div>
+
+            @if (count($team))
+                <div class="mx-auto mt-10 max-w-2xl rounded-xl border border-dashed border-accent/50 bg-accent/5 px-5 py-4 text-center text-sm leading-relaxed text-text-secondary">
+                    <strong class="text-text-primary">Placeholder data — design review only.</strong>
+                    These cards are fictional sample entries (initials, not photos) added to review this section's populated layout. See <code class="text-xs">docs/build-log.md</code>.
+                </div>
+
+                <div class="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-5">
+                    @foreach ($team as $i => $member)
+                        <x-team-card
+                            :name="$member['name']"
+                            :role="$member['role']"
+                            :initials="$member['initials']"
+                            placeholder
+                            data-reveal
+                            :style="'--reveal-delay: ' . ($i * 60) . 'ms'"
+                        />
+                    @endforeach
+                </div>
+            @endif
         </div>
     </section>
+
+    {{-- Certifications — none confirmed as genuinely held yet, see
+         docs/build-log.md. Badges below are Phase-A placeholder sample data
+         for design review only. --}}
+    @if (count($trustBadges))
+        <section class="py-20 sm:py-28" aria-labelledby="certifications-heading">
+            <div class="page-container text-center">
+                <p class="text-sm font-semibold uppercase tracking-wide text-primary">Recognized &amp; Certified</p>
+                <h2 id="certifications-heading" class="sr-only">Certifications</h2>
+
+                <div data-reveal class="mx-auto mt-6 max-w-2xl rounded-xl border border-dashed border-accent/50 bg-accent/5 px-5 py-4 text-sm leading-relaxed text-text-secondary">
+                    <strong class="text-text-primary">Placeholder data — design review only.</strong>
+                    No certifications have been confirmed as held yet — these are generic sample badges, not real logos or names.
+                </div>
+
+                <div class="mt-8">
+                    <x-trust-badge-row :badges="$trustBadges" placeholder data-reveal />
+                </div>
+            </div>
+        </section>
+    @endif
 
     <section class="py-20 sm:py-28" aria-labelledby="about-cta-heading">
         <div data-reveal-scale class="page-container">
