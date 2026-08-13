@@ -10,7 +10,7 @@
 
 <a
     href="{{ $href }}"
-    {{ $attributes->merge(['class' => 'group flex items-center justify-between gap-4 rounded-2xl border border-border bg-white p-6 transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/20 hover:shadow-lg hover:shadow-secondary/5']) }}
+    {{ $attributes->merge(['class' => 'group flex items-center justify-between gap-4 rounded-2xl border border-border bg-white p-6 shadow-sm transition-all duration-300 ease-premium hover:-translate-y-1 hover:border-primary/20 hover:shadow-elevate-light']) }}
 >
     <div>
         <div class="flex items-center gap-3">

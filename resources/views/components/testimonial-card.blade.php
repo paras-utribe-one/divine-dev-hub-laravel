@@ -14,7 +14,11 @@
     company (or an honest anonymisation label). See
     App\Support\Content::testimonials() and docs/build-log.md.
 --}}
-<figure {{ $attributes->merge(['class' => 'flex h-full flex-col rounded-2xl border border-border bg-white p-8']) }}>
+{{--
+    Static/non-interactive (no href) — resting shadow only, no hover
+    transform; see team-card.blade.php for the same reasoning.
+--}}
+<figure {{ $attributes->merge(['class' => 'flex h-full flex-col rounded-2xl border border-border bg-white p-8 shadow-sm']) }}>
     <div class="flex items-start justify-between gap-3">
         <x-svg-icon name="message" class="h-6 w-6 text-primary/30" />
         @if ($placeholder)

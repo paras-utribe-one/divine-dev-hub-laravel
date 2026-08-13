@@ -6,7 +6,7 @@
 ])
 
 <article
-    {{ $attributes->merge(['class' => 'group relative block h-full overflow-hidden rounded-2xl bg-secondary shadow-lg shadow-secondary/0 ring-1 ring-inset ring-white/0 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-primary/20 hover:ring-primary/25 ' . ($featured ? 'aspect-[4/3] sm:aspect-[16/9] lg:aspect-auto' : 'aspect-[4/3]')]) }}
+    {{ $attributes->merge(['class' => 'group relative block h-full overflow-hidden rounded-2xl bg-secondary shadow-lg shadow-secondary/10 ring-1 ring-inset ring-white/0 transition-all duration-300 ease-premium hover:-translate-y-1 hover:shadow-elevate-dark hover:ring-primary/25 ' . ($featured ? 'aspect-[4/3] sm:aspect-[16/9] lg:aspect-auto' : 'aspect-[4/3]')]) }}
 >
     <img
         src="{{ $image }}"
@@ -14,7 +14,7 @@
         width="1200"
         height="800"
         loading="lazy"
-        class="absolute inset-0 h-full w-full object-cover transition duration-700 ease-out group-hover:scale-[1.06]"
+        class="absolute inset-0 h-full w-full object-cover transition duration-700 ease-out group-hover:scale-[1.03]"
     >
     <div class="absolute inset-0 bg-linear-to-t from-secondary via-secondary/10 to-transparent opacity-90 transition-opacity duration-300 group-hover:opacity-95" aria-hidden="true"></div>
     <div class="absolute inset-0 ring-1 ring-inset ring-white/10" aria-hidden="true"></div>

@@ -233,7 +233,7 @@
 
                 <section id="shadows" class="scroll-mt-8">
                     <h2 class="text-2xl font-semibold text-text-primary">Shadows &amp; elevation</h2>
-                    <p class="mt-2 max-w-2xl text-sm text-text-secondary">Standard Tailwind shadow utilities are used for resting elevation, but hover/lift states favour <strong>brand-tinted</strong> arbitrary shadows (e.g. <code class="rounded bg-surface px-1.5 py-0.5">shadow-secondary/10</code>, <code class="rounded bg-surface px-1.5 py-0.5">shadow-primary/25</code>) rather than plain grey — that colour-tint-on-hover is the real, repeated convention worth matching.</p>
+                    <p class="mt-2 max-w-2xl text-sm text-text-secondary">Resting elevation uses plain Tailwind shadow utilities (<code class="rounded bg-surface px-1.5 py-0.5">shadow-sm</code>, occasionally <code class="rounded bg-surface px-1.5 py-0.5">shadow-lg shadow-secondary/10</code> on dark cards). Hover/lift states use two shared, brand-tinted utilities defined once in <code class="rounded bg-surface px-1.5 py-0.5">app.css</code> — <code class="rounded bg-surface px-1.5 py-0.5">.shadow-elevate-light</code> for cards on light surfaces and <code class="rounded bg-surface px-1.5 py-0.5">.shadow-elevate-dark</code> for cards on/made of the dark secondary surface — rather than each component hand-picking its own tint.</p>
 
                     <div class="mt-6 grid grid-cols-2 gap-6 sm:grid-cols-4">
                         <div class="flex h-20 items-center justify-center rounded-xl bg-white shadow-sm"><span class="font-mono text-xs text-text-secondary">shadow-sm</span></div>
@@ -241,8 +241,13 @@
                         <div class="flex h-20 items-center justify-center rounded-xl bg-white shadow-lg"><span class="font-mono text-xs text-text-secondary">shadow-lg</span></div>
                         <div class="flex h-20 items-center justify-center rounded-xl bg-white shadow-xl"><span class="font-mono text-xs text-text-secondary">shadow-xl</span></div>
                     </div>
-                    <div class="mt-4 flex h-20 items-center justify-center rounded-xl bg-white shadow-lg shadow-primary/20">
-                        <span class="font-mono text-xs text-text-secondary">shadow-lg shadow-primary/20 <span class="text-muted">— brand-tinted hover shadow, e.g. service cards</span></span>
+                    <div class="mt-4 grid gap-4 sm:grid-cols-2">
+                        <div class="flex h-20 items-center justify-center rounded-xl bg-white shadow-elevate-light">
+                            <span class="font-mono text-xs text-text-secondary">.shadow-elevate-light <span class="text-muted">— card hover, light surfaces</span></span>
+                        </div>
+                        <div class="flex h-20 items-center justify-center rounded-xl bg-secondary shadow-elevate-dark">
+                            <span class="font-mono text-xs text-white/70">.shadow-elevate-dark <span class="text-white/40">— card hover, dark surfaces</span></span>
+                        </div>
                     </div>
                 </section>
 
@@ -282,6 +287,9 @@
                     </p>
                     <p class="mt-2 max-w-2xl text-sm text-text-secondary">
                         Progressive enhancement, not a dependency: elements are visible by default in the CSS. Only once <code class="rounded bg-surface px-1.5 py-0.5">app.js</code> confirms it booted (stamping <code class="rounded bg-surface px-1.5 py-0.5">.js</code> on <code class="rounded bg-surface px-1.5 py-0.5">&lt;html&gt;</code>) do they get hidden pre-reveal — so the page works fully with JS disabled. <code class="rounded bg-surface px-1.5 py-0.5">prefers-reduced-motion: reduce</code> is honoured globally, both for this system and for the CSS keyframe animations.
+                    </p>
+                    <p class="mt-2 max-w-2xl text-sm text-text-secondary">
+                        Both the reveal transitions above and the hover/lift interactions below (cards, buttons) share one timing curve — <code class="rounded bg-surface px-1.5 py-0.5">--ease-premium: cubic-bezier(0.16, 1, 0.3, 1)</code> — defined once in <code class="rounded bg-surface px-1.5 py-0.5">app.css</code> and usable directly as the <code class="rounded bg-surface px-1.5 py-0.5">ease-premium</code> utility class.
                     </p>
 
                     <div data-reveal class="mt-6 flex h-24 items-center justify-center rounded-xl border border-dashed border-primary/40 bg-primary-50 text-sm font-medium text-primary">

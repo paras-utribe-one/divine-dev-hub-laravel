@@ -96,31 +96,31 @@ class PageController extends Controller
             'colorTokens' => [
                 'Brand' => [
                     ['name' => 'primary', 'var' => '--color-primary', 'hex' => '#2e3192'],
-                    ['name' => 'primary-hover', 'var' => '--color-primary-hover', 'hex' => '#24276f'],
-                    ['name' => 'primary-light', 'var' => '--color-primary-light', 'hex' => '#4d50b3'],
-                    ['name' => 'primary-50', 'var' => '--color-primary-50', 'hex' => '#f0f1fa'],
+                    ['name' => 'primary-hover', 'var' => '--color-primary-hover', 'hex' => '#23266f'],
+                    ['name' => 'primary-light', 'var' => '--color-primary-light', 'hex' => '#5457c4'],
+                    ['name' => 'primary-50', 'var' => '--color-primary-50', 'hex' => '#f1f2fb'],
                     ['name' => 'accent', 'var' => '--color-accent', 'hex' => '#d99a3d'],
                     ['name' => 'accent-hover', 'var' => '--color-accent-hover', 'hex' => '#c48628'],
                 ],
                 'Dark / secondary' => [
-                    ['name' => 'secondary', 'var' => '--color-secondary', 'hex' => '#10112b'],
-                    ['name' => 'secondary-light', 'var' => '--color-secondary-light', 'hex' => '#1b1d45'],
-                    ['name' => 'surface-dark', 'var' => '--color-surface-dark', 'hex' => '#10112b'],
+                    ['name' => 'secondary', 'var' => '--color-secondary', 'hex' => '#0b0c24'],
+                    ['name' => 'secondary-light', 'var' => '--color-secondary-light', 'hex' => '#171a44'],
+                    ['name' => 'surface-dark', 'var' => '--color-surface-dark', 'hex' => '#0b0c24'],
                 ],
                 'Surface' => [
                     ['name' => 'background', 'var' => '--color-background', 'hex' => '#ffffff'],
-                    ['name' => 'surface', 'var' => '--color-surface', 'hex' => '#f7f7fb'],
+                    ['name' => 'surface', 'var' => '--color-surface', 'hex' => '#f6f6fb'],
                 ],
                 'Text' => [
                     ['name' => 'text-primary', 'var' => '--color-text-primary', 'hex' => '#14152b'],
                     ['name' => 'text-secondary', 'var' => '--color-text-secondary', 'hex' => '#52546e'],
                     ['name' => 'text-inverse', 'var' => '--color-text-inverse', 'hex' => '#ffffff'],
-                    ['name' => 'text-muted-inverse', 'var' => '--color-text-muted-inverse', 'hex' => '#a4a6c4'],
+                    ['name' => 'text-muted-inverse', 'var' => '--color-text-muted-inverse', 'hex' => '#9ea0c4'],
                     ['name' => 'muted', 'var' => '--color-muted', 'hex' => '#8b8da6'],
                 ],
                 'Border' => [
                     ['name' => 'border', 'var' => '--color-border', 'hex' => '#e4e4ef'],
-                    ['name' => 'border-dark', 'var' => '--color-border-dark', 'hex' => '#2a2c52'],
+                    ['name' => 'border-dark', 'var' => '--color-border-dark', 'hex' => '#262a52'],
                 ],
                 'Semantic' => [
                     ['name' => 'success', 'var' => '--color-success', 'hex' => '#16a34a'],

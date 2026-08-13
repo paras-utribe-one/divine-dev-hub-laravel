@@ -19,7 +19,7 @@
 --}}
 <a
     href="{{ $href }}"
-    {{ $attributes->merge(['class' => 'group flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-white transition duration-300 hover:-translate-y-1 hover:border-primary/25 hover:shadow-xl']) }}
+    {{ $attributes->merge(['class' => 'group flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-white shadow-sm transition duration-300 ease-premium hover:-translate-y-1 hover:border-primary/25 hover:shadow-elevate-light']) }}
 >
     <div class="relative aspect-16/10 overflow-hidden">
         <img
@@ -29,7 +29,7 @@
             decoding="async"
             width="800"
             height="500"
-            class="absolute inset-0 h-full w-full object-cover transition duration-700 ease-out group-hover:scale-[1.06]"
+            class="absolute inset-0 h-full w-full object-cover transition duration-700 ease-out group-hover:scale-[1.03]"
         >
         <div class="absolute left-4 top-4 flex items-center gap-2">
             @if ($featured)
