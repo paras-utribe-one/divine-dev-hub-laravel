@@ -59,7 +59,7 @@
                     >
                     <button
                         type="submit"
-                        class="shrink-0 rounded-lg bg-accent px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-accent-hover"
+                        class="shrink-0 rounded-lg bg-accent px-4 py-2.5 text-sm font-semibold text-secondary transition hover:bg-accent-hover"
                     >
                         Join
                     </button>
@@ -89,13 +89,9 @@
             <ul class="mt-7 flex items-center gap-3">
                 @foreach ($socialLinks as $social)
                     @php
-                        $socialHoverClass = match ($social['icon']) {
-                            'facebook' => 'hover:border-[#1877F2]/60 hover:bg-[#1877F2]/10 hover:text-[#1877F2] hover:shadow-[0_0_0_4px_rgba(24,119,242,0.08)]',
-                            'twitter', 'x' => 'hover:border-white/40 hover:bg-white/10 hover:text-white hover:shadow-[0_0_0_4px_rgba(255,255,255,0.06)]',
-                            'linkedin' => 'hover:border-[#0A66C2]/60 hover:bg-[#0A66C2]/10 hover:text-[#0A66C2] hover:shadow-[0_0_0_4px_rgba(10,102,194,0.08)]',
-                            'instagram' => 'hover:border-[#E4405F]/60 hover:bg-[#E4405F]/10 hover:text-[#E4405F] hover:shadow-[0_0_0_4px_rgba(228,64,95,0.08)]',
-                            default => 'hover:border-accent/60 hover:bg-accent/10 hover:text-accent hover:shadow-[0_0_0_4px_rgba(217,154,61,0.08)]',
-                        };
+                        // Footer sits on the dark secondary surface — 'dark' is
+                        // the default. See App\Support\Content::socialHoverClass().
+                        $socialHoverClass = \App\Support\Content::socialHoverClass($social['icon']);
                     @endphp
 
                     <li>
@@ -207,7 +203,7 @@
     @if (count($trustBadges))
         <div class="relative border-t border-white/10 bg-white/[0.02]">
             <div class="page-container py-8 text-center">
-                <p class="text-xs text-white/40">Placeholder data — design review only, not real certifications</p>
+                <p class="text-xs text-white/50">Placeholder data — design review only, not real certifications</p>
                 <div class="mt-4">
                     <x-trust-badge-row :badges="$trustBadges" placeholder />
                 </div>
@@ -216,7 +212,7 @@
     @endif
 
     <div class="relative border-t border-white/10">
-        <div class="page-container flex flex-col items-center justify-between gap-4 py-6 text-xs text-white/40 sm:flex-row">
+        <div class="page-container flex flex-col items-center justify-between gap-4 py-6 text-xs text-white/50 sm:flex-row">
             <p>&copy; {{ date('Y') }} Divine Dev Hub. All rights reserved.</p>
             <div class="flex items-center gap-6">
                 <a href="{{ route('privacy-policy') }}" class="transition-colors duration-200 hover:text-white">Privacy Policy</a>

@@ -71,7 +71,7 @@
                 <div class="divide-y divide-border border-t border-border">
                     @foreach ($benefits as $i => $benefit)
                         <div data-reveal style="--reveal-delay: {{ $i * 80 }}ms" class="flex items-start gap-5 py-7">
-                            <span class="hidden shrink-0 pt-2 text-xs font-semibold tabular-nums text-muted sm:block">0{{ $i + 1 }}</span>
+                            <span class="hidden shrink-0 pt-2 text-xs font-semibold tabular-nums text-text-secondary sm:block">0{{ $i + 1 }}</span>
                             <span class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary-50 text-primary">
                                 <x-svg-icon :name="$benefit['icon']" class="h-5 w-5" />
                             </span>
@@ -98,7 +98,7 @@
             />
 
             <div class="relative mt-16">
-                <div class="absolute inset-x-0 top-6 hidden h-px bg-border lg:block" aria-hidden="true"></div>
+                <div class="absolute inset-x-[calc(100%/14)] top-6 hidden h-px bg-border lg:block" aria-hidden="true"></div>
                 <div class="grid gap-10 lg:grid-cols-7 lg:gap-4">
                     @foreach ($processSteps as $i => $step)
                         <div data-reveal style="--reveal-delay: {{ $i * 70 }}ms">

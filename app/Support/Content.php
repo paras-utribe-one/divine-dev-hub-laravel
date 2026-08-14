@@ -547,4 +547,32 @@ class Content
             ['name' => 'Certification Placeholder D', 'issuer' => 'Sample Issuing Body'],
         ];
     }
+
+    /**
+     * Hover treatment for a social icon, by platform. Facebook/LinkedIn/
+     * Instagram use their real brand colors and don't vary by surface —
+     * only Twitter/X and the generic fallback need a different visual
+     * language to stay legible on a light surface vs. a dark one.
+     *
+     * This used to be hand-duplicated (footer.blade.php and
+     * contact.blade.php each declared their own copy of this match()), and
+     * the two copies had already drifted apart. This is the single source
+     * of truth for both now.
+     *
+     * @param 'dark'|'light' $surface The surface the icon sits on.
+     */
+    public static function socialHoverClass(string $icon, string $surface = 'dark'): string
+    {
+        return match ($icon) {
+            'facebook' => 'hover:border-[#1877F2]/60 hover:bg-[#1877F2]/10 hover:text-[#1877F2] hover:shadow-[0_0_0_4px_rgba(24,119,242,0.08)]',
+            'linkedin' => 'hover:border-[#0A66C2]/60 hover:bg-[#0A66C2]/10 hover:text-[#0A66C2] hover:shadow-[0_0_0_4px_rgba(10,102,194,0.08)]',
+            'instagram' => 'hover:border-[#E4405F]/60 hover:bg-[#E4405F]/10 hover:text-[#E4405F] hover:shadow-[0_0_0_4px_rgba(228,64,95,0.08)]',
+            'twitter', 'x' => $surface === 'light'
+                ? 'hover:border-white/40 hover:bg-white/10 hover:text-text-primary hover:shadow-[0_0_0_4px_rgba(0,0,0,0.06)]'
+                : 'hover:border-white/40 hover:bg-white/10 hover:text-white hover:shadow-[0_0_0_4px_rgba(255,255,255,0.06)]',
+            default => $surface === 'light'
+                ? 'hover:border-primary/60 hover:bg-primary/10 hover:text-primary hover:shadow-[0_0_0_4px_rgba(0,0,0,0.06)]'
+                : 'hover:border-accent/60 hover:bg-accent/10 hover:text-accent hover:shadow-[0_0_0_4px_rgba(217,154,61,0.08)]',
+        };
+    }
 }

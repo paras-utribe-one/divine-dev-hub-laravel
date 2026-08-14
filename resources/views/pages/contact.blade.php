@@ -126,13 +126,10 @@
                             @foreach (config('company.social') as $social)
                                 <li>
                                     @php
-                                        $socialHoverClass = match ($social['icon']) {
-                                            'facebook' => 'hover:border-[#1877F2]/60 hover:bg-[#1877F2]/10 hover:text-[#1877F2] hover:shadow-[0_0_0_4px_rgba(24,119,242,0.08)]',
-                                            'twitter', 'x' => 'hover:border-white/40 hover:bg-white/10 hover:text-text-primary hover:shadow-[0_0_0_4px_rgba(0,0,0,0.06)]',
-                                            'linkedin' => 'hover:border-[#0A66C2]/60 hover:bg-[#0A66C2]/10 hover:text-[#0A66C2] hover:shadow-[0_0_0_4px_rgba(10,102,194,0.08)]',
-                                            'instagram' => 'hover:border-[#E4405F]/60 hover:bg-[#E4405F]/10 hover:text-[#E4405F] hover:shadow-[0_0_0_4px_rgba(228,64,95,0.08)]',
-                                            default => 'hover:border-primary/60 hover:bg-primary/10 hover:text-primary hover:shadow-[0_0_0_4px_rgba(0,0,0,0.06)]',
-                                        };
+                                        // This card sits on the light surface background —
+                                        // 'light' keeps twitter/default legible there. See
+                                        // App\Support\Content::socialHoverClass().
+                                        $socialHoverClass = \App\Support\Content::socialHoverClass($social['icon'], 'light');
                                     @endphp
                                     <a
                                         href="{{ $social['href'] }}"

@@ -142,11 +142,19 @@
         <div class="pointer-events-none absolute inset-x-0 top-0 h-px bg-linear-to-r from-transparent via-primary-light/60 to-transparent" aria-hidden="true"></div>
         <div class="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-linear-to-r from-transparent via-accent/40 to-transparent" aria-hidden="true"></div>
         <h2 id="stats-heading" class="sr-only">Divine Dev Hub in numbers</h2>
-        <div data-reveal class="page-container grid grid-cols-2 gap-y-8 sm:grid-cols-4 sm:divide-x sm:divide-white/10">
-            <x-stat-item value="12+" label="Years in Business" icon="compass" />
-            <x-stat-item value="540+" label="Projects Delivered" icon="rocket" />
-            <x-stat-item value="510+" label="Happy Clients" icon="users" />
-            <x-stat-item value="50+" label="Skilled Experts" icon="cpu" />
+        <div data-reveal class="page-container grid grid-cols-2 gap-y-8 sm:grid-cols-4">
+            <div class="flex justify-center border-white/[0.18] sm:[&:not(:last-child)]:border-r">
+                <x-stat-item value="12+" label="Years in Business" icon="compass" />
+            </div>
+            <div class="flex justify-center border-white/[0.18] sm:[&:not(:last-child)]:border-r">
+                <x-stat-item value="540+" label="Projects Delivered" icon="rocket" />
+            </div>
+            <div class="flex justify-center border-white/[0.18] sm:[&:not(:last-child)]:border-r">
+                <x-stat-item value="510+" label="Happy Clients" icon="users" />
+            </div>
+            <div class="flex justify-center">
+                <x-stat-item value="50+" label="Skilled Experts" icon="cpu" />
+            </div>
         </div>
     </section>
 
@@ -219,7 +227,7 @@
 
 
             <div x-data="{ active: 0 }" class="mt-14 grid gap-4 lg:grid-cols-[22rem_1fr] lg:gap-10">
-                <div data-reveal style="--reveal-delay:80ms" class="flex flex-col overflow-hidden rounded-2xl border border-border bg-white lg:border-0 lg:bg-transparent">
+                <div data-reveal style="--reveal-delay:80ms" class="flex flex-col overflow-hidden rounded-2xl border border-border bg-white lg:overflow-visible lg:rounded-none lg:border-0 lg:bg-transparent">
                     @foreach ($services as $i => $service)
                         <button
                             type="button"
@@ -228,7 +236,7 @@
                             class="flex items-center gap-4 border-b border-border px-5 py-4 text-left transition last:border-b-0 lg:rounded-xl lg:border lg:px-5 lg:py-4"
                             :class="active === {{ $i }} ? 'lg:border-primary/20 lg:bg-white lg:shadow-lg lg:shadow-secondary/5' : 'lg:border-transparent'"
                         >
-                            <span class="text-xs font-semibold tabular-nums" :class="active === {{ $i }} ? 'text-primary' : 'text-muted'">0{{ $i + 1 }}</span>
+                            <span class="text-xs font-semibold tabular-nums" :class="active === {{ $i }} ? 'text-primary' : 'text-text-secondary'">0{{ $i + 1 }}</span>
                             <span class="flex-1 text-sm font-semibold" :class="active === {{ $i }} ? 'text-primary' : 'text-text-primary'">{{ $service['title'] }}</span>
                             <x-svg-icon
                                 name="arrow-right"
@@ -281,9 +289,9 @@
             </div>
 
             <div class="mt-6 text-center" data-reveal>
-                <a href="{{ route('services.index') }}" class="inline-flex items-center gap-1.5 text-sm font-semibold text-primary">
+                <a href="{{ route('services.index') }}" class="group inline-flex items-center gap-1.5 text-sm font-semibold text-primary">
                     View all services
-                    <x-svg-icon name="arrow-right" class="h-4 w-4" />
+                    <x-svg-icon name="arrow-right" class="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" />
                 </a>
             </div>
         </div>
@@ -302,7 +310,7 @@
             />
 
             <div x-data="{ active: 0 }" class="mt-14 grid gap-4 lg:grid-cols-[20rem_1fr] lg:gap-10">
-                <div data-reveal style="--reveal-delay:80ms" class="flex flex-col overflow-hidden rounded-2xl border border-border bg-white lg:border-0 lg:bg-transparent">
+                <div data-reveal style="--reveal-delay:80ms" class="flex flex-col overflow-hidden rounded-2xl border border-border bg-white lg:overflow-visible lg:rounded-none lg:border-0 lg:bg-transparent">
                     @foreach ($techCategories as $i => $category)
                         <button
                             type="button"
@@ -450,7 +458,7 @@
                 <div class="divide-y divide-border border-t border-border">
                     @foreach ($benefits as $i => $benefit)
                         <div data-reveal style="--reveal-delay: {{ $i * 80 }}ms" class="group flex items-start gap-5 py-7 transition-transform duration-300 hover:translate-x-1.5">
-                            <span class="hidden shrink-0 pt-2 text-xs font-semibold tabular-nums text-muted sm:block">0{{ $i + 1 }}</span>
+                            <span class="hidden shrink-0 pt-2 text-xs font-semibold tabular-nums text-text-secondary sm:block">0{{ $i + 1 }}</span>
                             <span class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary-50 text-primary transition-colors group-hover:bg-primary group-hover:text-white">
                                 <x-svg-icon :name="$benefit['icon']" class="h-5 w-5" />
                             </span>
@@ -477,8 +485,8 @@
             />
 
             <div class="relative mt-16">
-                <div class="absolute inset-x-0 top-6 hidden h-px bg-border lg:block" aria-hidden="true"></div>
-                <div data-reveal-line style="--reveal-delay:150ms" class="absolute inset-x-0 top-6 hidden h-px bg-linear-to-r from-primary via-primary-light to-accent lg:block" aria-hidden="true"></div>
+                <div class="absolute inset-x-[calc(100%/14)] top-6 hidden h-px bg-border lg:block" aria-hidden="true"></div>
+                <div data-reveal-line style="--reveal-delay:150ms" class="absolute inset-x-[calc(100%/14)] top-6 hidden h-px bg-linear-to-r from-primary via-primary-light to-accent lg:block" aria-hidden="true"></div>
                 <div class="grid gap-10 lg:grid-cols-7 lg:gap-4">
                     @foreach ($processSteps as $i => $step)
                         <div data-reveal style="--reveal-delay: {{ $i * 70 }}ms">

@@ -43,6 +43,6 @@
             @endif
         </div>
 
-        <p class="mt-6 text-xs text-white/40">Trusted by 510+ clients since 2014</p>
+        <p class="mt-6 text-xs text-white/50">Trusted by 510+ clients since 2014</p>
     </div>
 </div>

@@ -11,7 +11,9 @@
         eyebrow="Insights"
         title="From the blog"
         description="Notes from the team on what we're building and how."
-    />
+    >
+        <p class="mt-4 text-sm text-text-secondary">Published roughly monthly, whenever there's something worth writing about.</p>
+    </x-page-hero>
 
     <section class="py-16 sm:py-20">
         <div class="page-container">
@@ -30,6 +32,7 @@
                             :date="$post['date']"
                             :title="$post['title']"
                             :excerpt="$post['excerpt']"
+                            :featured="$loop->first"
                             placeholder
                             data-reveal
                             :style="'--reveal-delay: ' . ($i * 100) . 'ms'"
@@ -49,6 +52,17 @@
                     </a>
                 </x-empty-state>
             @endif
+        </div>
+    </section>
+
+    <section class="bg-surface py-20 sm:py-28">
+        <div data-reveal-scale class="page-container">
+            <x-cta-banner
+                title="Want engineering notes like these?"
+                description="We write about what we're building and how, roughly monthly — or get in touch if you'd rather talk shop directly at {{ config('company.email') }}."
+                ctaLabel="Get in Touch"
+                :ctaHref="route('contact.show')"
+            />
         </div>
     </section>
 

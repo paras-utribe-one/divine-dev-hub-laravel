@@ -11,7 +11,9 @@
         eyebrow="Featured Work"
         title="A sample of what we've built"
         description="A cross-section of projects from our portfolio."
-    />
+    >
+        <p class="mt-4 text-sm text-text-secondary">Spanning travel, agriculture, healthcare, fintech, HR and education.</p>
+    </x-page-hero>
 
     <section class="py-16 sm:py-20">
         <div class="page-container grid gap-5 lg:grid-cols-3 lg:grid-rows-2">
@@ -34,7 +36,7 @@
         <div data-reveal-scale class="page-container">
             <x-cta-banner
                 title="Want to see something similar built for you?"
-                description="Tell us what you're building — we'll follow up at info@divinedevhub.in with next steps."
+                description="Tell us what you're building — we'll follow up at {{ config('company.email') }} with next steps."
                 ctaLabel="Start a Project"
                 :ctaHref="route('contact.show')"
             />

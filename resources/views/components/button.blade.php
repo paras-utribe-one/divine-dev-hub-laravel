@@ -11,7 +11,7 @@
         'primary' => 'bg-primary text-white shadow-sm shadow-primary/10 hover:bg-primary-hover hover:shadow-lg hover:shadow-primary/30',
         'secondary' => 'bg-transparent text-text-primary border border-border hover:border-primary hover:text-primary',
         'inverse' => 'bg-white text-primary hover:bg-surface',
-        'accent' => 'bg-accent text-white shadow-sm shadow-accent/10 hover:bg-accent-hover hover:shadow-lg hover:shadow-accent/30',
+        'accent' => 'bg-accent text-secondary shadow-sm shadow-accent/10 hover:bg-accent-hover hover:shadow-lg hover:shadow-accent/30',
     ];
 
     $classes = $base . ' ' . ($variants[$variant] ?? $variants['primary']);
