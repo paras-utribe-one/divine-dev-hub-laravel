@@ -205,9 +205,9 @@
                     </div>
                 </dl>
 
-                <a href="{{ route('about') }}" class="mt-8 inline-flex items-center gap-1.5 text-sm font-semibold text-primary">
+                <a href="{{ route('about') }}" class="group mt-8 inline-flex items-center gap-1.5 text-sm font-semibold text-primary">
                     More about Divine Dev Hub
-                    <x-svg-icon name="arrow-right" class="h-4 w-4" />
+                    <x-svg-icon name="arrow-right" class="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" />
                 </a>
             </div>
         </div>
@@ -370,9 +370,9 @@
             </div>
 
             <div class="mt-6 text-center" data-reveal>
-                <a href="{{ route('technologies.index') }}" class="inline-flex items-center gap-1.5 text-sm font-semibold text-primary">
+                <a href="{{ route('technologies.index') }}" class="group inline-flex items-center gap-1.5 text-sm font-semibold text-primary">
                     View all technologies
-                    <x-svg-icon name="arrow-right" class="h-4 w-4" />
+                    <x-svg-icon name="arrow-right" class="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" />
                 </a>
             </div>
         </div>
@@ -429,9 +429,9 @@
             </div>
 
             <div class="mt-6 text-center" data-reveal>
-                <a href="{{ route('industries.index') }}" class="inline-flex items-center gap-1.5 text-sm font-semibold text-primary">
+                <a href="{{ route('industries.index') }}" class="group inline-flex items-center gap-1.5 text-sm font-semibold text-primary">
                     View all industries
-                    <x-svg-icon name="arrow-right" class="h-4 w-4" />
+                    <x-svg-icon name="arrow-right" class="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" />
                 </a>
             </div>
         </div>
@@ -448,9 +448,9 @@
                 <p class="mt-5 max-w-md text-base leading-relaxed text-text-secondary">
                     We keep teams small, communication direct and architecture honest — so the software we build keeps earning its value long after launch.
                 </p>
-                <a href="#process" class="mt-8 inline-flex items-center gap-1.5 text-sm font-semibold text-primary">
+                <a href="#process" class="group mt-8 inline-flex items-center gap-1.5 text-sm font-semibold text-primary">
                     See how we work
-                    <x-svg-icon name="arrow-right" class="h-4 w-4" />
+                    <x-svg-icon name="arrow-right" class="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" />
                 </a>
             </div>
 
@@ -532,9 +532,9 @@
             </div>
 
             <div class="mt-10 text-center" data-reveal>
-                <a href="{{ route('work.index') }}" class="inline-flex items-center gap-1.5 text-sm font-semibold text-primary">
+                <a href="{{ route('work.index') }}" class="group inline-flex items-center gap-1.5 text-sm font-semibold text-primary">
                     View all work
-                    <x-svg-icon name="arrow-right" class="h-4 w-4" />
+                    <x-svg-icon name="arrow-right" class="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" />
                 </a>
             </div>
         </div>
@@ -593,9 +593,9 @@
                 <p class="mt-5 max-w-sm text-base leading-relaxed text-text-secondary">
                     Answers to what we're asked most often. Can't find what you're looking for?
                 </p>
-                <a href="{{ route('contact.show') }}" class="mt-8 inline-flex items-center gap-1.5 text-sm font-semibold text-primary">
+                <a href="{{ route('contact.show') }}" class="group mt-8 inline-flex items-center gap-1.5 text-sm font-semibold text-primary">
                     Get in touch
-                    <x-svg-icon name="arrow-right" class="h-4 w-4" />
+                    <x-svg-icon name="arrow-right" class="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" />
                 </a>
             </div>
 
@@ -609,9 +609,9 @@
                 @endforeach
 
                 <div data-reveal style="--reveal-delay:240ms" class="pt-2">
-                    <a href="{{ route('faqs') }}" class="inline-flex items-center gap-1.5 text-sm font-semibold text-primary">
+                    <a href="{{ route('faqs') }}" class="group inline-flex items-center gap-1.5 text-sm font-semibold text-primary">
                         View all FAQs
-                        <x-svg-icon name="arrow-right" class="h-4 w-4" />
+                        <x-svg-icon name="arrow-right" class="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" />
                     </a>
                 </div>
             </div>
