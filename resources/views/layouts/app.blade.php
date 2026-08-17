@@ -22,6 +22,40 @@
         <meta name="twitter:image" content="{{ asset('images/logo-divinedevhub.png') }}">
 
         <link rel="icon" href="{{ asset('favicon.ico') }}" sizes="any">
+        <link rel="icon" href="{{ asset('images/favicon-256.png') }}" type="image/png" sizes="256x256">
+        <link rel="apple-touch-icon" href="{{ asset('images/apple-touch-icon.png') }}">
+
+        @php
+            // Organization schema, site-wide. Built as a plain array + json_encode
+            // (not hand-written JSON in Blade) so conditional fields — telephone
+            // specifically — can be omitted cleanly instead of risking malformed
+            // JSON from an @if around a trailing comma. Every value here comes
+            // from config('company.*'), the same single source of truth used by
+            // the header, footer and contact page — nothing is hardcoded twice.
+            $organizationSchema = [
+                '@context' => 'https://schema.org',
+                '@type' => 'Organization',
+                'name' => config('company.name'),
+                'url' => url('/'),
+                'logo' => asset('images/logo-divinedevhub.png'),
+                'email' => config('company.email'),
+                'foundingDate' => (string) config('company.founded_year'),
+                'address' => [
+                    '@type' => 'PostalAddress',
+                    'streetAddress' => config('company.address_structured.street'),
+                    'addressLocality' => config('company.address_structured.locality'),
+                    'addressRegion' => config('company.address_structured.region'),
+                    'postalCode' => config('company.address_structured.postal_code'),
+                    'addressCountry' => config('company.address_structured.country'),
+                ],
+                'sameAs' => collect(config('company.social'))->pluck('href')->all(),
+            ];
+
+            if (config('company.phone')) {
+                $organizationSchema['telephone'] = config('company.phone');
+            }
+        @endphp
+        <script type="application/ld+json">{!! json_encode($organizationSchema, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) !!}</script>
 
         @fonts
 
@@ -34,9 +68,19 @@
         @endif
     </head>
     <body class="bg-background font-sans text-text-primary antialiased">
+        <a
+            href="#main-content"
+            class="sr-only z-[100] rounded-md bg-primary px-4 py-2 text-sm font-semibold text-white focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+        >
+            Skip to main content
+        </a>
+
         <x-header />
 
-        <main id="main-content">
+        {{-- pt-9 clears the utility bar's fixed h-9 strip above the header
+             (the header itself stays as a transparent overlay on the hero,
+             as before — this padding accounts only for the new opaque bar). --}}
+        <main id="main-content" class="pt-9">
             @yield('content')
         </main>
 

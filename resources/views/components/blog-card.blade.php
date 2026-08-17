@@ -6,13 +6,20 @@
     'excerpt' => null,
     'href',
     'featured' => false,
+    // Set true only for Phase-A sample data — stamps a visible "Placeholder"
+    // tag on the card. See docs/build-log.md.
+    'placeholder' => false,
 ])
 
+{{--
+    No target="_blank" here on purpose: posts under /blog/<slug> are internal
+    pages and should open in the same tab. Pass target="_blank" rel="noopener
+    noreferrer" via attributes at the call site for genuinely external links
+    (e.g. while posts still live on the old WordPress site).
+--}}
 <a
     href="{{ $href }}"
-    target="_blank"
-    rel="noopener noreferrer"
-    {{ $attributes->merge(['class' => 'group flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-white transition duration-300 hover:-translate-y-1 hover:border-primary/25 hover:shadow-xl']) }}
+    {{ $attributes->merge(['class' => 'group flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-white shadow-sm transition duration-300 ease-premium hover:-translate-y-1 hover:border-primary/25 hover:shadow-elevate-light']) }}
 >
     <div class="relative aspect-16/10 overflow-hidden">
         <img
@@ -22,11 +29,11 @@
             decoding="async"
             width="800"
             height="500"
-            class="absolute inset-0 h-full w-full object-cover transition duration-700 ease-out group-hover:scale-[1.06]"
+            class="absolute inset-0 h-full w-full object-cover transition duration-700 ease-out group-hover:scale-[1.03]"
         >
         <div class="absolute left-4 top-4 flex items-center gap-2">
             @if ($featured)
-                <span class="rounded-full bg-accent px-3 py-1 text-xs font-semibold uppercase tracking-wide text-white">
+                <span class="rounded-full bg-accent px-3 py-1 text-xs font-semibold uppercase tracking-wide text-secondary">
                     Featured
                 </span>
             @endif
@@ -34,6 +41,10 @@
                 {{ $category }}
             </span>
         </div>
+
+        @if ($placeholder)
+            <x-placeholder-tag class="absolute right-4 top-4" />
+        @endif
     </div>
 
     <div class="flex flex-1 flex-col justify-center p-6 sm:p-7">

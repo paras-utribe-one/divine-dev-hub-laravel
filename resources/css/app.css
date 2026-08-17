@@ -12,33 +12,40 @@
         'Segoe UI Symbol', 'Noto Color Emoji';
 
     --color-primary: #2e3192;
-    --color-primary-hover: #24276f;
-    --color-primary-light: #4d50b3;
-    --color-primary-50: #f0f1fa;
+    --color-primary-hover: #23266f;
+    --color-primary-light: #5457c4;
+    --color-primary-50: #f1f2fb;
 
-    --color-secondary: #10112b;
-    --color-secondary-light: #1b1d45;
+    --color-secondary: #0b0c24;
+    --color-secondary-light: #171a44;
 
     --color-accent: #d99a3d;
     --color-accent-hover: #c48628;
 
     --color-background: #ffffff;
-    --color-surface: #f7f7fb;
-    --color-surface-dark: #10112b;
+    --color-surface: #f6f6fb;
+    --color-surface-dark: #0b0c24;
 
     --color-text-primary: #14152b;
     --color-text-secondary: #52546e;
     --color-text-inverse: #ffffff;
-    --color-text-muted-inverse: #a4a6c4;
+    --color-text-muted-inverse: #9ea0c4;
 
     --color-border: #e4e4ef;
-    --color-border-dark: #2a2c52;
+    --color-border-dark: #262a52;
     --color-muted: #8b8da6;
 
     --color-success: #16a34a;
     --color-error: #dc2626;
 
     --container-page: 80rem;
+
+    /*
+     * Shared timing curve for "premium" interactions (card lift, button
+     * elevation). Also usable directly as the `ease-premium` utility —
+     * Tailwind v4 generates that from any --ease-* theme key.
+     */
+    --ease-premium: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 @layer base {
@@ -113,7 +120,7 @@
 html.js [data-reveal] {
     opacity: 0;
     transform: translateY(18px);
-    transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: opacity 0.5s var(--ease-premium), transform 0.5s var(--ease-premium);
     transition-delay: var(--reveal-delay, 0ms);
 }
 
@@ -125,7 +132,7 @@ html.js [data-reveal].is-revealed {
 html.js [data-reveal-scale] {
     opacity: 0;
     transform: scale(0.97);
-    transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: opacity 0.5s var(--ease-premium), transform 0.5s var(--ease-premium);
     transition-delay: var(--reveal-delay, 0ms);
 }
 
@@ -137,7 +144,7 @@ html.js [data-reveal-scale].is-revealed {
 html.js [data-reveal-line] {
     transform: scaleX(0);
     transform-origin: left;
-    transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: transform 0.7s var(--ease-premium);
     transition-delay: var(--reveal-delay, 0ms);
 }
 
@@ -200,4 +207,23 @@ html.js [data-reveal-line].is-revealed {
             padding-inline: 2.5rem;
         }
     }
+}
+
+/*
+ * Shared elevation pair: one indigo-tinted shadow for cards resting on
+ * light surfaces, one deeper ink-tinted shadow for cards resting on (or
+ * made of) the dark secondary surface. Replaces the ad-hoc
+ * shadow-secondary/5, shadow-primary/20, shadow-xl mix previously
+ * hand-picked per component.
+ *
+ * Declared with `@utility` (not a plain class inside `@layer utilities`)
+ * so Tailwind's variant engine can generate hover:/group-hover:/responsive
+ * versions of them — a plain class there only ever compiles unprefixed.
+ */
+@utility shadow-elevate-light {
+    box-shadow: 0 4px 10px -4px rgba(20, 21, 43, 0.08), 0 16px 32px -16px rgba(46, 49, 146, 0.28);
+}
+
+@utility shadow-elevate-dark {
+    box-shadow: 0 8px 16px -8px rgba(11, 12, 36, 0.35), 0 24px 48px -20px rgba(46, 49, 146, 0.35);
 }

@@ -4,58 +4,15 @@
 @section('description', 'Divine Dev Hub designs and builds cloud-native applications, AI-driven solutions and modern e-commerce platforms — end-to-end, from strategy to launch.')
 
 @php
-    $services = [
-        ['title' => 'Web Development', 'icon' => 'code', 'description' => 'Full-stack web development — offering customized solutions from design to deployment and security.', 'tags' => ['React', 'Laravel', 'Tailwind CSS']],
-        ['title' => 'Software Services', 'icon' => 'layers', 'description' => 'Comprehensive software services: development, integration and customization for diverse business needs.', 'tags' => ['Laravel', 'Node.js', 'PHP']],
-        ['title' => 'CRM Solutions', 'icon' => 'users', 'description' => 'Custom CRM solutions that streamline operations, strengthen customer relationships and maximize efficiency.', 'tags' => ['Laravel', 'Node.js', 'AWS']],
-        ['title' => 'App Development', 'icon' => 'smartphone', 'description' => 'Expert mobile app development — from concept to launch, ensuring seamless user experiences.', 'tags' => ['Flutter', 'React Native']],
-        ['title' => 'E-Commerce', 'icon' => 'cart', 'description' => 'Tailored e-commerce solutions: design, development and optimization for online business growth.', 'tags' => ['Magento', 'Laravel', 'AWS']],
-        ['title' => 'Odoo Services', 'icon' => 'database', 'description' => "Odoo is a powerful, open-source ERP suite we implement and customize to streamline business operations.", 'tags' => ['Odoo', 'PHP']],
-        ['title' => 'Magento Services', 'icon' => 'cloud', 'description' => 'Magento is a robust, flexible open-source e-commerce platform we use to build and manage online stores.', 'tags' => ['Magento', 'PHP', 'AWS']],
-    ];
-
-    $techCategories = [
-        ['label' => 'Frontend', 'icon' => 'monitor', 'description' => 'Interactive, accessible interfaces built for performance.', 'items' => ['React', 'Alpine.js', 'Tailwind CSS']],
-        ['label' => 'Backend', 'icon' => 'server', 'description' => 'Reliable APIs and business logic that scale with you.', 'items' => ['Laravel', 'Node.js', 'PHP']],
-        ['label' => 'Mobile', 'icon' => 'smartphone', 'description' => 'Native-feeling apps for iOS and Android.', 'items' => ['Flutter', 'React Native']],
-        ['label' => 'Cloud & DevOps', 'icon' => 'cloud', 'description' => 'Automated, observable infrastructure and deployment pipelines.', 'items' => ['AWS', 'Docker', 'CI/CD']],
-        ['label' => 'Platforms', 'icon' => 'cpu', 'description' => 'Deep implementation experience on established platforms.', 'items' => ['Odoo', 'Magento']],
-    ];
-
-    $industries = [
-        ['label' => 'Travel & Hospitality', 'icon' => 'plane', 'description' => 'Booking, itinerary and guest-experience platforms.', 'featured' => true, 'related' => 'Show Me Around'],
-        ['label' => 'Agriculture & E-Commerce', 'icon' => 'sprout', 'description' => 'Marketplaces connecting growers and buyers.'],
-        ['label' => 'Healthcare & Telemedicine', 'icon' => 'heart-pulse', 'description' => 'Remote-care and clinical workflow platforms.'],
-        ['label' => 'FinTech & Trading', 'icon' => 'line-chart', 'description' => 'AI-assisted trading and market tooling.'],
-        ['label' => 'Education', 'icon' => 'graduation-cap', 'description' => 'School and institution management systems.'],
-        ['label' => 'Logistics & On-Demand', 'icon' => 'truck', 'description' => 'Delivery, freelancing and on-demand marketplaces.'],
-    ];
-
-    $benefits = [
-        ['title' => 'Engineering Quality', 'icon' => 'shield', 'description' => 'Clean, maintainable code and sensible architecture from day one — built to be extended, not rewritten.'],
-        ['title' => 'Clear Communication', 'icon' => 'message', 'description' => 'Direct access to the people building your product, with regular, plain-language progress updates.'],
-        ['title' => 'Scalable Architecture', 'icon' => 'trending-up', 'description' => 'Systems designed to handle growth in users, data and features without a costly rebuild.'],
-        ['title' => 'Business-Focused Delivery', 'icon' => 'target', 'description' => 'Every technical decision is weighed against the business outcome it needs to support.'],
-    ];
-
-    $processSteps = [
-        ['number' => '01', 'title' => 'Discovery', 'icon' => 'search', 'description' => 'Understanding your goals, users and constraints before writing a line of code.'],
-        ['number' => '02', 'title' => 'Strategy', 'icon' => 'compass', 'description' => 'Defining scope, architecture and success metrics for the engagement.'],
-        ['number' => '03', 'title' => 'Design', 'icon' => 'pen', 'description' => 'Translating requirements into clear, usable interfaces and flows.'],
-        ['number' => '04', 'title' => 'Development', 'icon' => 'code', 'description' => 'Building in focused iterations, with regular check-ins along the way.'],
-        ['number' => '05', 'title' => 'Testing', 'icon' => 'check-circle', 'description' => 'Verifying functionality, performance and security before release.'],
-        ['number' => '06', 'title' => 'Launch', 'icon' => 'rocket', 'description' => 'Deploying to production with a clear rollout and rollback plan.'],
-        ['number' => '07', 'title' => 'Support', 'icon' => 'life-buoy', 'description' => 'Ongoing monitoring, fixes and enhancements after go-live.'],
-    ];
-
-    $projects = [
-        ['title' => 'Show Me Around', 'category' => 'Travel Platform', 'image' => 'show-me-around.webp', 'featured' => true],
-        ['title' => 'Agripari', 'category' => 'Agricultural E-Commerce', 'image' => 'agripari.webp'],
-        ['title' => 'Live Medical Service', 'category' => 'Telemedicine Platform', 'image' => 'live-medical-service.webp'],
-        ['title' => 'Stock Market Service', 'category' => 'AI-Powered Trading Software', 'image' => 'stock-market-service.webp'],
-        ['title' => 'QuickClock', 'category' => 'HRMS', 'image' => 'quickclock.webp'],
-        ['title' => 'School Management', 'category' => 'School Management System', 'image' => 'school-management.webp'],
-    ];
+    // App\Support\Content is the single source of truth for this data — see
+    // its docblock. Don't reintroduce local copies of these arrays here.
+    $services = \App\Support\Content::services();
+    $techCategories = \App\Support\Content::technologyCategories();
+    $industries = \App\Support\Content::industries();
+    $benefits = \App\Support\Content::benefits();
+    $processSteps = \App\Support\Content::processSteps();
+    $projects = \App\Support\Content::projects();
+    $posts = \App\Support\Content::posts();
 @endphp
 
 @section('content')
@@ -84,11 +41,11 @@
                 </p>
 
                 <div data-reveal style="--reveal-delay:270ms" class="mt-9 flex flex-wrap items-center gap-4">
-                    <x-button href="#contact" class="group">
+                    <x-button href="{{ route('contact.show') }}" class="group">
                         Start a Project
                         <x-svg-icon name="arrow-right" class="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" />
                     </x-button>
-                    <x-button href="#portfolio" variant="secondary">View Our Work</x-button>
+                    <x-button href="{{ route('work.index') }}" variant="secondary">View Our Work</x-button>
                 </div>
 
                 <p data-reveal style="--reveal-delay:340ms" class="mt-8 inline-flex items-center gap-2 text-xs font-medium text-text-secondary">
@@ -185,11 +142,19 @@
         <div class="pointer-events-none absolute inset-x-0 top-0 h-px bg-linear-to-r from-transparent via-primary-light/60 to-transparent" aria-hidden="true"></div>
         <div class="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-linear-to-r from-transparent via-accent/40 to-transparent" aria-hidden="true"></div>
         <h2 id="stats-heading" class="sr-only">Divine Dev Hub in numbers</h2>
-        <div data-reveal class="page-container grid grid-cols-2 gap-y-8 sm:grid-cols-4 sm:divide-x sm:divide-white/10">
-            <x-stat-item value="12+" label="Years in Business" icon="compass" />
-            <x-stat-item value="540+" label="Projects Delivered" icon="rocket" />
-            <x-stat-item value="510+" label="Happy Clients" icon="users" />
-            <x-stat-item value="50+" label="Skilled Experts" icon="cpu" />
+        <div data-reveal class="page-container grid grid-cols-2 gap-y-8 sm:grid-cols-4">
+            <div class="flex justify-center border-white/[0.18] sm:[&:not(:last-child)]:border-r">
+                <x-stat-item value="12+" label="Years in Business" icon="compass" />
+            </div>
+            <div class="flex justify-center border-white/[0.18] sm:[&:not(:last-child)]:border-r">
+                <x-stat-item value="540+" label="Projects Delivered" icon="rocket" />
+            </div>
+            <div class="flex justify-center border-white/[0.18] sm:[&:not(:last-child)]:border-r">
+                <x-stat-item value="510+" label="Happy Clients" icon="users" />
+            </div>
+            <div class="flex justify-center">
+                <x-stat-item value="50+" label="Skilled Experts" icon="cpu" />
+            </div>
         </div>
     </section>
 
@@ -239,6 +204,11 @@
                         <dd class="mt-2 text-2xl font-semibold text-text-primary">12+</dd>
                     </div>
                 </dl>
+
+                <a href="{{ route('about') }}" class="group mt-8 inline-flex items-center gap-1.5 text-sm font-semibold text-primary">
+                    More about Divine Dev Hub
+                    <x-svg-icon name="arrow-right" class="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" />
+                </a>
             </div>
         </div>
     </section>
@@ -255,8 +225,9 @@
                 data-reveal
             />
 
+
             <div x-data="{ active: 0 }" class="mt-14 grid gap-4 lg:grid-cols-[22rem_1fr] lg:gap-10">
-                <div data-reveal style="--reveal-delay:80ms" class="flex flex-col overflow-hidden rounded-2xl border border-border bg-white lg:border-0 lg:bg-transparent">
+                <div data-reveal style="--reveal-delay:80ms" class="flex flex-col overflow-hidden rounded-2xl border border-border bg-white lg:overflow-visible lg:rounded-none lg:border-0 lg:bg-transparent">
                     @foreach ($services as $i => $service)
                         <button
                             type="button"
@@ -265,7 +236,7 @@
                             class="flex items-center gap-4 border-b border-border px-5 py-4 text-left transition last:border-b-0 lg:rounded-xl lg:border lg:px-5 lg:py-4"
                             :class="active === {{ $i }} ? 'lg:border-primary/20 lg:bg-white lg:shadow-lg lg:shadow-secondary/5' : 'lg:border-transparent'"
                         >
-                            <span class="text-xs font-semibold tabular-nums" :class="active === {{ $i }} ? 'text-primary' : 'text-muted'">0{{ $i + 1 }}</span>
+                            <span class="text-xs font-semibold tabular-nums" :class="active === {{ $i }} ? 'text-primary' : 'text-text-secondary'">0{{ $i + 1 }}</span>
                             <span class="flex-1 text-sm font-semibold" :class="active === {{ $i }} ? 'text-primary' : 'text-text-primary'">{{ $service['title'] }}</span>
                             <x-svg-icon
                                 name="arrow-right"
@@ -303,13 +274,25 @@
                                 </div>
                             @endif
 
-                            <a href="#contact" class="group/link mt-7 inline-flex items-center gap-1.5 text-sm font-semibold text-primary">
-                                Discuss this service
-                                <x-svg-icon name="arrow-right" class="h-4 w-4 transition-transform duration-200 group-hover/link:translate-x-0.5" />
-                            </a>
+                            <div class="mt-7 flex flex-wrap items-center gap-x-6 gap-y-2">
+                                <a href="{{ route('services.show', $service['slug']) }}" class="group/link inline-flex items-center gap-1.5 text-sm font-semibold text-primary">
+                                    Learn more
+                                    <x-svg-icon name="arrow-right" class="h-4 w-4 transition-transform duration-200 group-hover/link:translate-x-0.5" />
+                                </a>
+                                <a href="{{ route('contact.show') }}" class="text-sm font-medium text-text-secondary hover:text-primary">
+                                    Discuss this service
+                                </a>
+                            </div>
                         </div>
                     @endforeach
                 </div>
+            </div>
+
+            <div class="mt-6 text-center" data-reveal>
+                <a href="{{ route('services.index') }}" class="group inline-flex items-center gap-1.5 text-sm font-semibold text-primary">
+                    View all services
+                    <x-svg-icon name="arrow-right" class="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" />
+                </a>
             </div>
         </div>
     </section>
@@ -327,7 +310,7 @@
             />
 
             <div x-data="{ active: 0 }" class="mt-14 grid gap-4 lg:grid-cols-[20rem_1fr] lg:gap-10">
-                <div data-reveal style="--reveal-delay:80ms" class="flex flex-col overflow-hidden rounded-2xl border border-border bg-white lg:border-0 lg:bg-transparent">
+                <div data-reveal style="--reveal-delay:80ms" class="flex flex-col overflow-hidden rounded-2xl border border-border bg-white lg:overflow-visible lg:rounded-none lg:border-0 lg:bg-transparent">
                     @foreach ($techCategories as $i => $category)
                         <button
                             type="button"
@@ -385,6 +368,13 @@
                     @endforeach
                 </div>
             </div>
+
+            <div class="mt-6 text-center" data-reveal>
+                <a href="{{ route('technologies.index') }}" class="group inline-flex items-center gap-1.5 text-sm font-semibold text-primary">
+                    View all technologies
+                    <x-svg-icon name="arrow-right" class="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" />
+                </a>
+            </div>
         </div>
     </section>
 
@@ -411,13 +401,19 @@
                             :name="$industry['icon']"
                             class="pointer-events-none absolute text-white/5 transition-transform duration-500 group-hover:scale-110 {{ $industry['featured'] ?? false ? '-right-10 -bottom-10 h-64 w-64' : '-right-4 -top-4 h-28 w-28' }}"
                         />
+
+                        {{-- Stretched link: the whole tile is clickable via this link's absolute overlay,
+                             while the nested "featured project" link below stays independently clickable
+                             (relative z-10) rather than nesting <a> inside <a>. --}}
+                        <a href="{{ route('industries.show', $industry['slug']) }}" class="absolute inset-0 z-0" aria-label="{{ $industry['label'] }} — view industry"></a>
+
                         <div class="relative flex h-full flex-col justify-between {{ $industry['featured'] ?? false ? 'min-h-56' : 'min-h-36' }}">
                             <span class="flex h-11 w-11 items-center justify-center rounded-xl border border-white/15 bg-white/5 text-accent transition-colors duration-300 group-hover:border-accent/40 group-hover:bg-accent/10">
                                 <x-svg-icon :name="$industry['icon']" class="h-5 w-5" />
                             </span>
 
                             @if (($industry['featured'] ?? false) && isset($industry['related']))
-                                <a href="#portfolio" class="group/related inline-flex w-fit items-center gap-2 rounded-full border border-dashed border-white/20 bg-white/5 px-4 py-2 text-xs font-medium text-white/70 transition hover:border-accent/50 hover:text-white">
+                                <a href="{{ route('work.index') }}" class="group/related relative z-10 inline-flex w-fit items-center gap-2 rounded-full border border-dashed border-white/20 bg-white/5 px-4 py-2 text-xs font-medium text-white/70 transition hover:border-accent/50 hover:text-white">
                                     <x-svg-icon name="arrow-up-right" class="h-3.5 w-3.5 text-accent transition-transform duration-200 group-hover/related:translate-x-0.5 group-hover/related:-translate-y-0.5" />
                                     Featured project: {{ $industry['related'] }}
                                 </a>
@@ -430,6 +426,13 @@
                         </div>
                     </div>
                 @endforeach
+            </div>
+
+            <div class="mt-6 text-center" data-reveal>
+                <a href="{{ route('industries.index') }}" class="group inline-flex items-center gap-1.5 text-sm font-semibold text-primary">
+                    View all industries
+                    <x-svg-icon name="arrow-right" class="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" />
+                </a>
             </div>
         </div>
     </section>
@@ -445,9 +448,9 @@
                 <p class="mt-5 max-w-md text-base leading-relaxed text-text-secondary">
                     We keep teams small, communication direct and architecture honest — so the software we build keeps earning its value long after launch.
                 </p>
-                <a href="#process" class="mt-8 inline-flex items-center gap-1.5 text-sm font-semibold text-primary">
+                <a href="#process" class="group mt-8 inline-flex items-center gap-1.5 text-sm font-semibold text-primary">
                     See how we work
-                    <x-svg-icon name="arrow-right" class="h-4 w-4" />
+                    <x-svg-icon name="arrow-right" class="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" />
                 </a>
             </div>
 
@@ -455,7 +458,7 @@
                 <div class="divide-y divide-border border-t border-border">
                     @foreach ($benefits as $i => $benefit)
                         <div data-reveal style="--reveal-delay: {{ $i * 80 }}ms" class="group flex items-start gap-5 py-7 transition-transform duration-300 hover:translate-x-1.5">
-                            <span class="hidden shrink-0 pt-2 text-xs font-semibold tabular-nums text-muted sm:block">0{{ $i + 1 }}</span>
+                            <span class="hidden shrink-0 pt-2 text-xs font-semibold tabular-nums text-text-secondary sm:block">0{{ $i + 1 }}</span>
                             <span class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary-50 text-primary transition-colors group-hover:bg-primary group-hover:text-white">
                                 <x-svg-icon :name="$benefit['icon']" class="h-5 w-5" />
                             </span>
@@ -482,8 +485,8 @@
             />
 
             <div class="relative mt-16">
-                <div class="absolute inset-x-0 top-6 hidden h-px bg-border lg:block" aria-hidden="true"></div>
-                <div data-reveal-line style="--reveal-delay:150ms" class="absolute inset-x-0 top-6 hidden h-px bg-linear-to-r from-primary via-primary-light to-accent lg:block" aria-hidden="true"></div>
+                <div class="absolute inset-x-[calc(100%/14)] top-6 hidden h-px bg-border lg:block" aria-hidden="true"></div>
+                <div data-reveal-line style="--reveal-delay:150ms" class="absolute inset-x-[calc(100%/14)] top-6 hidden h-px bg-linear-to-r from-primary via-primary-light to-accent lg:block" aria-hidden="true"></div>
                 <div class="grid gap-10 lg:grid-cols-7 lg:gap-4">
                     @foreach ($processSteps as $i => $step)
                         <div data-reveal style="--reveal-delay: {{ $i * 70 }}ms">
@@ -516,54 +519,70 @@
             <div class="mt-14 grid gap-5 lg:grid-cols-3 lg:grid-rows-2">
                 @foreach ($projects as $i => $project)
                     <div data-reveal style="--reveal-delay: {{ $i * 60 }}ms" class="{{ $project['featured'] ?? false ? 'lg:col-span-2 lg:row-span-2' : '' }}">
-                        <x-project-card
-                            :title="$project['title']"
-                            :category="$project['category']"
-                            :image="asset('images/projects/' . $project['image'])"
-                            :featured="$project['featured'] ?? false"
-                        />
+                        <a href="{{ route('work.show', $project['slug']) }}" class="block h-full">
+                            <x-project-card
+                                :title="$project['title']"
+                                :category="$project['category']"
+                                :image="asset('images/projects/' . $project['image'])"
+                                :featured="$project['featured'] ?? false"
+                            />
+                        </a>
                     </div>
                 @endforeach
             </div>
-        </div>
-    </section>
 
-    {{-- Blog / Insights --}}
-    <section id="blog" class="scroll-mt-24 bg-surface py-24 sm:py-32" aria-labelledby="blog-heading">
-        <div class="page-container">
-            <x-section-heading
-                id="blog-heading"
-                eyebrow="Insights"
-                title="From the blog"
-                align="center"
-                data-reveal
-            />
-
-            <div class="mt-14 grid gap-6 lg:grid-cols-2">
-                <div data-reveal>
-                    <x-blog-card
-                        href="https://divinedevhub.in/2025/06/16/ai-in-business-development-role/"
-                        image="https://picsum.photos/seed/divine-dev-hub-ai-business/1200/750"
-                        category="AI & Business"
-                        date="Jun 16, 2025"
-                        title="Best AI in Business Development Manager"
-                        excerpt="How AI-assisted tooling is reshaping the business development role for software teams."
-                        featured
-                    />
-                </div>
-                <div data-reveal style="--reveal-delay:100ms">
-                    <x-blog-card
-                        href="https://divinedevhub.in/2025/06/12/ai-in-it-business-development/"
-                        image="https://picsum.photos/seed/divine-dev-hub-it-outsourcing/1200/750"
-                        category="AI & Business"
-                        date="Jun 12, 2025"
-                        title="AI in IT Business Development: 6"
-                        excerpt="Practical ways IT teams are applying AI across the business development pipeline."
-                    />
-                </div>
+            <div class="mt-10 text-center" data-reveal>
+                <a href="{{ route('work.index') }}" class="group inline-flex items-center gap-1.5 text-sm font-semibold text-primary">
+                    View all work
+                    <x-svg-icon name="arrow-right" class="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" />
+                </a>
             </div>
         </div>
     </section>
+
+    {{-- Blog / Insights — renders only when $posts isn't empty. Currently
+         populated with Phase-A placeholder posts for design review (see
+         docs/build-log.md) — this section goes back to rendering nothing
+         (an honest missing section beats a fake-looking one) the moment
+         Content::posts() is emptied out again, until real posts exist. This
+         used to show two placeholder cards linking off-domain to the old
+         WordPress blog with picsum.photos stock images; that's gone for
+         good regardless of what fills this section. --}}
+    @if (count($posts))
+        <section id="blog" class="scroll-mt-24 bg-surface py-24 sm:py-32" aria-labelledby="blog-heading">
+            <div class="page-container">
+                <x-section-heading
+                    id="blog-heading"
+                    eyebrow="Insights"
+                    title="From the blog"
+                    align="center"
+                    data-reveal
+                />
+
+                <div data-reveal class="mx-auto mt-6 max-w-2xl rounded-xl border border-dashed border-accent/50 bg-accent/5 px-5 py-4 text-center text-sm leading-relaxed text-text-secondary">
+                    <strong class="text-text-primary">Placeholder data — design review only.</strong>
+                    Every post below is fictional sample content added to review this section's populated layout.
+                </div>
+
+                <div class="mt-10 grid gap-6 lg:grid-cols-2">
+                    @foreach ($posts as $post)
+                        <div data-reveal style="--reveal-delay: {{ $loop->index * 100 }}ms">
+                            <x-blog-card
+                                :href="route('blog.show', $post['slug'])"
+                                :image="asset('images/blog/' . $post['image'])"
+                                :category="$post['category']"
+                                :date="$post['date']"
+                                :title="$post['title']"
+                                :excerpt="$post['excerpt']"
+                                :featured="$loop->first"
+                                placeholder
+                            />
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+        </section>
+    @endif
 
     {{-- FAQ --}}
     <section id="faq" class="scroll-mt-24 py-24 sm:py-32" aria-labelledby="faq-heading">
@@ -574,32 +593,26 @@
                 <p class="mt-5 max-w-sm text-base leading-relaxed text-text-secondary">
                     Answers to what we're asked most often. Can't find what you're looking for?
                 </p>
-                <a href="#contact" class="mt-8 inline-flex items-center gap-1.5 text-sm font-semibold text-primary">
+                <a href="{{ route('contact.show') }}" class="group mt-8 inline-flex items-center gap-1.5 text-sm font-semibold text-primary">
                     Get in touch
-                    <x-svg-icon name="arrow-right" class="h-4 w-4" />
+                    <x-svg-icon name="arrow-right" class="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" />
                 </a>
             </div>
 
             <div class="space-y-4 lg:col-span-8">
-                <div data-reveal>
-                    <x-faq-item question="What services does Divine Dev Hub offer?">
-                        We provide web development, custom software, CRM solutions, mobile app development, e-commerce builds, and Odoo and Magento implementations.
-                    </x-faq-item>
-                </div>
-                <div data-reveal style="--reveal-delay:60ms">
-                    <x-faq-item question="Do you work with startups as well as established businesses?">
-                        Yes — our portfolio includes projects for both emerging startups and larger, established organizations.
-                    </x-faq-item>
-                </div>
-                <div data-reveal style="--reveal-delay:120ms">
-                    <x-faq-item question="Can you support a project after launch?">
-                        Yes, ongoing support and enhancement is part of our standard development process.
-                    </x-faq-item>
-                </div>
-                <div data-reveal style="--reveal-delay:180ms">
-                    <x-faq-item question="Where is Divine Dev Hub based?">
-                        Our office is located at 304, Palladium Business Hub, Opposite 4D Square Mall, Chandkheda, Ahmedabad, Gujarat 382424.
-                    </x-faq-item>
+                @foreach (\App\Support\Content::faqHighlights() as $i => $faq)
+                    <div data-reveal style="--reveal-delay: {{ $i * 60 }}ms">
+                        <x-faq-item :question="$faq['question']">
+                            {{ $faq['answer'] }}
+                        </x-faq-item>
+                    </div>
+                @endforeach
+
+                <div data-reveal style="--reveal-delay:240ms" class="pt-2">
+                    <a href="{{ route('faqs') }}" class="group inline-flex items-center gap-1.5 text-sm font-semibold text-primary">
+                        View all FAQs
+                        <x-svg-icon name="arrow-right" class="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" />
+                    </a>
                 </div>
             </div>
         </div>
@@ -610,9 +623,11 @@
         <div data-reveal-scale class="page-container">
             <x-cta-banner
                 title="Ready to start your next project?"
-                description="Tell us what you're building — we'll follow up at info@divinedevhub.in with next steps."
-                ctaLabel="Email Us"
-                ctaHref="mailto:info@divinedevhub.in"
+                description="Tell us what you're building — we'll follow up at {{ config('company.email') }} with next steps."
+                ctaLabel="Get in Touch"
+                :ctaHref="route('contact.show')"
+                :secondaryLabel="config('company.phone') ? 'Call ' . config('company.phone') : null"
+                :secondaryHref="config('company.phone') ? 'tel:' . preg_replace('/[^0-9+]/', '', config('company.phone')) : null"
             />
         </div>
     </section>

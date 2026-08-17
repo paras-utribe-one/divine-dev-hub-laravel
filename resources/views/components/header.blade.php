@@ -1,25 +1,25 @@
 @php
-    $services = [
-        ['title' => 'Web Development', 'description' => 'Custom sites and platforms, from design to deployment.', 'icon' => 'code'],
-        ['title' => 'App Development', 'description' => 'Mobile apps built for seamless end-to-end experiences.', 'icon' => 'smartphone'],
-        ['title' => 'Software Services', 'description' => 'Development, integration and customization at scale.', 'icon' => 'layers'],
-        ['title' => 'CRM Solutions', 'description' => 'Custom CRM builds that sharpen customer relationships.', 'icon' => 'users'],
-        ['title' => 'Odoo Services', 'description' => 'Implementation and customization on the Odoo ERP suite.', 'icon' => 'database'],
-        ['title' => 'E-Commerce', 'description' => 'Storefronts designed, built and optimized to convert.', 'icon' => 'cart'],
-        ['title' => 'Magento Services', 'description' => 'Builds and upgrades on the Magento commerce platform.', 'icon' => 'cloud'],
+    // Services is the single source of truth in App\Support\Content — the
+    // header, footer and homepage used to each keep their own copy of this
+    // list, out of sync with each other. Don't reintroduce a local copy here.
+    $services = \App\Support\Content::services();
+
+    // 'active' is computed server-side from the current route rather than by
+    // watching scroll position — see resources/js/app.js for why that changed.
+    $navLinks = [
+        ['label' => 'Home', 'href' => route('home'), 'icon' => null, 'active' => request()->routeIs('home')],
+        ['label' => 'Technologies', 'href' => route('technologies.index'), 'icon' => 'cpu', 'active' => request()->routeIs('technologies.*')],
+        ['label' => 'Industries', 'href' => route('industries.index'), 'icon' => 'target', 'active' => request()->routeIs('industries.*')],
+        ['label' => 'Our Work', 'href' => route('work.index'), 'icon' => 'monitor', 'active' => request()->routeIs('work.*')],
+        ['label' => 'About', 'href' => route('about'), 'icon' => 'users', 'active' => request()->routeIs('about')],
+        ['label' => 'Contact', 'href' => route('contact.show'), 'icon' => 'mail', 'active' => request()->routeIs('contact.*')],
     ];
 
-    $navLinks = [
-        ['label' => 'Home', 'href' => '/', 'icon' => null],
-        ['label' => 'Technologies', 'href' => '#technologies', 'icon' => 'cpu'],
-        ['label' => 'Industries', 'href' => '#industries', 'icon' => 'target'],
-        ['label' => 'Portfolio', 'href' => '#portfolio', 'icon' => 'monitor'],
-        ['label' => 'About', 'href' => '#about', 'icon' => 'users'],
-        ['label' => 'Contact', 'href' => '#contact', 'icon' => 'mail'],
-    ];
+    $servicesActive = request()->routeIs('services.*');
+    $socialLinks = config('company.social');
 @endphp
 
-<header
+<div
     x-data="{
         scrolled: false,
         mobileOpen: false,
@@ -38,9 +38,79 @@
     x-init="window.addEventListener('scroll', () => { scrolled = window.scrollY > 16 }, { passive: true })"
     @keydown.escape.window="mobileOpen = false; closeServices()"
     x-effect="document.documentElement.classList.toggle('overflow-hidden', mobileOpen)"
-    :class="scrolled ? 'bg-white/90 backdrop-blur-md shadow-[0_1px_0_0_rgba(20,21,43,0.06),0_12px_30px_-18px_rgba(20,21,43,0.25)]' : 'bg-white/60 backdrop-blur-md'"
-    class="fixed inset-x-0 top-0 z-50 border-b border-white/40 transition-all duration-300"
+    class="fixed inset-x-0 top-0 z-50"
 >
+    {{-- Utility bar: compact, secondary strip above the main header. Reuses
+         config('company.*') — the same source of truth as the header/footer
+         contact links — and hides email/phone/hours pieces the same way
+         those do when unconfirmed. Contact links are icon-only below `sm`
+         (with the number/address still in an aria-label) so the bar never
+         wraps or overflows on narrow screens; hours and social links only
+         appear from `lg` since they're secondary to status + contact. --}}
+    <div class="h-9 bg-secondary text-white">
+        <div class="page-container flex h-full items-center justify-between gap-3 text-xs">
+            <p class="flex min-w-0 shrink-0 items-center gap-2 font-medium text-white/90">
+                <span class="relative flex h-2 w-2 shrink-0" aria-hidden="true">
+                    <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-success opacity-75"></span>
+                    <span class="relative inline-flex h-2 w-2 rounded-full bg-success"></span>
+                </span>
+                <span class="truncate">
+                    <span class="sm:hidden">Accepting new projects</span>
+                    <span class="hidden sm:inline">Currently accepting new projects</span>
+                </span>
+            </p>
+
+            <div class="flex shrink-0 items-center gap-3 text-white/70 sm:gap-4">
+                <a
+                    href="mailto:{{ config('company.email') }}"
+                    aria-label="Email {{ config('company.email') }}"
+                    class="flex items-center gap-1.5 whitespace-nowrap transition hover:text-white"
+                >
+                    <x-svg-icon name="mail" class="h-3.5 w-3.5 shrink-0" />
+                    <span class="hidden sm:inline">{{ config('company.email') }}</span>
+                </a>
+
+                @if (config('company.phone'))
+                    <a
+                        href="tel:{{ preg_replace('/[^0-9+]/', '', config('company.phone')) }}"
+                        aria-label="Call {{ config('company.phone') }}"
+                        class="flex items-center gap-1.5 whitespace-nowrap transition hover:text-white"
+                    >
+                        <x-svg-icon name="smartphone" class="h-3.5 w-3.5 shrink-0" />
+                        <span class="hidden sm:inline">{{ config('company.phone') }}</span>
+                    </a>
+                @endif
+
+                @if (config('company.hours'))
+                    <span class="hidden items-center gap-1.5 whitespace-nowrap lg:inline-flex">
+                        <x-svg-icon name="clock" class="h-3.5 w-3.5 shrink-0" />
+                        {{ config('company.hours') }}
+                    </span>
+                @endif
+
+                <ul class="hidden items-center gap-3 border-l border-white/15 pl-4 lg:flex">
+                    @foreach ($socialLinks as $social)
+                        <li>
+                            <a
+                                href="{{ $social['href'] }}"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                aria-label="{{ $social['label'] }} (opens in a new tab)"
+                                class="flex items-center text-white/70 transition hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                            >
+                                <x-svg-icon :name="$social['icon']" class="h-3.5 w-3.5" />
+                            </a>
+                        </li>
+                    @endforeach
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <header
+        :class="scrolled ? 'bg-white/90 backdrop-blur-md shadow-[0_1px_0_0_rgba(20,21,43,0.06),0_12px_30px_-18px_rgba(20,21,43,0.25)]' : 'bg-white/60 backdrop-blur-md'"
+        class="border-b border-white/40 transition-all duration-300"
+    >
     <div class="page-container flex items-center justify-between transition-[height] duration-300" :class="scrolled ? 'h-16' : 'h-20'">
         <a href="/" class="group flex shrink-0 items-center" aria-label="Divine Dev Hub — Home">
             <img
@@ -56,9 +126,13 @@
         </a>
 
         <nav class="hidden items-center lg:flex" aria-label="Primary">
-            <a href="/" class="nav-link group relative rounded-md px-3.5 py-2 text-sm font-medium text-text-primary transition hover:text-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary">
+            <a
+                href="/"
+                class="nav-link group relative rounded-md px-3.5 py-2 text-sm font-medium transition hover:text-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary {{ request()->routeIs('home') ? 'text-primary' : 'text-text-primary' }}"
+                @if (request()->routeIs('home')) aria-current="page" @endif
+            >
                 Home
-                <span class="pointer-events-none absolute inset-x-3.5 -bottom-0.5 h-px scale-x-0 bg-primary transition-transform duration-300 ease-out group-hover:scale-x-100" aria-hidden="true"></span>
+                <span class="pointer-events-none absolute inset-x-3.5 -bottom-0.5 h-px bg-primary transition-transform duration-300 ease-out group-hover:scale-x-100 {{ request()->routeIs('home') ? 'scale-x-100' : 'scale-x-0' }}" aria-hidden="true"></span>
             </a>
 
             <div
@@ -72,7 +146,7 @@
                 <button
                     type="button"
                     x-ref="servicesTrigger"
-                    class="relative flex items-center gap-1.5 rounded-md px-3.5 py-2 text-sm font-medium text-text-primary transition hover:text-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+                    class="relative flex items-center gap-1.5 rounded-md px-3.5 py-2 text-sm font-medium transition hover:text-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary {{ $servicesActive ? 'text-primary' : 'text-text-primary' }}"
                     aria-haspopup="true"
                     :aria-expanded="servicesOpen"
                     aria-controls="services-menu"
@@ -80,7 +154,11 @@
                 >
                     Services
                     <x-svg-icon name="chevron-down" class="h-3.5 w-3.5 transition-transform duration-200" x-bind:class="servicesOpen ? 'rotate-180' : ''" />
-                    <span class="pointer-events-none absolute inset-x-3.5 -bottom-0.5 h-px bg-primary transition-transform duration-300 ease-out" :class="servicesOpen ? 'scale-x-100' : 'scale-x-0'" aria-hidden="true"></span>
+                    <span
+                        class="pointer-events-none absolute inset-x-3.5 -bottom-0.5 h-px bg-primary transition-transform duration-300 ease-out"
+                        :class="(servicesOpen || {{ $servicesActive ? 'true' : 'false' }}) ? 'scale-x-100' : 'scale-x-0'"
+                        aria-hidden="true"
+                    ></span>
                 </button>
 
                 <div
@@ -93,7 +171,7 @@
                     x-transition:leave="transition ease-in duration-150"
                     x-transition:leave-start="opacity-100 translate-y-0 scale-100"
                     x-transition:leave-end="opacity-0 translate-y-2 scale-[0.98]"
-                    class="absolute left-1/2 top-full mt-4 w-[38rem] max-w-[90vw] -translate-x-1/2 overflow-hidden rounded-2xl border border-border bg-white shadow-[0_24px_60px_-20px_rgba(16,17,43,0.25)]"
+                    class="absolute left-1/2 top-full mt-4 w-[38rem] max-w-[90vw] -translate-x-1/2 overflow-hidden rounded-2xl border border-border bg-white shadow-[0_24px_60px_-20px_rgba(11,12,36,0.25)]"
                     style="display: none;"
                 >
                     <div class="h-0.5 w-full bg-linear-to-r from-primary via-primary-light to-accent"></div>
@@ -104,7 +182,7 @@
                                 <p class="mt-3 text-lg font-semibold leading-snug text-text-primary">Full-cycle software delivery</p>
                                 <p class="mt-2 text-sm leading-relaxed text-text-secondary">From first release to long-term platform growth.</p>
                             </div>
-                            <a href="#services" @click="closeServices()" class="group mt-6 inline-flex items-center gap-1.5 rounded-md text-sm font-semibold text-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary">
+                            <a href="{{ route('services.index') }}" @click="closeServices()" class="group mt-6 inline-flex items-center gap-1.5 rounded-md text-sm font-semibold text-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary">
                                 View all
                                 <x-svg-icon name="arrow-right" class="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
                             </a>
@@ -113,7 +191,7 @@
                         <div class="grid grid-cols-2 gap-0.5 p-2" role="none">
                             @foreach ($services as $service)
                                 <a
-                                    href="#services"
+                                    href="{{ route('services.show', $service['slug']) }}"
                                     role="menuitem"
                                     @click="closeServices()"
                                     class="group flex items-start gap-3 rounded-xl p-3 transition-all duration-200 hover:translate-x-0.5 hover:bg-surface focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
@@ -139,18 +217,18 @@
                 @if ($link['label'] !== 'Home')
                     <a
                         href="{{ $link['href'] }}"
-                        data-nav-link
-                        class="nav-link group relative rounded-md px-3.5 py-2 text-sm font-medium text-text-primary transition hover:text-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+                        class="nav-link group relative rounded-md px-3.5 py-2 text-sm font-medium transition hover:text-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary {{ $link['active'] ? 'text-primary' : 'text-text-primary' }}"
+                        @if ($link['active']) aria-current="page" @endif
                     >
                         {{ $link['label'] }}
-                        <span class="pointer-events-none absolute inset-x-3.5 -bottom-0.5 h-px scale-x-0 bg-primary transition-transform duration-300 ease-out group-hover:scale-x-100" aria-hidden="true"></span>
+                        <span class="pointer-events-none absolute inset-x-3.5 -bottom-0.5 h-px bg-primary transition-transform duration-300 ease-out group-hover:scale-x-100 {{ $link['active'] ? 'scale-x-100' : 'scale-x-0' }}" aria-hidden="true"></span>
                     </a>
                 @endif
             @endforeach
         </nav>
 
-        <div class="flex items-center gap-2">
-            <x-button href="#contact" class="group hidden lg:inline-flex">
+        <div class="flex items-center gap-3">
+            <x-button href="{{ route('contact.show') }}" class="group hidden lg:inline-flex">
                 Get in Touch
                 <x-svg-icon name="arrow-right" class="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" />
             </x-button>
@@ -185,7 +263,7 @@
             <a href="/" @click="mobileOpen = false" class="flex items-center gap-3 rounded-lg px-3 py-3 text-base font-medium text-text-primary hover:bg-surface focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary">
                 <x-svg-icon name="home" class="h-5 w-5 text-primary" /> Home
             </a>
-            <a href="#services" @click="mobileOpen = false" class="flex items-center gap-3 rounded-lg px-3 py-3 text-base font-medium text-text-primary hover:bg-surface focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary">
+            <a href="{{ route('services.index') }}" @click="mobileOpen = false" class="flex items-center gap-3 rounded-lg px-3 py-3 text-base font-medium text-text-primary hover:bg-surface focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary">
                 <x-svg-icon name="layers" class="h-5 w-5 text-primary" /> Services
             </a>
             @foreach ($navLinks as $link)
@@ -195,7 +273,9 @@
                     </a>
                 @endif
             @endforeach
-            <x-button href="#contact" class="mt-3 justify-center" @click="mobileOpen = false">Get in Touch</x-button>
+
+            <x-button href="{{ route('contact.show') }}" class="mt-3 justify-center" @click="mobileOpen = false">Get in Touch</x-button>
         </nav>
     </div>
-</header>
+    </header>
+</div>

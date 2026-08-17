@@ -3,6 +3,8 @@
     'description' => null,
     'ctaLabel' => 'Get in Touch',
     'ctaHref' => '#contact',
+    'secondaryLabel' => null,
+    'secondaryHref' => null,
 ])
 
 <div class="relative overflow-hidden rounded-3xl bg-secondary px-6 py-16 text-center shadow-2xl shadow-secondary/40 ring-1 ring-inset ring-white/10 sm:px-16 sm:py-20">
@@ -33,8 +35,14 @@
                 {{ $ctaLabel }}
                 <x-svg-icon name="arrow-right" class="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" />
             </x-button>
+
+            @if ($secondaryLabel && $secondaryHref)
+                <x-button :href="$secondaryHref" variant="secondary" class="border-white/20 text-white hover:border-white/40 hover:text-white">
+                    {{ $secondaryLabel }}
+                </x-button>
+            @endif
         </div>
 
-        <p class="mt-6 text-xs text-white/40">Trusted by 510+ clients since 2014</p>
+        <p class="mt-6 text-xs text-white/50">Trusted by 510+ clients since 2014</p>
     </div>
 </div>
