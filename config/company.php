@@ -25,6 +25,11 @@ return [
     // version of `phone` if not set separately.
     'whatsapp' => env('COMPANY_WHATSAPP'),
 
+    // Same "leave blank until confirmed" rule as phone/whatsapp above —
+    // e.g. "Mon–Fri, 9am–6pm IST". Views should hide the hours UI entirely
+    // when this is null rather than showing invented hours.
+    'hours' => env('COMPANY_HOURS'),
+
     'address' => '304, Palladium Business Hub, Opposite 4D Square Mall, Chandkheda, Ahmedabad, Gujarat 382424',
 
     'address_map_link' => 'https://maps.app.goo.gl/hBxGrDZchp9s4hSB8',

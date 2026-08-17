@@ -16,9 +16,10 @@
     ];
 
     $servicesActive = request()->routeIs('services.*');
+    $socialLinks = config('company.social');
 @endphp
 
-<header
+<div
     x-data="{
         scrolled: false,
         mobileOpen: false,
@@ -37,9 +38,79 @@
     x-init="window.addEventListener('scroll', () => { scrolled = window.scrollY > 16 }, { passive: true })"
     @keydown.escape.window="mobileOpen = false; closeServices()"
     x-effect="document.documentElement.classList.toggle('overflow-hidden', mobileOpen)"
-    :class="scrolled ? 'bg-white/90 backdrop-blur-md shadow-[0_1px_0_0_rgba(20,21,43,0.06),0_12px_30px_-18px_rgba(20,21,43,0.25)]' : 'bg-white/60 backdrop-blur-md'"
-    class="fixed inset-x-0 top-0 z-50 border-b border-white/40 transition-all duration-300"
+    class="fixed inset-x-0 top-0 z-50"
 >
+    {{-- Utility bar: compact, secondary strip above the main header. Reuses
+         config('company.*') — the same source of truth as the header/footer
+         contact links — and hides email/phone/hours pieces the same way
+         those do when unconfirmed. Contact links are icon-only below `sm`
+         (with the number/address still in an aria-label) so the bar never
+         wraps or overflows on narrow screens; hours and social links only
+         appear from `lg` since they're secondary to status + contact. --}}
+    <div class="h-9 bg-secondary text-white">
+        <div class="page-container flex h-full items-center justify-between gap-3 text-xs">
+            <p class="flex min-w-0 shrink-0 items-center gap-2 font-medium text-white/90">
+                <span class="relative flex h-2 w-2 shrink-0" aria-hidden="true">
+                    <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-success opacity-75"></span>
+                    <span class="relative inline-flex h-2 w-2 rounded-full bg-success"></span>
+                </span>
+                <span class="truncate">
+                    <span class="sm:hidden">Accepting new projects</span>
+                    <span class="hidden sm:inline">Currently accepting new projects</span>
+                </span>
+            </p>
+
+            <div class="flex shrink-0 items-center gap-3 text-white/70 sm:gap-4">
+                <a
+                    href="mailto:{{ config('company.email') }}"
+                    aria-label="Email {{ config('company.email') }}"
+                    class="flex items-center gap-1.5 whitespace-nowrap transition hover:text-white"
+                >
+                    <x-svg-icon name="mail" class="h-3.5 w-3.5 shrink-0" />
+                    <span class="hidden sm:inline">{{ config('company.email') }}</span>
+                </a>
+
+                @if (config('company.phone'))
+                    <a
+                        href="tel:{{ preg_replace('/[^0-9+]/', '', config('company.phone')) }}"
+                        aria-label="Call {{ config('company.phone') }}"
+                        class="flex items-center gap-1.5 whitespace-nowrap transition hover:text-white"
+                    >
+                        <x-svg-icon name="smartphone" class="h-3.5 w-3.5 shrink-0" />
+                        <span class="hidden sm:inline">{{ config('company.phone') }}</span>
+                    </a>
+                @endif
+
+                @if (config('company.hours'))
+                    <span class="hidden items-center gap-1.5 whitespace-nowrap lg:inline-flex">
+                        <x-svg-icon name="clock" class="h-3.5 w-3.5 shrink-0" />
+                        {{ config('company.hours') }}
+                    </span>
+                @endif
+
+                <ul class="hidden items-center gap-3 border-l border-white/15 pl-4 lg:flex">
+                    @foreach ($socialLinks as $social)
+                        <li>
+                            <a
+                                href="{{ $social['href'] }}"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                aria-label="{{ $social['label'] }} (opens in a new tab)"
+                                class="flex items-center text-white/70 transition hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                            >
+                                <x-svg-icon :name="$social['icon']" class="h-3.5 w-3.5" />
+                            </a>
+                        </li>
+                    @endforeach
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <header
+        :class="scrolled ? 'bg-white/90 backdrop-blur-md shadow-[0_1px_0_0_rgba(20,21,43,0.06),0_12px_30px_-18px_rgba(20,21,43,0.25)]' : 'bg-white/60 backdrop-blur-md'"
+        class="border-b border-white/40 transition-all duration-300"
+    >
     <div class="page-container flex items-center justify-between transition-[height] duration-300" :class="scrolled ? 'h-16' : 'h-20'">
         <a href="/" class="group flex shrink-0 items-center" aria-label="Divine Dev Hub — Home">
             <img
@@ -157,19 +228,6 @@
         </nav>
 
         <div class="flex items-center gap-3">
-            @if (config('company.phone'))
-                <a
-                    href="tel:{{ preg_replace('/[^0-9+]/', '', config('company.phone')) }}"
-                    class="hidden items-center gap-2 rounded-md px-2 py-2 text-sm font-medium text-text-primary transition hover:text-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary xl:inline-flex"
-                >
-                    <span class="relative flex h-2 w-2">
-                        <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-success opacity-75"></span>
-                        <span class="relative inline-flex h-2 w-2 rounded-full bg-success"></span>
-                    </span>
-                    {{ config('company.phone') }}
-                </a>
-            @endif
-
             <x-button href="{{ route('contact.show') }}" class="group hidden lg:inline-flex">
                 Get in Touch
                 <x-svg-icon name="arrow-right" class="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" />
@@ -216,13 +274,8 @@
                 @endif
             @endforeach
 
-            @if (config('company.phone'))
-                <a href="tel:{{ preg_replace('/[^0-9+]/', '', config('company.phone')) }}" @click="mobileOpen = false" class="flex items-center gap-3 rounded-lg px-3 py-3 text-base font-medium text-text-primary hover:bg-surface focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary">
-                    <x-svg-icon name="smartphone" class="h-5 w-5 text-primary" /> {{ config('company.phone') }}
-                </a>
-            @endif
-
             <x-button href="{{ route('contact.show') }}" class="mt-3 justify-center" @click="mobileOpen = false">Get in Touch</x-button>
         </nav>
     </div>
-</header>
+    </header>
+</div>

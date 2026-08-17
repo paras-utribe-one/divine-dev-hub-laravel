@@ -77,7 +77,10 @@
 
         <x-header />
 
-        <main id="main-content">
+        {{-- pt-9 clears the utility bar's fixed h-9 strip above the header
+             (the header itself stays as a transparent overlay on the hero,
+             as before — this padding accounts only for the new opaque bar). --}}
+        <main id="main-content" class="pt-9">
             @yield('content')
         </main>
 
