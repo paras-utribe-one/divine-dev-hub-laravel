@@ -358,9 +358,9 @@
 
                             <div class="mt-8 flex flex-wrap gap-3 border-t border-border pt-8">
                                 @foreach ($category['items'] as $item)
-                                    <span class="inline-flex items-center gap-2 rounded-xl border border-border bg-surface px-4 py-2.5 text-sm font-medium text-text-primary">
-                                        <span class="h-1.5 w-1.5 rounded-full bg-primary"></span>
-                                        {{ $item }}
+                                    <span class="group inline-flex items-center gap-2 rounded-xl border border-border bg-surface px-4 py-2.5 text-sm font-medium text-text-primary transition-colors duration-200 hover:border-primary/30 hover:bg-primary-50">
+                                        <x-tech-icon :image="$item['image']" />
+                                        {{ $item['name'] }}
                                     </span>
                                 @endforeach
                             </div>

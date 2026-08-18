@@ -24,9 +24,9 @@
                     <p class="mt-2 text-sm leading-relaxed text-text-secondary">{{ $category['description'] }}</p>
                     <div class="mt-5 flex flex-wrap gap-2">
                         @foreach ($category['items'] as $item)
-                            <span class="inline-flex items-center gap-1.5 rounded-lg border border-border bg-surface px-3 py-1.5 text-xs font-medium text-text-primary">
-                                <span class="h-1.5 w-1.5 rounded-full bg-primary"></span>
-                                {{ $item }}
+                            <span class="group inline-flex items-center gap-1.5 rounded-lg border border-border bg-surface px-3 py-1.5 text-xs font-medium text-text-primary transition-colors duration-200 hover:border-primary/30 hover:bg-primary-50">
+                                <x-tech-icon :image="$item['image']" size="h-3.5 w-3.5" />
+                                {{ $item['name'] }}
                             </span>
                         @endforeach
                     </div>

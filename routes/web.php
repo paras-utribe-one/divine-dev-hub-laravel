@@ -133,7 +133,7 @@ Route::get('/llms.txt', function () {
     $lines[] = '';
 
     foreach (Content::technologyCategories() as $category) {
-        $lines[] = '- ' . $category['label'] . ': ' . implode(', ', $category['items']);
+        $lines[] = '- ' . $category['label'] . ': ' . implode(', ', array_column($category['items'], 'name'));
     }
 
     $lines[] = '';

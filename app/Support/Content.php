@@ -88,16 +88,228 @@ class Content
     }
 
     /**
-     * @return array<int, array{slug:string,label:string,icon:string,description:string,items:string[]}>
+     * @return array<int, array{slug:string,label:string,icon:string,description:string,items:array<int, array{name:string,image:string}>}>
      */
     public static function technologyCategories(): array
     {
         return [
-            ['slug' => 'frontend', 'label' => 'Frontend', 'icon' => 'monitor', 'description' => 'Interactive, accessible interfaces built for performance.', 'items' => ['React', 'Alpine.js', 'Tailwind CSS']],
-            ['slug' => 'backend', 'label' => 'Backend', 'icon' => 'server', 'description' => 'Reliable APIs and business logic that scale with you.', 'items' => ['Laravel', 'Node.js', 'PHP']],
-            ['slug' => 'mobile', 'label' => 'Mobile', 'icon' => 'smartphone', 'description' => 'Native-feeling apps for iOS and Android.', 'items' => ['Flutter', 'React Native']],
-            ['slug' => 'cloud-devops', 'label' => 'Cloud & DevOps', 'icon' => 'cloud', 'description' => 'Automated, observable infrastructure and deployment pipelines.', 'items' => ['AWS', 'Docker', 'CI/CD']],
-            ['slug' => 'platforms', 'label' => 'Platforms', 'icon' => 'cpu', 'description' => 'Deep implementation experience on established platforms.', 'items' => ['Odoo', 'Magento']],
+            [
+                'slug' => 'frontend',
+                'label' => 'Frontend',
+                'icon' => 'monitor',
+                'description' => 'Modern, responsive interfaces built for performance, accessibility, and usability.',
+                'items' => [
+                    [
+                        'name' => 'React',
+                        'image' => 'react',
+                    ],
+                    [
+                        'name' => 'Next.js',
+                        'image' => 'nextjs',
+                    ],
+                    [
+                        'name' => 'Vue.js',
+                        'image' => 'vue',
+                    ],
+                    [
+                        'name' => 'JavaScript',
+                        'image' => 'javascript',
+                    ],
+                    [
+                        'name' => 'TypeScript',
+                        'image' => 'typescript',
+                    ],
+                    [
+                        'name' => 'HTML5',
+                        'image' => 'html5',
+                    ],
+                    [
+                        'name' => 'CSS3',
+                        'image' => 'css3',
+                    ],
+                    [
+                        'name' => 'Alpine.js',
+                        'image' => 'alpinejs',
+                    ],
+                    [
+                        'name' => 'Tailwind CSS',
+                        'image' => 'tailwindcss',
+                    ],
+                ],
+            ],
+            [
+                'slug' => 'backend',
+                'label' => 'Backend & APIs',
+                'icon' => 'server',
+                'description' => 'Scalable application architecture, APIs, and reliable business logic.',
+                'items' => [
+                    [
+                        'name' => 'Laravel',
+                        'image' => 'laravel',
+                    ],
+                    [
+                        'name' => 'PHP',
+                        'image' => 'php',
+                    ],
+                    [
+                        'name' => 'Node.js',
+                        'image' => 'nodejs',
+                    ],
+                    [
+                        'name' => 'Python',
+                        'image' => 'python',
+                    ],
+                    [
+                        'name' => '.NET',
+                        'image' => 'dotnet',
+                    ],
+                    [
+                        'name' => 'Go',
+                        'image' => 'go',
+                    ],
+                ]
+            ],
+            [
+                'slug' => 'database',
+                'label' => 'Databases',
+                'icon' => 'database',
+                'description' => 'Reliable data systems built for performance, scalability, consistency, and availability.',
+
+                'items' => [
+                    [
+                        'name' => 'MySQL',
+                        'image' => 'mysql',
+                    ],
+                    [
+                        'name' => 'PostgreSQL',
+                        'image' => 'postgresql',
+                    ],
+                    [
+                        'name' => 'MongoDB',
+                        'image' => 'mongodb',
+                    ],
+                    [
+                        'name' => 'Redis',
+                        'image' => 'redis',
+                    ],
+                ]
+            ],
+            [
+                'slug' => 'mobile',
+                'label' => 'Mobile',
+                'icon' => 'smartphone',
+                'description' => 'Cross-platform and native mobile applications designed for iOS and Android.',
+                'items' => [
+                    [
+                        'name' => 'Flutter',
+                        'image' => 'flutter',
+                    ],
+                    [
+                        'name' => 'React Native',
+                        'image' => 'reactnative',
+                    ],
+                    [
+                        'name' => 'Swift',
+                        'image' => 'swift',
+                    ],
+                    [
+                        'name' => 'Kotlin',
+                        'image' => 'kotlin',
+                    ],
+                ]
+            ],
+            [
+                'slug' => 'ai-ml',
+                'label' => 'AI & ML',
+                'icon' => 'sparkles',
+                'description' => 'Practical AI, machine learning, and intelligent application development.',
+                'items' => [
+                    [
+                        'name' => 'OpenAI',
+                        'image' => 'openai',
+                    ],
+                    [
+                        'name' => 'Anthropic',
+                        'image' => 'anthropic',
+                    ],
+                    [
+                        'name' => 'Google Gemini',
+                        'image' => 'googlegemini',
+                    ],
+                    [
+                        'name' => 'LangChain',
+                        'image' => 'langchain',
+                    ],
+                    [
+                        'name' => 'TensorFlow',
+                        'image' => 'tensorflow',
+                    ],
+                    [
+                        'name' => 'PyTorch',
+                        'image' => 'pytorch',
+                    ],
+                ]
+            ],
+            [
+                'slug' => 'cloud-devops',
+                'label' => 'Cloud & DevOps',
+                'icon' => 'cloud',
+                'description' => 'Scalable cloud infrastructure, automation, containerization, and continuous delivery.',
+                'items' => [
+                    [
+                        'name' => 'AWS',
+                        'image' => 'aws',
+                    ],
+                    [
+                        'name' => 'Google Cloud',
+                        'image' => 'googlecloud',
+                    ],
+                    [
+                        'name' => 'Azure',
+                        'image' => 'azure',
+                    ],
+                    [
+                        'name' => 'Docker',
+                        'image' => 'docker',
+                    ],
+                    [
+                        'name' => 'Kubernetes',
+                        'image' => 'kubernetes',
+                    ],
+                    [
+                        'name' => 'GitHub Actions',
+                        'image' => 'githubactions',
+                    ],
+                    [
+                        'name' => 'Terraform',
+                        'image' => 'terraform',
+                    ],
+                ]
+            ],
+            [
+                'slug' => 'platforms-commerce',
+                'label' => 'Platforms & Commerce',
+                'icon' => 'cpu',
+                'description' => 'Enterprise platforms, CMS, and commerce solutions tailored to business needs.',
+                'items' => [
+                    [
+                        'name' => 'Odoo',
+                        'image' => 'odoo',
+                    ],
+                    [
+                        'name' => 'Magento',
+                        'image' => 'magento',
+                    ],
+                    [
+                        'name' => 'Shopify',
+                        'image' => 'shopify',
+                    ],
+                    [
+                        'name' => 'WordPress',
+                        'image' => 'wordpress',
+                    ],
+                ]
+            ],
         ];
     }
 
